@@ -1,0 +1,239 @@
+// Local-first job board, ATS analyzer and application tracker.
+// SQLite via Prisma. The connection URL lives in prisma.config.ts (Prisma 7+).
+// Enum values are mirrored in src/schemas/enums.ts; tests/unit/schema-enums.test.ts keeps them in sync.
+//
+// JSON list columns (skills, experience, ...) deliberately have NO database default: Prisma emits
+// `DEFAULT []` unquoted for SQLite, which SQLite evaluates to an empty string (invalid JSON).
+// Always pass arrays explicitly; the Zod schemas in src/schemas default them to [].
+
+generator client {
+  provider = "prisma-client"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "sqlite"
+}
+
+// ---------------------------------------------------------------------------
+// Enums
+// ---------------------------------------------------------------------------
+
+enum RoleCategory {
+  SOFTWARE_ENGINEER
+  SOFTWARE_DEVELOPER
+  AI_ENGINEER
+  SOFTWARE_ARCHITECT
+  PRODUCT_MANAGER
+  PROJECT_MANAGER
+  BUSINESS_ANALYST
+  DATA_ANALYST
+  DATA_ENGINEER
+  PRODUCT_ANALYST
+}
+
+enum Sector {
+  IT
+  GAMING
+  TECH
+}
+
+enum WorkMode {
+  REMOTE
+  HYBRID
+  ONSITE
+  UNKNOWN
+}
+
+enum Seniority {
+  INTERN
+  JUNIOR
+  MID
+  SENIOR
+  LEAD
+  PRINCIPAL
+  UNKNOWN
+}
+
+enum EmploymentType {
+  FULL_TIME
+  PART_TIME
+  CONTRACT
+  INTERNSHIP
+  FREELANCE
+  UNKNOWN
+}
+
+enum ApplicationStatus {
+  SAVED
+  PREPARING
+  APPLIED
+  SCREENING
+  INTERVIEWING
+  OFFER
+  ACCEPTED
+  REJECTED
+  WITHDRAWN
+  GHOSTED
+}
+
+enum DocumentType {
+  TAILORED_RESUME
+  COVER_LETTER
+  COACH_FEEDBACK
+  INTERVIEW_PREP
+}
+
+enum EventType {
+  STATUS_CHANGE
+  NOTE
+  FOLLOW_UP
+  INTERVIEW
+  CONTACT
+  ATS_ANALYZED
+  DOCUMENT_GENERATED
+}
+
+// ---------------------------------------------------------------------------
+// Models
+// ---------------------------------------------------------------------------
+
+model Job {
+  id             String         @id @default(cuid())
+  title          String
+  company        String
+  location       String?
+  country        String?
+  roleCategory   RoleCategory
+  sector         Sector         @default(TECH)
+  workMode       WorkMode       @default(UNKNOWN)
+  seniority      Seniority      @default(UNKNOWN)
+  employmentType EmploymentType @default(UNKNOWN)
+  description    String
+  skills         Json
+  requirements   Json
+  salaryMin      Int?
+  salaryMax      Int?
+  salaryCurrency String?
+  sourceName     String
+  sourceUrl      String?
+  applyUrl       String?
+  externalId     String?
+  dedupeHash     String         @unique
+  postedAt       DateTime?
+  fetchedAt      DateTime       @default(now())
+  isActive       Boolean        @default(true)
+  createdAt      DateTime       @default(now())
+  updatedAt      DateTime       @updatedAt
+
+  applications Application[]
+  documents    GeneratedDocument[]
+
+  @@unique([sourceName, externalId])
+  @@index([roleCategory])
+  @@index([sector])
+  @@index([workMode])
+  @@index([isActive, postedAt])
+  @@map("jobs")
+}
+
+// One row for the local user (personal data never leaves this machine).
+model UserProfile {
+  id                 String   @id @default(cuid())
+  fullName           String
+  email              String?
+  phone              String?
+  location           String?
+  headline           String?
+  summary            String?
+  linkedinUrl        String?
+  githubUrl          String?
+  portfolioUrl       String?
+  baseResumeText     String?
+  baseResumeFileName String?
+  baseResumePath     String?
+  baseResumeMime     String?
+  baseResumeSize     Int?
+  skills             Json
+  experience         Json
+  education          Json
+  targetRoles        Json
+  preferredWorkModes Json
+  preferredLocations Json
+  createdAt          DateTime @default(now())
+  updatedAt          DateTime @updatedAt
+
+  applications Application[]
+
+  @@map("user_profiles")
+}
+
+model Application {
+  id              String            @id @default(cuid())
+  jobId           String
+  profileId       String
+  status          ApplicationStatus @default(SAVED)
+  appliedAt       DateTime?
+  followUpAt      DateTime?
+  nextStep        String?
+  notes           String?
+  atsScore        Int?
+  atsReport       Json?
+  atsRulesVersion String?
+  atsAnalyzedAt   DateTime?
+  createdAt       DateTime          @default(now())
+  updatedAt       DateTime          @updatedAt
+
+  // Jobs are deactivated (Job.isActive) rather than deleted, so tracked applications are never lost.
+  job     Job         @relation(fields: [jobId], references: [id], onDelete: Restrict)
+  profile UserProfile @relation(fields: [profileId], references: [id], onDelete: Cascade)
+
+  events    ApplicationEvent[]
+  documents GeneratedDocument[]
+
+  @@unique([jobId, profileId])
+  @@index([profileId])
+  @@index([status])
+  @@index([followUpAt])
+  @@map("applications")
+}
+
+// Timeline of everything that happens to an application.
+model ApplicationEvent {
+  id            String             @id @default(cuid())
+  applicationId String
+  type          EventType
+  fromStatus    ApplicationStatus?
+  toStatus      ApplicationStatus?
+  note          String?
+  occurredAt    DateTime           @default(now())
+  createdAt     DateTime           @default(now())
+
+  application Application @relation(fields: [applicationId], references: [id], onDelete: Cascade)
+
+  @@index([applicationId, occurredAt])
+  @@map("application_events")
+}
+
+model GeneratedDocument {
+  id              String       @id @default(cuid())
+  jobId           String
+  applicationId   String?
+  type            DocumentType
+  title           String
+  // Raw Markdown as produced by the local LLM. It is sanitized at render time, never trusted.
+  contentMarkdown String
+  version         Int          @default(1)
+  model           String?
+  promptFile      String?
+  promptHash      String?
+  atsScore        Int?
+  createdAt       DateTime     @default(now())
+
+  job         Job          @relation(fields: [jobId], references: [id], onDelete: Restrict)
+  application Application? @relation(fields: [applicationId], references: [id], onDelete: SetNull)
+
+  @@unique([applicationId, type, version])
+  @@index([jobId, type])
+  @@map("generated_documents")
+}
