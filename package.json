@@ -20,6 +20,7 @@
     "db:validate": "prisma validate",
     "db:migrate": "prisma migrate dev",
     "db:status": "prisma migrate status",
+    "db:seed": "tsx prisma/seed.ts",
     "verify": "npm run db:validate && npm run db:status && npm run typecheck && npm run test && npm run build"
   },
   "dependencies": {
@@ -39,6 +40,7 @@
     "@types/react-dom": "^19.3.0",
     "prisma": "^7.10.1",
     "tailwindcss": "^4.3.5",
+    "tsx": "^4.19.0",
     "typescript": "^7.0.2",
     "vitest": "^5.1.0"
   }

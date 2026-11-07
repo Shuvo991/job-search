@@ -24,6 +24,7 @@ npm run dev
 | `npm test` | Vitest (unit + API route tests) |
 | `npm run db:migrate` | `prisma migrate dev` |
 | `npm run db:status` | `prisma migrate status` |
+| `npm run db:seed` | Adds 5 sample jobs (safe to re-run; existing jobs are skipped) |
 | `npm run verify` | Everything above, end to end |
 
 ## Layout
@@ -34,3 +35,15 @@ npm run dev
 - `src/schemas/` Zod schemas for every API input
 - `src/app/` pages, error boundaries (`error.tsx`, `global-error.tsx`), `api/health`
 - `tests/` Vitest
+
+## Job board (Phase 2)
+
+Open http://localhost:3000 after `npm run db:seed` and `npm run dev`.
+
+- **Browse and filter** (`/`): free-text search, role type, location, work mode, level and skills. Filters live in the URL (`?q=...&skill=SQL&skill=Docker`), so results can be bookmarked and the back button works. Press **Apply filters** to search.
+- **Add a job**: the *Add job* button opens a dialog with two modes.
+  - *Structured*: fill in the fields. Skills you type are used as-is; leave the box empty (or press *Detect skills*) to have them extracted from the description.
+  - *Paste a posting*: paste the raw text or HTML. Markup is stripped, and the role, level, work mode, skills and requirements are detected for you. A URL is stored as the posting link and is **never fetched** by the server.
+- **Skill extractor**: `src/lib/skills-extractor.ts` matches text against `config/skills-dictionary.json` (about 400 technical and soft skills). It is plain regex matching, with no AI and no network. To teach it a new skill or alias, edit the JSON file; `tests/unit/skills-extractor.test.ts` checks the dictionary for duplicates and bad patterns.
+- **API**: `GET /api/jobs` (same filters as the page) and `POST /api/jobs` (`{ "mode": "structured" | "raw", ... }`), both validated with Zod.
+- **Safety**: pasted text is reduced to plain text by `src/lib/sanitize.ts` before it is stored, and it is rendered only as React text. The CSP in `next.config.ts` is a second layer.

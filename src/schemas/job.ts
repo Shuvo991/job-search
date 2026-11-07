@@ -41,6 +41,11 @@ export const listJobsQuerySchema = paginationSchema.extend({
   roleCategory: z.enum(ROLE_CATEGORIES).optional(),
   sector: z.enum(SECTORS).optional(),
   workMode: z.enum(WORK_MODES).optional(),
+  seniority: z.enum(SENIORITIES).optional(),
+  /** Substring match on the job's location or country. */
+  location: z.string().trim().max(100).optional(),
+  /** A job must contain ALL of these skills (case-insensitive). */
+  skills: z.array(shortText(60)).max(10).default([]),
   isActive: queryBooleanSchema.optional(),
 });
 
