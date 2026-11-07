@@ -15,7 +15,7 @@ export default function RouteError({
   }, [error]);
 
   return (
-    <main className="mx-auto max-w-xl p-8" role="alert">
+    <div className="mx-auto max-w-xl py-8" role="alert">
       <h1 className="text-xl font-semibold">Something went wrong</h1>
       <p className="mt-2 text-neutral-600">An unexpected error occurred. You can try again.</p>
       {error.digest ? <p className="mt-2 text-xs text-neutral-500">Reference: {error.digest}</p> : null}
@@ -26,6 +26,6 @@ export default function RouteError({
       >
         Try again
       </button>
-    </main>
+    </div>
   );
 }

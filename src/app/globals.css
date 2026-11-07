@@ -1,1 +1,39 @@
 @import "tailwindcss";
+
+/* Accessibility baseline (WCAG 2.1 AA) ---------------------------------------------------------- */
+
+:root {
+  color-scheme: light;
+}
+
+/* One strong, consistent focus indicator (3px, ~8.6:1 against white) for every interactive element. */
+:where(a, button, input, select, textarea, summary, dialog, [tabindex]):focus-visible {
+  outline: 3px solid #4338ca;
+  outline-offset: 2px;
+}
+
+/* The skip link target receives focus programmatically; no ring needed on the whole page. */
+main:focus {
+  outline: none;
+}
+
+/* Respect the user's motion preference. */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Modal dialog: dim the page and stop it scrolling behind the dialog. */
+dialog::backdrop {
+  background: rgb(0 0 0 / 0.6);
+}
+
+body:has(dialog[open]) {
+  overflow: hidden;
+}
