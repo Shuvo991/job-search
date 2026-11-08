@@ -80,12 +80,14 @@ const commonFeedShape = {
       company: shortText(200).optional(),
     })
     .default({}),
-  instances: z.array(instanceSchema).max(100).optional(),
+  instances: z.array(instanceSchema).max(400).optional(),
 };
 
 const restFeedSchema = z.strictObject({
   ...commonFeedShape,
   type: z.literal("rest-json"),
+  /** Sources that need more than one request per feed use a built-in reader (src/lib/feeds/smartrecruiters.ts). */
+  adapter: z.enum(["smartrecruiters"]).optional(),
   /** Path to the array of jobs in the response; empty string means the response itself is the array. */
   itemsPath: z.string().max(200).default(""),
   fields: feedFieldsSchema,

@@ -1,5 +1,337 @@
 {
-  "version": "0.0.0",
-  "description": "ATS scoring rules. Placeholder: populated when the ATS analyzer is built.",
-  "rules": []
+  "version": "1.0.0",
+  "description": "Deterministic ATS heuristics used by src/lib/ats-scorer.ts. Edit this file to tune scoring; no code change is needed. Patterns are JavaScript regular expressions (as strings) matched against the plain text extracted from a resume. Keep quantifiers bounded (for example {1,64}, not +) so a hostile document cannot make a pattern run for a long time.",
+
+  "weights": {
+    "keywords": 40,
+    "sections": 15,
+    "formatting": 15,
+    "actionVerbs": 15,
+    "language": 10,
+    "length": 5
+  },
+
+  "grades": [
+    { "min": 85, "label": "excellent" },
+    { "min": 70, "label": "good" },
+    { "min": 50, "label": "fair" },
+    { "min": 0, "label": "poor" }
+  ],
+
+  "length": {
+    "ideal": { "min": 400, "max": 800 },
+    "acceptable": { "min": 250, "max": 1100 },
+    "maxPages": 2
+  },
+
+  "sections": {
+    "recommendedWeight": 0.5,
+    "definitions": [
+      {
+        "id": "experience",
+        "label": "Experience",
+        "required": true,
+        "aliases": [
+          "experience",
+          "work experience",
+          "professional experience",
+          "employment history",
+          "work history",
+          "career history",
+          "relevant experience",
+          "employment",
+          "internships"
+        ]
+      },
+      {
+        "id": "education",
+        "label": "Education",
+        "required": true,
+        "aliases": [
+          "education",
+          "education and training",
+          "academic background",
+          "academic qualifications",
+          "qualifications",
+          "studies"
+        ]
+      },
+      {
+        "id": "skills",
+        "label": "Skills",
+        "required": true,
+        "aliases": [
+          "skills",
+          "technical skills",
+          "key skills",
+          "core skills",
+          "core competencies",
+          "competencies",
+          "skills and tools",
+          "technologies",
+          "tech stack",
+          "tools and technologies"
+        ]
+      },
+      {
+        "id": "summary",
+        "label": "Summary",
+        "required": false,
+        "aliases": [
+          "summary",
+          "professional summary",
+          "executive summary",
+          "profile",
+          "professional profile",
+          "about me",
+          "about",
+          "objective",
+          "career objective",
+          "personal statement"
+        ]
+      },
+      {
+        "id": "projects",
+        "label": "Projects",
+        "required": false,
+        "aliases": [
+          "projects",
+          "selected projects",
+          "personal projects",
+          "key projects",
+          "side projects",
+          "academic projects"
+        ]
+      },
+      {
+        "id": "certifications",
+        "label": "Certifications",
+        "required": false,
+        "aliases": [
+          "certifications",
+          "certificates",
+          "licenses and certifications",
+          "courses and certifications",
+          "training and certifications"
+        ]
+      }
+    ]
+  },
+
+  "actionVerbs": {
+    "targetDensity": 0.6,
+    "minCandidateLines": 3,
+    "minBulletWords": 3,
+    "fallbackMinWords": 7,
+    "description": "Density = bullet lines that start with a strong action verb / all bullet lines (lines with at least minBulletWords words). When fewer than minCandidateLines bullets exist (DOCX text has no bullet glyphs), plain lines of at least fallbackMinWords words are used instead. Verbs are listed in the past tense; the scorer also accepts present-tense, third-person and -ing forms of every regular verb. Irregular verbs list their forms explicitly.",
+    "verbs": [
+      "accelerated", "achieved", "acquired", "adapted", "administered", "advised", "advocated",
+      "analyzed", "analysed", "architected", "assembled", "assessed", "audited", "authored",
+      "automated", "balanced", "benchmarked", "boosted", "brokered", "calculated", "captured",
+      "chaired", "championed", "clarified", "coached", "collaborated", "compiled", "completed",
+      "conceived", "conducted", "configured", "consolidated", "constructed", "consulted",
+      "containerized", "converted", "coordinated", "created", "cultivated", "customized",
+      "debugged", "decreased", "defined", "delivered", "deployed", "designed", "detected",
+      "developed", "devised", "diagnosed", "directed", "discovered", "documented", "doubled",
+      "earned", "educated", "eliminated", "enabled", "enforced", "engineered", "enhanced",
+      "established", "estimated", "evaluated", "exceeded", "executed", "expanded", "expedited",
+      "facilitated", "finalized", "forecasted", "formulated", "founded", "generated", "guided",
+      "headed", "identified", "implemented", "improved", "increased", "influenced", "initiated",
+      "innovated", "inspected", "installed", "instituted", "integrated", "introduced", "invented",
+      "investigated", "launched", "leveraged", "maintained", "managed", "mapped", "mentored",
+      "migrated", "minimized", "mobilized", "modeled", "modernized", "monitored", "negotiated",
+      "onboarded", "operationalized", "optimized", "orchestrated", "organized", "overhauled",
+      "partnered", "performed", "piloted", "pioneered", "planned", "prioritized", "processed",
+      "produced", "programmed", "prototyped", "provisioned", "published", "reduced",
+      "redesigned", "refactored", "refined", "released", "remediated", "replaced", "reported",
+      "researched", "resolved", "restructured", "revamped", "reviewed", "scaled", "scheduled",
+      "secured", "shaped", "shipped", "simplified", "solved", "sourced", "spearheaded",
+      "standardized", "steered", "streamlined", "strengthened", "supervised", "surpassed",
+      "synthesized", "tested", "tracked", "trained", "transformed", "translated", "unified",
+      "upgraded", "validated", "verified", "visualized"
+    ],
+    "irregular": {
+      "led": ["lead", "leads", "leading"],
+      "built": ["build", "builds", "building"],
+      "rebuilt": ["rebuild", "rebuilds", "rebuilding"],
+      "ran": ["run", "runs", "running"],
+      "drove": ["drive", "drives", "driving"],
+      "grew": ["grow", "grows", "growing"],
+      "oversaw": ["oversee", "oversees", "overseeing"],
+      "taught": ["teach", "teaches", "teaching"],
+      "won": ["win", "wins", "winning"],
+      "wrote": ["write", "writes", "writing"],
+      "sold": ["sell", "sells", "selling"],
+      "cut": ["cuts", "cutting"],
+      "troubleshot": ["troubleshoot", "troubleshoots", "troubleshooting"],
+      "undertook": ["undertake", "undertakes", "undertaking"]
+    },
+    "weakPhrases": [
+      "responsible for",
+      "duties included",
+      "duties were",
+      "tasked with",
+      "worked on",
+      "helped with",
+      "assisted with",
+      "involved in",
+      "in charge of",
+      "participated in",
+      "was part of",
+      "various tasks"
+    ]
+  },
+
+  "language": {
+    "zeroScoreAt": 6,
+    "description": "Distinct buzzwords + distinct weak phrases found. The language score falls linearly from 100% (none) to 0% (zeroScoreAt or more).",
+    "buzzwords": [
+      "team player", "team-oriented", "hard-working", "hard working", "hardworking",
+      "go-getter", "self-starter", "self starter", "results-driven", "results driven",
+      "results-oriented", "detail-oriented", "detail oriented", "think outside the box",
+      "outside the box", "out-of-the-box", "synergy", "synergize", "dynamic professional",
+      "dynamic individual", "passionate", "motivated individual", "highly motivated",
+      "proven track record", "track record of success", "fast learner", "quick learner",
+      "strong work ethic", "excellent communication skills", "strong communication skills",
+      "people person", "guru", "ninja", "rockstar", "rock star", "thought leader",
+      "game changer", "game-changing", "best of breed", "low-hanging fruit",
+      "move the needle", "hit the ground running", "go-to person", "jack of all trades",
+      "value-add", "wheelhouse", "perfectionist", "multitasker", "creative thinker",
+      "problem solver", "visionary", "seasoned professional", "strategic thinker",
+      "go above and beyond", "references available upon request"
+    ]
+  },
+
+  "quantification": {
+    "minShare": 0.25,
+    "description": "Informational only (does not change the score): warns when fewer than this share of bullet lines contain a number, %, or currency amount."
+  },
+
+  "formatting": {
+    "severityPenalty": { "high": 0.35, "medium": 0.2, "low": 0.08 },
+    "maxPenalty": 1,
+    "description": "Each flag has kind 'forbid' (raised when the pattern matches at least minMatches times) or 'require' (raised when it matches fewer than minMatches times). The formatting score starts at 100% and loses severityPenalty per raised flag.",
+    "flags": [
+      {
+        "id": "missing-email",
+        "severity": "high",
+        "kind": "require",
+        "pattern": "[A-Za-z0-9._%+-]{1,64}@[A-Za-z0-9.-]{1,255}\\.[A-Za-z]{2,24}",
+        "flags": "",
+        "minMatches": 1,
+        "message": "No email address was found in the resume text.",
+        "fix": "Put a plain-text email address in the body of the document, not only in a header, footer, image or text box."
+      },
+      {
+        "id": "missing-phone",
+        "severity": "medium",
+        "kind": "require",
+        "pattern": "(?:\\+\\s?\\d[\\d\\s().-]{7,20}\\d|\\b0\\d{1,3}[\\s.-]?\\d{2,3}[\\s.-]?\\d{2,3}[\\s.-]?\\d{2,4}\\b|\\(\\d{2,4}\\)\\s?\\d[\\d\\s.-]{5,20}\\d|\\b\\d{3}[\\s.-]\\d{3}[\\s.-]\\d{4}\\b)",
+        "flags": "",
+        "minMatches": 1,
+        "message": "No phone number was found in the resume text.",
+        "fix": "Add a phone number with country code (for example +46 70 123 45 67) as plain text."
+      },
+      {
+        "id": "missing-profile-link",
+        "severity": "low",
+        "kind": "require",
+        "pattern": "(?:linkedin\\.com|github\\.com|gitlab\\.com)",
+        "flags": "i",
+        "minMatches": 1,
+        "message": "No LinkedIn, GitHub or GitLab link was found.",
+        "fix": "For technical roles, add your LinkedIn and/or GitHub URL as visible text."
+      },
+      {
+        "id": "few-dates",
+        "severity": "medium",
+        "kind": "require",
+        "pattern": "\\b(?:19|20)\\d{2}\\b",
+        "flags": "g",
+        "minMatches": 2,
+        "message": "Fewer than two years or dates were found.",
+        "fix": "Date every role and degree (for example 'Jan 2022 - Present'); ATS systems use dates to compute experience."
+      },
+      {
+        "id": "garbled-characters",
+        "severity": "high",
+        "kind": "forbid",
+        "pattern": "\\uFFFD",
+        "flags": "g",
+        "minMatches": 1,
+        "message": "The extracted text contains unreadable replacement characters.",
+        "fix": "The file probably uses unusual fonts or is partly scanned. Re-export it from your editor using a standard font, with text embedded."
+      },
+      {
+        "id": "special-bullets",
+        "severity": "medium",
+        "kind": "forbid",
+        "pattern": "[\\uE000-\\uF8FF\\u2605\\u2606\\u2713\\u2714\\u2726\\u2756\\u27A2\\u27A4\\u279C\\u25BA\\u25B6\\u25C6\\u25C7\\u2192\\u21D2]",
+        "flags": "g",
+        "minMatches": 1,
+        "message": "Decorative or symbol-font bullet characters were found.",
+        "fix": "Use plain round bullets (\u2022) or hyphens; symbol-font glyphs often turn into garbage when an ATS parses the file."
+      },
+      {
+        "id": "emoji",
+        "severity": "medium",
+        "kind": "forbid",
+        "pattern": "[\\u{1F000}-\\u{1FAFF}]",
+        "flags": "gu",
+        "minMatches": 1,
+        "message": "Emoji were found in the resume text.",
+        "fix": "Remove emoji and icons; ATS parsers drop or mangle them, which can break the surrounding line."
+      },
+      {
+        "id": "column-gaps",
+        "severity": "medium",
+        "kind": "forbid",
+        "pattern": "\\S[ \\t]{4,}\\S",
+        "flags": "g",
+        "minMatches": 8,
+        "message": "Many wide gaps or tabs inside lines suggest a multi-column layout or table.",
+        "fix": "Use a single-column layout without tables, text boxes or tab-aligned columns so the reading order stays intact."
+      },
+      {
+        "id": "all-caps-lines",
+        "severity": "low",
+        "kind": "forbid",
+        "pattern": "^[A-Z0-9 &/,.'-]{30,}$",
+        "flags": "gm",
+        "minMatches": 3,
+        "message": "Several long lines are written entirely in capitals.",
+        "fix": "Keep capitals for short section headings only; long all-caps lines are hard to read and to parse."
+      },
+      {
+        "id": "dense-paragraphs",
+        "severity": "low",
+        "kind": "forbid",
+        "pattern": "^.{450,}$",
+        "flags": "gm",
+        "minMatches": 2,
+        "message": "Very long unbroken lines or paragraphs were found.",
+        "fix": "Break long paragraphs into short bullet points of one or two lines each."
+      },
+      {
+        "id": "personal-details",
+        "severity": "low",
+        "kind": "forbid",
+        "pattern": "\\b(?:date of birth|dob|marital status|nationality|passport number|religion|gender)\\b",
+        "flags": "gi",
+        "minMatches": 1,
+        "message": "Personal details that are not needed for screening were found.",
+        "fix": "Remove date of birth, marital status, nationality and similar fields; they add no value and can introduce bias."
+      },
+      {
+        "id": "first-person",
+        "severity": "low",
+        "kind": "forbid",
+        "pattern": "\\b(?:I|my|me|myself)\\b",
+        "flags": "g",
+        "minMatches": 6,
+        "message": "The text uses first-person pronouns often.",
+        "fix": "Write bullets without 'I' or 'my' (for example 'Led a team of 5 engineers' instead of 'I led my team')."
+      }
+    ]
+  }
 }

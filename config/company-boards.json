@@ -1,0 +1,2395 @@
+{
+  "_readme": "Written by 'npm run discover:boards' (scripts/discover-boards.mjs) from config/companies.json. 'boards' are career boards that were found and confirmed to belong to the company; every sync crawls them (src/lib/feeds/company-boards.ts). 'needsReview' lists boards that exist but could not be confirmed: to accept one, copy its company, ats and slug into 'manual' below (the script never touches 'manual'). ats is one of greenhouse, lever, lever-eu, ashby, teamtailor.",
+  "version": 1,
+  "generatedAt": "2026-11-08T21:07:14.726Z",
+  "boards": [
+    {
+      "company": "Spotify",
+      "ats": "lever",
+      "slug": "spotify",
+      "jobs": 85,
+      "targetJobs": 31,
+      "sampleTitles": [
+        "Account Executive - Commercial, Spotify Technology",
+        "Account Executive - Commercial, Spotify Technology",
+        "Account Executive - Commercial, Spotify Technology"
+      ],
+      "verified": "posting-text"
+    },
+    {
+      "company": "Truecaller",
+      "ats": "greenhouse",
+      "slug": "truecaller",
+      "jobs": 37,
+      "targetJobs": 14,
+      "boardName": "Truecaller",
+      "sampleTitles": [
+        "Ads Strategy Manager – Pricing & Revenue",
+        "Chief of Staff to the CTO",
+        "Data Engineer"
+      ],
+      "verified": "board-name"
+    },
+    {
+      "company": "Trustly",
+      "ats": "ashby",
+      "slug": "trustly",
+      "jobs": 44,
+      "targetJobs": 9,
+      "sampleTitles": [
+        "Senior Finance Business Partner",
+        "Staff Security Engineer - AI Enablement",
+        "Chief Information Security Officer"
+      ],
+      "verified": "posting-text"
+    },
+    {
+      "company": "Polestar",
+      "ats": "teamtailor",
+      "slug": "polestar",
+      "jobs": 13,
+      "targetJobs": 1,
+      "sampleTitles": [
+        "Marketing &amp; Events Intern",
+        "Senior Customs Operations Specialist",
+        "Team Lead, Group Consolidation"
+      ],
+      "verified": "board-name"
+    },
+    {
+      "company": "Anyfin",
+      "ats": "teamtailor",
+      "slug": "anyfin",
+      "jobs": 15,
+      "targetJobs": 2,
+      "sampleTitles": [
+        "Market Expansion Lead, Italy",
+        "Commercial Analyst",
+        "Site Reliability Engineer"
+      ],
+      "verified": "board-name"
+    },
+    {
+      "company": "Storytel",
+      "ats": "teamtailor",
+      "slug": "storytel",
+      "jobs": 3,
+      "targetJobs": 0,
+      "sampleTitles": [
+        "Social &amp; Creator Marketer (Netherlands &amp; Flanders)",
+        "Partnerships Manager Mofibo",
+        "Senior Data Engineer"
+      ],
+      "verified": "board-name"
+    },
+    {
+      "company": "Paradox Interactive",
+      "ats": "teamtailor",
+      "slug": "paradox-interactive",
+      "jobs": 23,
+      "targetJobs": 1,
+      "sampleTitles": [
+        "Open application for Senior Game Programmers",
+        "Legal Counsel",
+        "Junior Legal Counsel"
+      ],
+      "verified": "board-name"
+    },
+    {
+      "company": "Hemnet",
+      "ats": "teamtailor",
+      "slug": "hemnet",
+      "jobs": 4,
+      "targetJobs": 0,
+      "sampleTitles": [
+        "Consultant - Data Engineer MarTech",
+        "Data Engineer MarTech",
+        "Key Account Manager"
+      ],
+      "verified": "board-name"
+    },
+    {
+      "company": "Mentimeter",
+      "ats": "greenhouse",
+      "slug": "mentimeter",
+      "jobs": 15,
+      "targetJobs": 1,
+      "boardName": "Mentimeter",
+      "sampleTitles": [
+        "Account Executive",
+        "Account Manager ",
+        "Account Manager - DACH Enterprise"
+      ],
+      "verified": "board-name"
+    },
+    {
+      "company": "SEB (Tech)",
+      "ats": "lever-eu",
+      "slug": "seb",
+      "jobs": 123,
+      "targetJobs": 16,
+      "sampleTitles": [
+        "AI Tech Lead - Digital Workplace | SEB, Solna",
+        "AML/KYC Specialist",
+        "Associate in Sustainable Banking, Security & Defence | SEB, Helsinki"
+      ],
+      "verified": "posting-text"
+    },
+    {
+      "company": "Schibsted (Sweden)",
+      "ats": "teamtailor",
+      "slug": "schibsted",
+      "jobs": 40,
+      "targetJobs": 3,
+      "sampleTitles": [
+        "Vikarer sommeren 2027",
+        "Aftonbladet nöje söker medarbetare våren 2027",
+        "Analytics and Data Engineer"
+      ],
+      "verified": "board-name"
+    },
+    {
+      "company": "Tobii",
+      "ats": "teamtailor",
+      "slug": "tobii",
+      "jobs": 1,
+      "targetJobs": 0,
+      "sampleTitles": [
+        "Engineering Director"
+      ],
+      "verified": "board-name"
+    },
+    {
+      "company": "Yubico",
+      "ats": "greenhouse",
+      "slug": "yubico",
+      "jobs": 23,
+      "targetJobs": 4,
+      "boardName": "Yubico Inc.",
+      "sampleTitles": [
+        "Channel Account Manager",
+        "Cryptography Engineer",
+        "Enterprise Account Director, Central"
+      ],
+      "verified": "board-name"
+    },
+    {
+      "company": "Epidemic Sound",
+      "ats": "ashby",
+      "slug": "epidemic-sound",
+      "jobs": 26,
+      "targetJobs": 6,
+      "sampleTitles": [
+        "Customer Success Manager",
+        "Senior Data Analyst -  Enterprise GTM",
+        "VP of B2B Sales"
+      ],
+      "verified": "posting-text"
+    },
+    {
+      "company": "Fishbrain",
+      "ats": "teamtailor",
+      "slug": "fishbrain",
+      "jobs": 2,
+      "targetJobs": 0,
+      "sampleTitles": [
+        "Open application - Engineering",
+        "Head of Design"
+      ],
+      "verified": "board-name"
+    },
+    {
+      "company": "Kognity",
+      "ats": "ashby",
+      "slug": "kognity",
+      "jobs": 3,
+      "targetJobs": 0,
+      "sampleTitles": [
+        "Accounting Manager ",
+        "Delivery Coordinator",
+        "Content Marketing Intern"
+      ],
+      "verified": "posting-text"
+    },
+    {
+      "company": "Doktor.se",
+      "ats": "teamtailor",
+      "slug": "doktor",
+      "jobs": 46,
+      "targetJobs": 0,
+      "sampleTitles": [
+        "Workforce &amp; Talent Specialist",
+        "Talent Acquisition Coordinator",
+        "Läkare till digital primärvård"
+      ],
+      "verified": "board-name"
+    },
+    {
+      "company": "FirstVet",
+      "ats": "teamtailor",
+      "slug": "firstvet",
+      "jobs": 6,
+      "targetJobs": 0,
+      "sampleTitles": [
+        "Register your interest in joining FirstVet Germany as a Veterinarian",
+        "Legal Counsel/ Bolagsjurist till FirstVet",
+        "FirstVet UK are looking for skilled, qualified Veterinarians"
+      ],
+      "verified": "board-name"
+    },
+    {
+      "company": "Natural Cycles",
+      "ats": "teamtailor",
+      "slug": "naturalcycles",
+      "jobs": 1,
+      "targetJobs": 0,
+      "sampleTitles": [
+        "QA Manager, Product Growth"
+      ],
+      "verified": "board-name"
+    },
+    {
+      "company": "Detectify",
+      "ats": "teamtailor",
+      "slug": "detectify",
+      "jobs": 5,
+      "targetJobs": 1,
+      "sampleTitles": [
+        "Lead Product Manager",
+        "Senior Product Engineer",
+        "Senior Cyber Security Researcher"
+      ],
+      "verified": "board-name"
+    },
+    {
+      "company": "Mindler",
+      "ats": "teamtailor",
+      "slug": "mindler",
+      "jobs": 8,
+      "targetJobs": 0,
+      "sampleTitles": [
+        "Business Development Director",
+        "Onlinepsykolog - konsult",
+        "Step 3 CBT Therapist"
+      ],
+      "verified": "board-name"
+    },
+    {
+      "company": "Resolution Games",
+      "ats": "ashby",
+      "slug": "resolution",
+      "jobs": 5,
+      "targetJobs": 0,
+      "sampleTitles": [
+        "Lean Engineer",
+        "Security Engineer (Research Infrastructure)",
+        "Security Engineer (Corporate IT)"
+      ],
+      "verified": "posting-text"
+    },
+    {
+      "company": "Recorded Future (Swedish R&D)",
+      "ats": "greenhouse",
+      "slug": "recordedfuture",
+      "jobs": 46,
+      "targetJobs": 7,
+      "boardName": "Recorded Future",
+      "sampleTitles": [
+        "Account Director, Enterprise ",
+        "Account Director, Enterprise ",
+        "Account Director, India"
+      ],
+      "verified": "board-name"
+    },
+    {
+      "company": "Kambi",
+      "ats": "greenhouse",
+      "slug": "kambi",
+      "jobs": 2,
+      "targetJobs": 0,
+      "boardName": "Kambi",
+      "sampleTitles": [
+        "Linux Platform Engineer",
+        "Security Operations Engineer"
+      ],
+      "verified": "board-name"
+    },
+    {
+      "company": "Kambi",
+      "ats": "teamtailor",
+      "slug": "kambi",
+      "jobs": 6,
+      "targetJobs": 0,
+      "sampleTitles": [
+        "Linux Platform Engineer - Stockholm / Uppsala",
+        "Security Operations Engineer - Stockholm / Uppsala",
+        "Partner Support Manager - Philadelphia, USA"
+      ],
+      "verified": "board-name"
+    },
+    {
+      "company": "Betsson Group",
+      "ats": "greenhouse",
+      "slug": "betsson",
+      "jobs": 98,
+      "targetJobs": 30,
+      "boardName": "Betsson Group",
+      "sampleTitles": [
+        "AI Engineer",
+        "Android Developer (Hybrid - Malaga)",
+        "Backend .NET Software Engineer"
+      ],
+      "verified": "board-name"
+    },
+    {
+      "company": "Kindred Group",
+      "ats": "ashby",
+      "slug": "kindred",
+      "jobs": 4,
+      "targetJobs": 1,
+      "sampleTitles": [
+        "Senior Infrastructure Engineer",
+        "Head of Product Design",
+        "Full-Stack Engineer"
+      ],
+      "verified": "posting-text"
+    },
+    {
+      "company": "HiQ",
+      "ats": "teamtailor",
+      "slug": "hiq",
+      "jobs": 81,
+      "targetJobs": 5,
+      "sampleTitles": [
+        "Key Account Manager till HiQ Mälardalen",
+        "Functional Safety Engineer",
+        "Functional Safety Manager"
+      ],
+      "verified": "posting-text"
+    },
+    {
+      "company": "Storykit",
+      "ats": "teamtailor",
+      "slug": "storykit",
+      "jobs": 2,
+      "targetJobs": 0,
+      "sampleTitles": [
+        "Account Executive (AE)",
+        "Sales Development Representative (SDR)"
+      ],
+      "verified": "board-name"
+    },
+    {
+      "company": "Netlight Consulting",
+      "ats": "lever",
+      "slug": "netlight",
+      "jobs": 38,
+      "targetJobs": 1,
+      "sampleTitles": [
+        "Amsterdam IT Consultant",
+        "Analytics Engineer (in-house)",
+        "Backend Developer (Java/Spring Boot, AWS) – Internal (m/f/d) | Munich | Hybrid"
+      ],
+      "verified": "posting-text"
+    },
+    {
+      "company": "Instabee (Instabox + Budbee)",
+      "ats": "teamtailor",
+      "slug": "instabee",
+      "jobs": 51,
+      "targetJobs": 6,
+      "sampleTitles": [
+        "Senior Product Manager | Merchant Experience &amp; Integration Services",
+        "Product Manager | Delivery Execution",
+        "Senior Backend Engineer | Orders Team"
+      ],
+      "verified": "board-name"
+    },
+    {
+      "company": "Svenska Spel (Tech)",
+      "ats": "teamtailor",
+      "slug": "svenskaspel",
+      "jobs": 1,
+      "targetJobs": 0,
+      "sampleTitles": [
+        "Workplace Resilience &amp; Security Specialist"
+      ],
+      "verified": "board-name"
+    },
+    {
+      "company": "Qliro",
+      "ats": "teamtailor",
+      "slug": "qliro",
+      "jobs": 11,
+      "targetJobs": 7,
+      "sampleTitles": [
+        "Head of Credit Analytics",
+        "Software Engineer - Web &amp; App (Fullstack)",
+        "Head of FP&amp;A"
+      ],
+      "verified": "board-name"
+    },
+    {
+      "company": "Tradera",
+      "ats": "teamtailor",
+      "slug": "tradera",
+      "jobs": 2,
+      "targetJobs": 1,
+      "sampleTitles": [
+        "Commercial Lead – Vehicles",
+        "Product Owner – Buying &amp; Data/AI (Fixed-Term)"
+      ],
+      "verified": "board-name"
+    },
+    {
+      "company": "Dustin Group (IT)",
+      "ats": "teamtailor",
+      "slug": "dustin",
+      "jobs": 62,
+      "targetJobs": 7,
+      "sampleTitles": [
+        "Manager AV Solutions",
+        "Operationeel Inkoper",
+        "Internal Account Manager"
+      ],
+      "verified": "board-name"
+    },
+    {
+      "company": "X Shore",
+      "ats": "teamtailor",
+      "slug": "xshore",
+      "jobs": 13,
+      "targetJobs": 2,
+      "sampleTitles": [
+        "Field Service Technician, USA",
+        "Sales Manager, USA West Coast",
+        "Sales Manager, USA East Coast"
+      ],
+      "verified": "board-name"
+    },
+    {
+      "company": "Heart Aerospace",
+      "ats": "greenhouse",
+      "slug": "heartaerospace",
+      "jobs": 3,
+      "targetJobs": 0,
+      "boardName": "Heart Aerospace",
+      "sampleTitles": [
+        "Executive Operations Partner",
+        "IT Manager",
+        "Open Application"
+      ],
+      "verified": "board-name"
+    },
+    {
+      "company": "Supercell",
+      "ats": "ashby",
+      "slug": "supercell",
+      "jobs": 35,
+      "targetJobs": 8,
+      "sampleTitles": [
+        "Product Lead, Game Engine",
+        "Creator Partnerships Manager, Korea",
+        "Product Marketing Manager, Brawl Stars"
+      ],
+      "verified": "posting-text"
+    },
+    {
+      "company": "Wolt",
+      "ats": "greenhouse",
+      "slug": "wolt",
+      "jobs": 206,
+      "targetJobs": 10,
+      "boardName": "Wolt - English",
+      "sampleTitles": [
+        "Account Development Manager",
+        "Account Management Executive",
+        "Account Manager"
+      ],
+      "verified": "board-name"
+    },
+    {
+      "company": "Smartly.io",
+      "ats": "greenhouse",
+      "slug": "smartlyio",
+      "jobs": 64,
+      "targetJobs": 18,
+      "boardName": "Smartly",
+      "sampleTitles": [
+        "Associate Customer Success Manager for GSA",
+        "CTV Account Delivery Manager",
+        "Customer Delivery Manager"
+      ],
+      "verified": "board-name"
+    },
+    {
+      "company": "Oura",
+      "ats": "greenhouse",
+      "slug": "oura",
+      "jobs": 97,
+      "targetJobs": 22,
+      "boardName": "ŌURA",
+      "sampleTitles": [
+        "Accounting Manager, Fixed Assets & Capital Accounting",
+        "Compliance Engineer",
+        "Demand Planner, E-Commerce"
+      ],
+      "verified": "board-name"
+    },
+    {
+      "company": "Pleo",
+      "ats": "ashby",
+      "slug": "pleo",
+      "jobs": 38,
+      "targetJobs": 4,
+      "sampleTitles": [
+        "Customer Support Senior Associate ",
+        "Account Manager UKI",
+        "Account Executive UK/I "
+      ],
+      "verified": "posting-text"
+    },
+    {
+      "company": "Iceye",
+      "ats": "ashby",
+      "slug": "iceye",
+      "jobs": 193,
+      "targetJobs": 18,
+      "sampleTitles": [
+        "Open Application: Global Manufacturing Operations (GMO)",
+        "Customs Specialist",
+        "QMS Specialist"
+      ],
+      "verified": "posting-text"
+    },
+    {
+      "company": "Maersk Digital",
+      "ats": "teamtailor",
+      "slug": "maersk",
+      "jobs": 10,
+      "targetJobs": 2,
+      "sampleTitles": [
+        "Copy of iOS developer",
+        "iOS developer",
+        "Backend developer"
+      ],
+      "verified": "board-name"
+    },
+    {
+      "company": "RELEX Solutions",
+      "ats": "greenhouse",
+      "slug": "relex",
+      "jobs": 40,
+      "targetJobs": 4,
+      "boardName": "RELEX Solutions",
+      "sampleTitles": [
+        "ABM Operations Manager, AI & Automation ",
+        "Account Executive, Manufacturing (SEA)",
+        "Account Executive, Retail (Japan)"
+      ],
+      "verified": "board-name"
+    },
+    {
+      "company": "Trustpilot",
+      "ats": "greenhouse",
+      "slug": "trustpilot",
+      "jobs": 34,
+      "targetJobs": 6,
+      "boardName": "Trustpilot ",
+      "sampleTitles": [
+        "Account Executive - Belgium market (Flemish speaking)",
+        "Account Executive Benelux",
+        "Account Executive - DACH"
+      ],
+      "verified": "board-name"
+    },
+    {
+      "company": "Cognite",
+      "ats": "greenhouse",
+      "slug": "cognite",
+      "jobs": 53,
+      "targetJobs": 14,
+      "boardName": "Cognite - AI for Industry",
+      "sampleTitles": [
+        "Academy Engineer - (Data Scientist- Training)",
+        "Account Executive",
+        "Account Executive (Process Manufacturing)"
+      ],
+      "verified": "board-name"
+    },
+    {
+      "company": "Remarkable",
+      "ats": "teamtailor",
+      "slug": "remarkable",
+      "jobs": 20,
+      "targetJobs": 0,
+      "sampleTitles": [
+        "Mystery Shopper sökes till uppdrag i Karlskrona",
+        "Mystery Shopper sökes till uppdrag i Karlstad",
+        "Mystery Shopper sökes till uppdrag i Strömsnäsbruk"
+      ],
+      "verified": "board-name"
+    },
+    {
+      "company": "Veriff",
+      "ats": "greenhouse",
+      "slug": "veriff",
+      "jobs": 11,
+      "targetJobs": 4,
+      "boardName": "Veriff",
+      "sampleTitles": [
+        "Data Engineer",
+        "Lead Product Manager, Veriff Network",
+        "Senior Account Executive / USA"
+      ],
+      "verified": "board-name"
+    },
+    {
+      "company": "Nord Security",
+      "ats": "ashby",
+      "slug": "nord-security",
+      "jobs": 126,
+      "targetJobs": 25,
+      "sampleTitles": [
+        "CRO Manager | Mid-Senior | B2B Suite",
+        "Sales Enablement Manager | Mid-Senior | B2B",
+        "Agentic Product Engineer | Senior | Saily"
+      ],
+      "verified": "posting-text"
+    },
+    {
+      "company": "Starship Technologies",
+      "ats": "teamtailor",
+      "slug": "starship",
+      "jobs": 3,
+      "targetJobs": 0,
+      "sampleTitles": [
+        "Robot Technician",
+        "Finance Business Partner",
+        "Area Mapper"
+      ],
+      "verified": "board-name"
+    },
+    {
+      "company": "Outfit7",
+      "ats": "greenhouse",
+      "slug": "outfit7",
+      "jobs": 10,
+      "targetJobs": 2,
+      "boardName": "Outfit7",
+      "sampleTitles": [
+        "Accountant",
+        "Ad Monetization Expert",
+        "Head of Analytics"
+      ],
+      "verified": "board-name"
+    },
+    {
+      "company": "Rohlik",
+      "ats": "ashby",
+      "slug": "rohlik",
+      "jobs": 102,
+      "targetJobs": 1,
+      "sampleTitles": [
+        "Kommissionierer / Mitarbeiter Lager & Logistik (m/w/d)",
+        "Robot Learning Engineer",
+        "Staplerfahrer (m/w/d)"
+      ],
+      "verified": "posting-text"
+    },
+    {
+      "company": "JetBrains",
+      "ats": "greenhouse",
+      "slug": "jetbrains",
+      "jobs": 32,
+      "targetJobs": 6,
+      "boardName": "JetBrains",
+      "sampleTitles": [
+        "Account Manager (B2B Segment - Global Accounts without KAM coverage)",
+        "Accounts Payable Specialist",
+        "Campus Ambassador (Universities in Europe)"
+      ],
+      "verified": "board-name"
+    },
+    {
+      "company": "Avast / Gen Digital",
+      "ats": "ashby",
+      "slug": "gen-digital",
+      "jobs": 107,
+      "targetJobs": 25,
+      "sampleTitles": [
+        "Senior Brand & GTM Campaign Lead",
+        "Lifecycle Journey Manager, Cross-Sell & Expansion",
+        "Principal Financial Analyst"
+      ],
+      "verified": "posting-text"
+    },
+    {
+      "company": "Brainly",
+      "ats": "ashby",
+      "slug": "brainly",
+      "jobs": 1,
+      "targetJobs": 0,
+      "sampleTitles": [
+        "Didn't find a suitable position for you? Let us know that you are interested!"
+      ],
+      "verified": "posting-text"
+    },
+    {
+      "company": "Allegro",
+      "ats": "greenhouse",
+      "slug": "allegro",
+      "jobs": 0,
+      "targetJobs": 0,
+      "boardName": "Allegro",
+      "sampleTitles": [],
+      "verified": "board-name"
+    },
+    {
+      "company": "UiPath",
+      "ats": "ashby",
+      "slug": "uipath",
+      "jobs": 102,
+      "targetJobs": 26,
+      "sampleTitles": [
+        "Principal Expert, US Insurance Industry",
+        "Manager, Renewals -APAC",
+        "Senior Renewals Specialist (Thai Speaking)"
+      ],
+      "verified": "posting-text"
+    },
+    {
+      "company": "eMAG",
+      "ats": "greenhouse",
+      "slug": "emag",
+      "jobs": 41,
+      "targetJobs": 5,
+      "boardName": "eMAG",
+      "sampleTitles": [
+        "Agentic AI Engineer (Engineering, Web&Mobile Team) ",
+        "Assistant Buyer",
+        "Assistant Team Leader - Picking Freshful"
+      ],
+      "verified": "board-name"
+    },
+    {
+      "company": "Adyen",
+      "ats": "greenhouse",
+      "slug": "adyen",
+      "jobs": 255,
+      "targetJobs": 36,
+      "boardName": "Adyen",
+      "sampleTitles": [
+        " Account Manager",
+        "Account Manager",
+        "Account Manager"
+      ],
+      "verified": "board-name"
+    },
+    {
+      "company": "TomTom",
+      "ats": "lever-eu",
+      "slug": "tomtom",
+      "jobs": 30,
+      "targetJobs": 8,
+      "sampleTitles": [
+        "AI Engineer",
+        "Applied Scientist",
+        "Applied Scientist"
+      ],
+      "verified": "posting-text"
+    },
+    {
+      "company": "Docplanner",
+      "ats": "ashby",
+      "slug": "docplanner",
+      "jobs": 46,
+      "targetJobs": 14,
+      "sampleTitles": [
+        "Senior Product Designer - Feegow (100% remote friendly in Brazil)",
+        "Staff Platform Security Engineer (100% Remote within Spain)",
+        "Staff Platform Security Engineer (100% Remote within Poland)"
+      ],
+      "verified": "posting-text"
+    },
+    {
+      "company": "Mollie",
+      "ats": "ashby",
+      "slug": "mollie",
+      "jobs": 51,
+      "targetJobs": 3,
+      "sampleTitles": [
+        "Senior Product Marketing Manager - Online Payments",
+        "Application Engineer II",
+        "Business Support Specialist -  Polish speaking"
+      ],
+      "verified": "posting-text"
+    },
+    {
+      "company": "Elastic",
+      "ats": "greenhouse",
+      "slug": "elastic",
+      "jobs": 426,
+      "targetJobs": 168,
+      "boardName": "Elastic",
+      "sampleTitles": [
+        "ABM Manager, Global Public Sector",
+        "ABM Regional Manager, AMER",
+        "Account Executive"
+      ],
+      "verified": "board-name"
+    },
+    {
+      "company": "N26",
+      "ats": "greenhouse",
+      "slug": "n26",
+      "jobs": 36,
+      "targetJobs": 4,
+      "boardName": "N26",
+      "sampleTitles": [
+        "AFC Associate - SAR Delegate",
+        "AFC Associate - SAR Writer",
+        "AFC Manager - SAR Delegate Lead | MLRO France"
+      ],
+      "verified": "board-name"
+    },
+    {
+      "company": "Celonis",
+      "ats": "greenhouse",
+      "slug": "celonis",
+      "jobs": 233,
+      "targetJobs": 18,
+      "boardName": "Celonis",
+      "sampleTitles": [
+        "Account Executive - CPG",
+        "Account Executive - Energy",
+        "Account Executive - Federal"
+      ],
+      "verified": "board-name"
+    },
+    {
+      "company": "HelloFresh",
+      "ats": "greenhouse",
+      "slug": "hellofresh",
+      "jobs": 380,
+      "targetJobs": 16,
+      "boardName": "HelloFresh",
+      "sampleTitles": [
+        "Allround Onderhoudsmonteur (v/m/x)",
+        " Area Manager",
+        "Area Manager"
+      ],
+      "verified": "board-name"
+    },
+    {
+      "company": "Babbel",
+      "ats": "ashby",
+      "slug": "babbel",
+      "jobs": 10,
+      "targetJobs": 2,
+      "sampleTitles": [
+        "Senior Product Manager - AI Content Creation (all genders)",
+        "Senior Principal Engineer – AI Content Systems (all genders)",
+        "Senior iOS Engineer – Learning Experience (all genders)"
+      ],
+      "verified": "posting-text"
+    },
+    {
+      "company": "Contentful",
+      "ats": "greenhouse",
+      "slug": "contentful",
+      "jobs": 29,
+      "targetJobs": 2,
+      "boardName": "Contentful",
+      "sampleTitles": [
+        "DACH Senior Solution Engineer (f/m/d)",
+        "DACH Senior Solution Engineer (f/m/d)",
+        "Enterprise Account Executive"
+      ],
+      "verified": "board-name"
+    },
+    {
+      "company": "Trivago",
+      "ats": "greenhouse",
+      "slug": "trivago",
+      "jobs": 15,
+      "targetJobs": 2,
+      "boardName": "trivago",
+      "sampleTitles": [
+        "Data Scientist - AI Search & Ranking",
+        "Frontend Engineering Lead - Content",
+        "HR Business Partner"
+      ],
+      "verified": "board-name"
+    },
+    {
+      "company": "Flix (FlixBus)",
+      "ats": "greenhouse",
+      "slug": "flix",
+      "jobs": 164,
+      "targetJobs": 15,
+      "boardName": "Flix",
+      "sampleTitles": [
+        "Account Manager",
+        "Agente de Venta Full Time - Terminal Sur",
+        "Agent Shop and Stations - Victoria Coach Station (On-site) "
+      ],
+      "verified": "board-name"
+    },
+    {
+      "company": "TeamViewer",
+      "ats": "teamtailor",
+      "slug": "teamviewer",
+      "jobs": 100,
+      "targetJobs": 26,
+      "sampleTitles": [
+        "Enterprise Account Specialist - Dutch/Nordic speaking",
+        "Enterprise Account Specialist - Spanish speaking",
+        "Enterprise Account Specialist - Italian speaking"
+      ],
+      "verified": "board-name"
+    },
+    {
+      "company": "Trade Republic",
+      "ats": "greenhouse",
+      "slug": "traderepublic",
+      "jobs": 0,
+      "targetJobs": 0,
+      "boardName": "Trade Republic Customer Council",
+      "sampleTitles": [],
+      "verified": "board-name"
+    },
+    {
+      "company": "Back Market",
+      "ats": "ashby",
+      "slug": "backmarket",
+      "jobs": 34,
+      "targetJobs": 10,
+      "sampleTitles": [
+        "Product & Operations Management Apprentice",
+        "Trade-in Buybulk Intern",
+        "Customer Journey & App Analytics Apprentice"
+      ],
+      "verified": "posting-text"
+    },
+    {
+      "company": "Sorare",
+      "ats": "ashby",
+      "slug": "sorare",
+      "jobs": 3,
+      "targetJobs": 2,
+      "sampleTitles": [
+        "Marketing Intern",
+        "Senior Software Engineer, Frontend",
+        "Senior Software Engineer - iOS - Paris"
+      ],
+      "verified": "posting-text"
+    },
+    {
+      "company": "Doctolib",
+      "ats": "ashby",
+      "slug": "doctolib",
+      "jobs": 153,
+      "targetJobs": 26,
+      "sampleTitles": [
+        "Account Executive - Köln (x/f/m)",
+        "Responsable Partenaires Ecosystème Santé (x/f/m)",
+        "Senior Machine Learning Engineer - Applied AI & LLMs (x/f/m)"
+      ],
+      "verified": "posting-text"
+    },
+    {
+      "company": "Ledger",
+      "ats": "ashby",
+      "slug": "ledger",
+      "jobs": 14,
+      "targetJobs": 2,
+      "sampleTitles": [
+        "Client Success Account Manager ",
+        "CRM Lifecycle Specialist",
+        "E-Commerce Business Line Director"
+      ],
+      "verified": "posting-text"
+    },
+    {
+      "company": "Shift Technology",
+      "ats": "greenhouse",
+      "slug": "shifttechnology",
+      "jobs": 15,
+      "targetJobs": 4,
+      "boardName": "Shift Technology",
+      "sampleTitles": [
+        "AI Architect",
+        "Certified Medical Coding Specialist",
+        " Data Science Internship "
+      ],
+      "verified": "board-name"
+    },
+    {
+      "company": "Qonto",
+      "ats": "ashby",
+      "slug": "qonto",
+      "jobs": 53,
+      "targetJobs": 8,
+      "sampleTitles": [
+        "Business Developer France - Account Growth France 🇫🇷 ",
+        "Banking Operations Juridical Officer (Germany, Netherlands & Austria) ",
+        "Staff Product Manager - Accounting Europe - German speaking 🇩🇪"
+      ],
+      "verified": "posting-text"
+    },
+    {
+      "company": "Deezer",
+      "ats": "teamtailor",
+      "slug": "deezer",
+      "jobs": 27,
+      "targetJobs": 1,
+      "sampleTitles": [
+        "Lead Music Royalties &amp; Cash Forecast Partner (m/f/d)",
+        "Lead Accounts Receivable Accountant (m/f/d)",
+        "Global Communications and PR Intern (m/f/d)"
+      ],
+      "verified": "board-name"
+    },
+    {
+      "company": "Typeform",
+      "ats": "greenhouse",
+      "slug": "typeform",
+      "jobs": 6,
+      "targetJobs": 0,
+      "boardName": "Typeform",
+      "sampleTitles": [
+        "AI Product Operations Lead",
+        "Senior Account Executive ",
+        "Senior Account Executive "
+      ],
+      "verified": "board-name"
+    },
+    {
+      "company": "BlaBlaCar",
+      "ats": "lever",
+      "slug": "blablacar",
+      "jobs": 6,
+      "targetJobs": 4,
+      "sampleTitles": [
+        "Confirmed Backend Engineer - Care",
+        "Confirmed Backend Engineer - Train",
+        "Confirmed FP&A Analyst"
+      ],
+      "verified": "posting-text"
+    },
+    {
+      "company": "Cabify",
+      "ats": "greenhouse",
+      "slug": "cabify",
+      "jobs": 51,
+      "targetJobs": 1,
+      "boardName": "Cabify",
+      "sampleTitles": [
+        "Accounting Analyst",
+        "Account Manager (Success)",
+        "Agente de Contact Center en condición de discapacidad"
+      ],
+      "verified": "board-name"
+    },
+    {
+      "company": "Wallapop",
+      "ats": "greenhouse",
+      "slug": "wallapop",
+      "jobs": 4,
+      "targetJobs": 3,
+      "boardName": "Wallapop",
+      "sampleTitles": [
+        "Principal Growth Product Manager",
+        "Principal Product Manager",
+        "Senior Product Manager"
+      ],
+      "verified": "board-name"
+    },
+    {
+      "company": "Monzo",
+      "ats": "greenhouse",
+      "slug": "monzo",
+      "jobs": 58,
+      "targetJobs": 9,
+      "boardName": "Monzo",
+      "sampleTitles": [
+        "Android Engineer",
+        "Backend Engineer III ",
+        "Controls Product Senior Manager"
+      ],
+      "verified": "board-name"
+    },
+    {
+      "company": "Snyk",
+      "ats": "ashby",
+      "slug": "snyk",
+      "jobs": 39,
+      "targetJobs": 1,
+      "sampleTitles": [
+        "Account Director - TX",
+        "Account Director - Southeast",
+        "Senior Product Security Engineer"
+      ],
+      "verified": "posting-text"
+    },
+    {
+      "company": "Deliveroo",
+      "ats": "greenhouse",
+      "slug": "deliveroo",
+      "jobs": 200,
+      "targetJobs": 50,
+      "boardName": "Deliveroo ",
+      "sampleTitles": [
+        "Account Management Lead - Editions France",
+        "Account Management Team Lead - Regional UKI (Mandarin Speaking, Chinese Category)",
+        "Account Manager "
+      ],
+      "verified": "board-name"
+    },
+    {
+      "company": "Deliveroo",
+      "ats": "ashby",
+      "slug": "deliveroo",
+      "jobs": 9,
+      "targetJobs": 0,
+      "sampleTitles": [
+        "Warehouse Supervisor",
+        "Warehouse Supervisor - Manchester",
+        "Warehouse Associate (PT)"
+      ],
+      "verified": "posting-text"
+    },
+    {
+      "company": "OakNorth Bank",
+      "ats": "ashby",
+      "slug": "oaknorth",
+      "jobs": 26,
+      "targetJobs": 0,
+      "sampleTitles": [
+        "Director | Debt Finance | Real Estate ",
+        "Senior Director, Credit Risk - Real Estate ",
+        "AVP - Legal - Transaction & Execution Management"
+      ],
+      "verified": "posting-text"
+    },
+    {
+      "company": "GoCardless",
+      "ats": "greenhouse",
+      "slug": "gocardless",
+      "jobs": 26,
+      "targetJobs": 1,
+      "boardName": "GoCardless",
+      "sampleTitles": [
+        "Assistant Management Accountant",
+        "Associate Legal Counsel",
+        "Customer Operations Representative, French-speaking (12-month FTC)"
+      ],
+      "verified": "board-name"
+    },
+    {
+      "company": "Tractable",
+      "ats": "ashby",
+      "slug": "tractable",
+      "jobs": 5,
+      "targetJobs": 0,
+      "sampleTitles": [
+        "Embedded Systems Engineer",
+        "Senior Embedded Systems Engineer",
+        "Supply Chain & Operations Specialist"
+      ],
+      "verified": "posting-text"
+    },
+    {
+      "company": "Improbable",
+      "ats": "ashby",
+      "slug": "improbable",
+      "jobs": 4,
+      "targetJobs": 0,
+      "sampleTitles": [
+        "Head of Marketing ",
+        "General Application",
+        "Product Marketing Manager, DEX "
+      ],
+      "verified": "posting-text"
+    },
+    {
+      "company": "BVNK",
+      "ats": "greenhouse",
+      "slug": "bvnk",
+      "jobs": 36,
+      "targetJobs": 4,
+      "boardName": "BVNK",
+      "sampleTitles": [
+        "Account Manager",
+        "AI-Native QA Automation Engineer",
+        "BSA/AML Compliance Specialist"
+      ],
+      "verified": "board-name"
+    },
+    {
+      "company": "Canonical",
+      "ats": "greenhouse",
+      "slug": "canonical",
+      "jobs": 316,
+      "targetJobs": 69,
+      "boardName": "Canonical",
+      "sampleTitles": [
+        "Accountant",
+        "Accounts Payable Clerk",
+        "Accounts Receivable Clerk"
+      ],
+      "verified": "board-name"
+    },
+    {
+      "company": "Boku",
+      "ats": "greenhouse",
+      "slug": "boku",
+      "jobs": 12,
+      "targetJobs": 3,
+      "boardName": "Boku",
+      "sampleTitles": [
+        "Business Development Manager",
+        "Business Development Manager ",
+        "Enterprise Sales Director"
+      ],
+      "verified": "board-name"
+    },
+    {
+      "company": "SumUp",
+      "ats": "greenhouse",
+      "slug": "sumup",
+      "jobs": 342,
+      "targetJobs": 34,
+      "boardName": "SumUp",
+      "sampleTitles": [
+        "Account Manager (HVM) - German",
+        "Account Sales Executive ",
+        "Account Sales Executive - Manchester"
+      ],
+      "verified": "board-name"
+    },
+    {
+      "company": "Dotmatics",
+      "ats": "greenhouse",
+      "slug": "dotmatics",
+      "jobs": 33,
+      "targetJobs": 5,
+      "boardName": "Dotmatics",
+      "sampleTitles": [
+        "Alliance Partner Manager (SaaS) | Luma ",
+        "Alliance Partner Manager (SaaS) | Luma ",
+        "Associate Account Manager | Luma | Benelux & Nordics"
+      ],
+      "verified": "board-name"
+    },
+    {
+      "company": "Allica Bank",
+      "ats": "ashby",
+      "slug": "allica-bank",
+      "jobs": 33,
+      "targetJobs": 3,
+      "sampleTitles": [
+        "Customer Service Advisor",
+        "Relationship Manager - North London/Northern Home Counties",
+        "Relationship Manager - Central Belt"
+      ],
+      "verified": "posting-text"
+    },
+    {
+      "company": "Freetrade",
+      "ats": "ashby",
+      "slug": "freetrade",
+      "jobs": 3,
+      "targetJobs": 1,
+      "sampleTitles": [
+        "Senior Backend Software Engineer",
+        "Head of Security, Privacy & IT ",
+        "Customer Service Associate"
+      ],
+      "verified": "posting-text"
+    },
+    {
+      "company": "Cazoo",
+      "ats": "teamtailor",
+      "slug": "cazoo",
+      "jobs": 6,
+      "targetJobs": 1,
+      "sampleTitles": [
+        "Senior Data Engineer",
+        "Field Business Development Manager",
+        "Principal Software Engineer (Platform)"
+      ],
+      "verified": "board-name"
+    },
+    {
+      "company": "Graphcore",
+      "ats": "greenhouse",
+      "slug": "graphcore",
+      "jobs": 206,
+      "targetJobs": 47,
+      "boardName": "Graphcore",
+      "sampleTitles": [
+        "AI Research Engineer",
+        "AI Research Engineer",
+        "AI Research Engineer"
+      ],
+      "verified": "board-name"
+    },
+    {
+      "company": "Thought Machine",
+      "ats": "ashby",
+      "slug": "thought-machine",
+      "jobs": 31,
+      "targetJobs": 12,
+      "sampleTitles": [
+        "Senior Software Engineer (Quality Engineering)",
+        "Cloud Support Engineer",
+        "Technical Programme Manager"
+      ],
+      "verified": "posting-text"
+    },
+    {
+      "company": "Funding Circle",
+      "ats": "ashby",
+      "slug": "fundingcircle",
+      "jobs": 28,
+      "targetJobs": 3,
+      "sampleTitles": [
+        "Head of Product & Engineering Operations",
+        "Senior Data Analyst (12 Month FTC)",
+        "Lead Analytics Engineer"
+      ],
+      "verified": "posting-text"
+    },
+    {
+      "company": "Zopa",
+      "ats": "lever",
+      "slug": "zopa",
+      "jobs": 32,
+      "targetJobs": 5,
+      "sampleTitles": [
+        "Android Engineer",
+        "Applied AI Analyst (Mid and Senior Level) - Transaction Enrichment",
+        "Customer Service Specialist"
+      ],
+      "verified": "posting-text"
+    },
+    {
+      "company": "Workhuman",
+      "ats": "ashby",
+      "slug": "workhuman",
+      "jobs": 9,
+      "targetJobs": 1,
+      "sampleTitles": [
+        "Customer Service Executive - Fluent Portuguese & Spanish Required, Wednesday-Sunday from 14:30-23:00",
+        "Enterprise Sales Executive",
+        "Corporate Sales Executive"
+      ],
+      "verified": "posting-text"
+    },
+    {
+      "company": "Tines",
+      "ats": "greenhouse",
+      "slug": "tines",
+      "jobs": 34,
+      "targetJobs": 1,
+      "boardName": "Tines",
+      "sampleTitles": [
+        "Account Based Marketing (ABM) Manager",
+        "Area Vice President of Sales - East",
+        "Business Development Representative"
+      ],
+      "verified": "board-name"
+    },
+    {
+      "company": "Stripe",
+      "ats": "greenhouse",
+      "slug": "stripe",
+      "jobs": 766,
+      "targetJobs": 185,
+      "boardName": "Stripe",
+      "sampleTitles": [
+        "Abuse Investigator",
+        "Abuse Investigator",
+        "Abuse Investigator"
+      ],
+      "verified": "board-name"
+    },
+    {
+      "company": "Lemon.io",
+      "ats": "ashby",
+      "slug": "lemon-io",
+      "jobs": 3,
+      "targetJobs": 0,
+      "sampleTitles": [
+        "Head of Engineering",
+        "Growth Manager (Supply)",
+        "Recruiter / Talent Partner"
+      ],
+      "verified": "posting-text"
+    },
+    {
+      "company": "Grafana Labs",
+      "ats": "greenhouse",
+      "slug": "grafanalabs",
+      "jobs": 134,
+      "targetJobs": 55,
+      "boardName": "Grafana Labs",
+      "sampleTitles": [
+        "Commercial Account Executive, Acquisition | Remote | Netherlands",
+        " Enterprise Account Executive, Acquisition | Central | Remote",
+        " Enterprise Account Executive, Acquisition | DMV | Remote"
+      ],
+      "verified": "board-name"
+    },
+    {
+      "company": "Mozilla",
+      "ats": "greenhouse",
+      "slug": "mozilla",
+      "jobs": 113,
+      "targetJobs": 68,
+      "boardName": "Mozilla",
+      "sampleTitles": [
+        "Chief of Staff to the CEO ",
+        "Contract Senior Data Analyst (SQL,Telemetry,Browser Engine)",
+        "Contract Sr Data Analyst (SQL,Telemetry,Browser Engine)"
+      ],
+      "verified": "board-name"
+    },
+    {
+      "company": "Databricks",
+      "ats": "greenhouse",
+      "slug": "databricks",
+      "jobs": 922,
+      "targetJobs": 227,
+      "boardName": "Databricks",
+      "sampleTitles": [
+        "デリバリーソリューションアーキテクト",
+        "Account Executive ",
+        "Account Executive, Commercial - Hunter"
+      ],
+      "verified": "board-name"
+    },
+    {
+      "company": "Snowflake",
+      "ats": "ashby",
+      "slug": "snowflake",
+      "jobs": 372,
+      "targetJobs": 110,
+      "sampleTitles": [
+        "Software Engineer - Database Engineering",
+        "Software Engineer - Backend",
+        "Account Executive, Enterprise Acquisition"
+      ],
+      "verified": "posting-text"
+    },
+    {
+      "company": "Neo4j",
+      "ats": "greenhouse",
+      "slug": "neo4j",
+      "jobs": 64,
+      "targetJobs": 27,
+      "boardName": "Neo4j",
+      "sampleTitles": [
+        "AI Solutions Architect",
+        "AI Tech Lead - GraphAware Hume",
+        "Business Development Representative - Enterprise Customers (India)"
+      ],
+      "verified": "board-name"
+    },
+    {
+      "company": "Datadog",
+      "ats": "greenhouse",
+      "slug": "datadog",
+      "jobs": 401,
+      "targetJobs": 27,
+      "boardName": "Datadog",
+      "sampleTitles": [
+        "Accounts Payable Analyst",
+        "AI Research Engineer - Datadog AI Research (DAIR)",
+        "AI Research Scientist - Datadog AI Research (DAIR)"
+      ],
+      "verified": "board-name"
+    },
+    {
+      "company": "GitLab",
+      "ats": "greenhouse",
+      "slug": "gitlab",
+      "jobs": 248,
+      "targetJobs": 58,
+      "boardName": "GitLab",
+      "sampleTitles": [
+        "AI Transformation Owner, CRO",
+        "Associate Renewals Manager - France",
+        "Associate Renewals Manager, SMB"
+      ],
+      "verified": "board-name"
+    },
+    {
+      "company": "Coinbase",
+      "ats": "greenhouse",
+      "slug": "coinbase",
+      "jobs": 283,
+      "targetJobs": 95,
+      "boardName": "Coinbase",
+      "sampleTitles": [
+        "Acceleration Programs Intern",
+        "Accounting Intern",
+        "Accounting Manager, GL Operations & Intercompany"
+      ],
+      "verified": "board-name"
+    },
+    {
+      "company": "Evolution",
+      "ats": "smartrecruiters",
+      "slug": "evolution",
+      "jobs": 290,
+      "targetJobs": 5,
+      "boardName": "Evolution",
+      "sampleTitles": [
+        "Talent Acquisition Specialist- Business Support",
+        "Marketing Manager",
+        "Live Casino Dealer - Up to $25/hr - Urgently Hiring"
+      ],
+      "verified": "board-name"
+    },
+    {
+      "company": "Vattenfall (IT)",
+      "ats": "smartrecruiters",
+      "slug": "vattenfall",
+      "jobs": 267,
+      "targetJobs": 3,
+      "boardName": "Vattenfall",
+      "sampleTitles": [
+        "Project Governance Officer – specialist inom projektstyrning ",
+        "Project Governance Officer – specialist inom projektstyrning ",
+        "Teknisk Projektledare inom Elkraft eller I&C – Vattenfall Power Solutions"
+      ],
+      "verified": "board-name"
+    },
+    {
+      "company": "Cint",
+      "ats": "smartrecruiters",
+      "slug": "cint",
+      "jobs": 9,
+      "targetJobs": 5,
+      "boardName": "Cint",
+      "sampleTitles": [
+        "Analyst, Measurement Success, US",
+        "Account Development Representative",
+        "Senior Manager, Global Coverage/Project Manager"
+      ],
+      "verified": "board-name"
+    },
+    {
+      "company": "Afry (Afry X)",
+      "ats": "smartrecruiters",
+      "slug": "afry",
+      "jobs": 838,
+      "targetJobs": 1,
+      "boardName": "AFRY",
+      "sampleTitles": [
+        "Embedded Systems Integration - Software Embarcado (Automotivo)",
+        "ScrumMaster for both SW and HW teams",
+        "Erfaren projektledare elkraft "
+      ],
+      "verified": "board-name"
+    },
+    {
+      "company": "Playtech",
+      "ats": "smartrecruiters",
+      "slug": "playtech",
+      "jobs": 115,
+      "targetJobs": 19,
+      "boardName": "Playtech",
+      "sampleTitles": [
+        "Card Shuffler (Southfield, MI | $16/hr + Performance Bonus)",
+        "Product Owner",
+        "Java Developer "
+      ],
+      "verified": "board-name"
+    },
+    {
+      "company": "Wise",
+      "ats": "smartrecruiters",
+      "slug": "wise",
+      "jobs": 427,
+      "targetJobs": 29,
+      "boardName": "Wise",
+      "sampleTitles": [
+        "Senior Software Engineer II - Risk Control & Governance",
+        "Senior Software Engineer I - KYC & Onboarding",
+        "Senior Data Engineer I - Global KYC & Onboarding"
+      ],
+      "verified": "board-name"
+    },
+    {
+      "company": "CD Projekt Red",
+      "ats": "smartrecruiters",
+      "slug": "cdprojektred",
+      "jobs": 57,
+      "targetJobs": 2,
+      "boardName": "CD PROJEKT RED",
+      "sampleTitles": [
+        "ML Technical Lead",
+        "Senior BPMS Specialist",
+        "Senior Gameplay Programmer "
+      ],
+      "verified": "board-name"
+    },
+    {
+      "company": "Bunq",
+      "ats": "recruitee",
+      "slug": "bunq",
+      "jobs": 23,
+      "targetJobs": 2,
+      "sampleTitles": [
+        "AML Manager, Austria",
+        "Data Scientist Marketing",
+        "Chief Executive Officer, UK"
+      ],
+      "verified": "posting-text"
+    },
+    {
+      "company": "Delivery Hero",
+      "ats": "smartrecruiters",
+      "slug": "deliveryhero",
+      "jobs": 901,
+      "targetJobs": 8,
+      "boardName": "Delivery Hero",
+      "sampleTitles": [
+        "Head of Real Estate",
+        "Account Manager (Jeddah)",
+        "Sales Executive"
+      ],
+      "verified": "board-name"
+    },
+    {
+      "company": "AlmavivA de Belgique",
+      "ats": "recruitee",
+      "slug": "almavivadebelgique",
+      "jobs": 10,
+      "targetJobs": 4,
+      "sampleTitles": [
+        "Business Analyst - Advanced - Remote from EU -  Deadline 13/11/26",
+        "Business Intelligence Engineer - Deadline 25/11/26",
+        "Solution Architect - Deadline 11/11/26"
+      ],
+      "verified": "posting-text"
+    },
+    {
+      "company": "Canva",
+      "ats": "smartrecruiters",
+      "slug": "canva",
+      "jobs": 37,
+      "targetJobs": 3,
+      "boardName": "Canva",
+      "sampleTitles": [
+        "SMB Account Executive - UKI",
+        "Business Development Representative, Public Sector",
+        "Enterprise Security Manager "
+      ],
+      "verified": "board-name"
+    }
+  ],
+  "manual": [],
+  "needsReview": [
+    {
+      "company": "Cint",
+      "ats": "ashby",
+      "slug": "cint",
+      "jobs": 2,
+      "targetJobs": 0,
+      "sampleTitles": [
+        "Copy of DUMMY JOB TEST",
+        "Test1"
+      ]
+    },
+    {
+      "company": "Karma",
+      "ats": "teamtailor",
+      "slug": "karma",
+      "jobs": 1,
+      "targetJobs": 0,
+      "sampleTitles": [
+        "Head of Commercial"
+      ]
+    },
+    {
+      "company": "Funnel",
+      "ats": "teamtailor",
+      "slug": "funnel",
+      "jobs": 2,
+      "targetJobs": 0,
+      "sampleTitles": [
+        "Product Engineer - AI Product Experience",
+        "Measurement Consultant - Boston"
+      ]
+    },
+    {
+      "company": "Nexus Group",
+      "ats": "greenhouse",
+      "slug": "nexus",
+      "jobs": 1,
+      "targetJobs": 0,
+      "boardName": "CGS Nexus",
+      "sampleTitles": [
+        "Technical Support Representative Night shift"
+      ]
+    },
+    {
+      "company": "Sitecore",
+      "ats": "ashby",
+      "slug": "sitecore",
+      "jobs": 28,
+      "targetJobs": 2,
+      "sampleTitles": [
+        "Account Executive, Enterprise",
+        "Senior Channel Solution Engineer",
+        "Account Manager, Enterprise (South East)"
+      ]
+    },
+    {
+      "company": "Gelato",
+      "ats": "ashby",
+      "slug": "gelato",
+      "jobs": 3,
+      "targetJobs": 0,
+      "sampleTitles": [
+        "AI Marketing Specialist",
+        "Senior Security Engineer",
+        "Senior Product Marketing Manager"
+      ]
+    },
+    {
+      "company": "Wise",
+      "ats": "greenhouse",
+      "slug": "wise",
+      "jobs": 18,
+      "targetJobs": 0,
+      "boardName": "Wise Worksite Field Sales ",
+      "sampleTitles": [
+        "Area Sales Leader  - Memphis, TN",
+        "Supplemental Sales Agent - Cleveland, Ohio",
+        "Supplemental Sales Agent - Dallas - Fort Worth, TX"
+      ]
+    },
+    {
+      "company": "Miro",
+      "ats": "ashby",
+      "slug": "miro",
+      "jobs": 21,
+      "targetJobs": 0,
+      "sampleTitles": [
+        "Head of CS, DACH",
+        "Strategic Account Executive",
+        "Expression of Interest: Enterprise & Strategic Account Executive"
+      ]
+    },
+    {
+      "company": "Intercom",
+      "ats": "greenhouse",
+      "slug": "intercom",
+      "jobs": 109,
+      "targetJobs": 11,
+      "boardName": "Fin",
+      "sampleTitles": [
+        "Account Executive, Commercial",
+        "Account Executive, Commercial",
+        "Account Executive, Enterprise (German)"
+      ]
+    },
+    {
+      "company": "Remote",
+      "ats": "greenhouse",
+      "slug": "remote",
+      "jobs": 2,
+      "targetJobs": 0,
+      "boardName": "General Assembly Remote Jobs ",
+      "sampleTitles": [
+        "SEI Instructor Lead",
+        "SEI Instructor Lead"
+      ]
+    },
+    {
+      "company": "Oyster",
+      "ats": "ashby",
+      "slug": "oyster",
+      "jobs": 19,
+      "targetJobs": 1,
+      "sampleTitles": [
+        "Accounts Payable Analyst",
+        "Oyster Talent Community Sign Up",
+        "Customer Success Manager (Americas)"
+      ]
+    }
+  ],
+  "checked": {
+    "Klarna": "2026-11-08T20:44:02.780Z",
+    "Ericsson": "2026-11-08T20:44:02.853Z",
+    "Spotify": "2026-11-08T20:44:03.542Z",
+    "King": "2026-11-08T20:44:03.587Z",
+    "Truecaller": "2026-11-08T20:44:04.377Z",
+    "Volvo Cars (Tech & Software)": "2026-11-08T20:44:04.440Z",
+    "Mojang Studios": "2026-11-08T20:44:04.968Z",
+    "Tink": "2026-11-08T20:44:05.051Z",
+    "Trustly": "2026-11-08T20:44:05.189Z",
+    "Northvolt": "2026-11-08T20:44:17.860Z",
+    "Sinch": "2026-11-08T20:47:58.824Z",
+    "Zettle (by PayPal)": "2026-11-08T20:47:58.954Z",
+    "Voi Technology": "2026-11-08T20:47:59.445Z",
+    "Polestar": "2026-11-08T20:47:59.568Z",
+    "Evolution": "2026-11-08T21:00:43.904Z",
+    "H&M Group (Business Tech)": "2026-11-08T20:47:59.871Z",
+    "DICE (Electronic Arts)": "2026-11-08T20:48:00.149Z",
+    "Anyfin": "2026-11-08T20:48:00.394Z",
+    "Storytel": "2026-11-08T20:48:00.610Z",
+    "Plejd": "2026-11-08T20:48:00.827Z",
+    "Kry (Livi)": "2026-11-08T20:48:00.924Z",
+    "Einride": "2026-11-08T20:48:01.484Z",
+    "Scania (Connected Services & IT)": "2026-11-08T20:48:01.621Z",
+    "Electrolux (IT & Digital)": "2026-11-08T20:48:01.626Z",
+    "Paradox Interactive": "2026-11-08T20:48:01.851Z",
+    "Fortnox": "2026-11-08T20:48:02.352Z",
+    "Hemnet": "2026-11-08T20:48:02.522Z",
+    "Qlik": "2026-11-08T20:48:02.625Z",
+    "Mentimeter": "2026-11-08T20:48:02.776Z",
+    "Tele2": "2026-11-08T20:48:03.195Z",
+    "Swedbank (IT & Digital)": "2026-11-08T20:48:03.472Z",
+    "Handelsbanken (IT)": "2026-11-08T20:48:04.347Z",
+    "SEB (Tech)": "2026-11-08T20:48:04.353Z",
+    "Telenor Sverige": "2026-11-08T20:48:04.544Z",
+    "Telia Company": "2026-11-08T20:48:04.776Z",
+    "Nordea (Tech branch)": "2026-11-08T20:48:05.392Z",
+    "Vattenfall (IT)": "2026-11-08T21:00:57.206Z",
+    "Schibsted (Sweden)": "2026-11-08T20:48:06.119Z",
+    "Avanza Bank": "2026-11-08T20:48:06.489Z",
+    "Acast": "2026-11-08T20:48:06.586Z",
+    "Tobii": "2026-11-08T20:48:07.204Z",
+    "Yubico": "2026-11-08T20:48:07.391Z",
+    "NetEnt": "2026-11-08T20:48:08.056Z",
+    "Viaplay Group": "2026-11-08T20:48:08.696Z",
+    "Epidemic Sound": "2026-11-08T20:48:10.114Z",
+    "Hexagon AB": "2026-11-08T20:48:12.380Z",
+    "Worldline (formerly Bambora)": "2026-11-08T20:48:13.060Z",
+    "Sandvik (Coromant Tech)": "2026-11-08T20:48:14.756Z",
+    "Assa Abloy (Digital & Cloud)": "2026-11-08T20:48:15.352Z",
+    "SKF (Digitalization)": "2026-11-08T20:48:15.723Z",
+    "Zound Industries": "2026-11-08T20:48:17.088Z",
+    "IFS": "2026-11-08T20:48:17.954Z",
+    "Saab AB (Defense & Tech)": "2026-11-08T20:48:18.153Z",
+    "Cint": "2026-11-08T21:01:10.839Z",
+    "Readly": "2026-11-08T20:48:18.812Z",
+    "ICA Gruppen (ICA Tech)": "2026-11-08T20:48:19.083Z",
+    "Fishbrain": "2026-11-08T20:48:19.428Z",
+    "Kognity": "2026-11-08T20:48:19.958Z",
+    "Karma": "2026-11-08T20:48:22.204Z",
+    "Doktor.se": "2026-11-08T20:48:22.449Z",
+    "FirstVet": "2026-11-08T20:48:23.190Z",
+    "IKEA (Ingka Group Digital)": "2026-11-08T20:48:23.732Z",
+    "Min Doktor": "2026-11-08T20:48:23.983Z",
+    "Natural Cycles": "2026-11-08T20:48:24.452Z",
+    "Lifesum": "2026-11-08T20:48:24.461Z",
+    "Detectify": "2026-11-08T20:48:25.091Z",
+    "Mindler": "2026-11-08T20:48:25.735Z",
+    "Sana Labs": "2026-11-08T20:48:26.123Z",
+    "Soundtrack Your Brand": "2026-11-08T20:48:26.322Z",
+    "Resolution Games": "2026-11-08T20:48:28.084Z",
+    "Starbreeze Studios": "2026-11-08T20:48:28.301Z",
+    "Recorded Future (Swedish R&D)": "2026-11-08T20:48:28.372Z",
+    "Toca Boca": "2026-11-08T20:48:30.356Z",
+    "Avalanche Studios Group": "2026-11-08T20:48:30.449Z",
+    "Stunlock Studios": "2026-11-08T20:48:30.482Z",
+    "Massive Entertainment (Ubisoft)": "2026-11-08T20:48:30.813Z",
+    "G-Loot": "2026-11-08T20:48:31.121Z",
+    "Kambi": "2026-11-08T20:48:31.517Z",
+    "LeoVegas": "2026-11-08T20:48:31.523Z",
+    "Billerud (IT)": "2026-11-08T20:48:32.348Z",
+    "SSAB (IT & Digital)": "2026-11-08T20:48:33.019Z",
+    "Embracer Group": "2026-11-08T20:48:33.168Z",
+    "Betsson Group": "2026-11-08T20:48:33.411Z",
+    "Boliden (IT & Automation)": "2026-11-08T20:48:33.765Z",
+    "Sweco (Digital Services)": "2026-11-08T20:48:33.932Z",
+    "Afry (Afry X)": "2026-11-08T21:02:16.363Z",
+    "Kindred Group": "2026-11-08T20:48:34.155Z",
+    "Tietoevry (Sweden operations)": "2026-11-08T20:48:34.436Z",
+    "HiQ": "2026-11-08T20:48:34.893Z",
+    "Knowit": "2026-11-08T20:48:35.144Z",
+    "CGI Sweden": "2026-11-08T20:48:36.295Z",
+    "Capgemini Sweden": "2026-11-08T20:48:36.506Z",
+    "Storykit": "2026-11-08T20:48:37.128Z",
+    "Funnel": "2026-11-08T20:48:37.167Z",
+    "Netlight Consulting": "2026-11-08T20:48:37.310Z",
+    "Instabee (Instabox + Budbee)": "2026-11-08T20:48:37.876Z",
+    "PostNord (Digital & IT)": "2026-11-08T20:48:37.935Z",
+    "Svenska Spel (Tech)": "2026-11-08T20:48:37.956Z",
+    "Bonnier News Tech": "2026-11-08T20:48:38.514Z",
+    "Qliro": "2026-11-08T20:48:38.831Z",
+    "Boozt": "2026-11-08T20:48:39.188Z",
+    "NA-KD": "2026-11-08T20:48:39.215Z",
+    "Tradera": "2026-11-08T20:48:39.732Z",
+    "Zmarta": "2026-11-08T20:48:39.900Z",
+    "Lendo": "2026-11-08T20:48:40.002Z",
+    "Kivra": "2026-11-08T20:48:40.452Z",
+    "Dustin Group (IT)": "2026-11-08T20:48:40.853Z",
+    "Benify": "2026-11-08T20:48:40.990Z",
+    "Candela": "2026-11-08T20:48:41.463Z",
+    "X Shore": "2026-11-08T20:48:41.583Z",
+    "Heart Aerospace": "2026-11-08T20:48:42.578Z",
+    "Exeger": "2026-11-08T20:48:43.709Z",
+    "BICO": "2026-11-08T20:48:43.835Z",
+    "Nexus Group": "2026-11-08T20:48:44.490Z",
+    "Elekta": "2026-11-08T20:48:44.526Z",
+    "Sectra": "2026-11-08T20:48:44.717Z",
+    "Mycronic": "2026-11-08T20:48:45.399Z",
+    "RaySearch Laboratories": "2026-11-08T20:48:45.711Z",
+    "Enea": "2026-11-08T20:48:46.126Z",
+    "Vitec Software Group": "2026-11-08T20:48:46.615Z",
+    "Addnode Group": "2026-11-08T20:48:46.913Z",
+    "HMS Networks": "2026-11-08T20:48:47.009Z",
+    "Oriflame (IT/Tech)": "2026-11-08T20:48:47.275Z",
+    "Axfood (IT)": "2026-11-08T20:48:47.586Z",
+    "Proxify": "2026-11-08T20:48:47.885Z",
+    "Supercell": "2026-11-08T20:48:48.283Z",
+    "Thule Group (Digital/IT)": "2026-11-08T20:48:48.460Z",
+    "Rovio": "2026-11-08T20:48:48.538Z",
+    "Aiven": "2026-11-08T20:48:49.155Z",
+    "Swappie": "2026-11-08T20:48:49.231Z",
+    "Wolt": "2026-11-08T20:48:49.390Z",
+    "Smartly.io": "2026-11-08T20:48:49.963Z",
+    "Oura": "2026-11-08T20:48:50.580Z",
+    "Pleo": "2026-11-08T20:48:50.653Z",
+    "Iceye": "2026-11-08T20:48:52.637Z",
+    "Maersk Digital": "2026-11-08T20:48:53.790Z",
+    "Lego Group (Tech)": "2026-11-08T20:48:53.907Z",
+    "Novo Nordisk (IT & Data)": "2026-11-08T20:48:54.050Z",
+    "RELEX Solutions": "2026-11-08T20:48:54.410Z",
+    "Vestas (Digital)": "2026-11-08T20:48:54.595Z",
+    "Coloplast (IT)": "2026-11-08T20:48:54.694Z",
+    "Trustpilot": "2026-11-08T20:48:54.974Z",
+    "Sitecore": "2026-11-08T20:48:55.112Z",
+    "Tradeshift": "2026-11-08T20:48:55.344Z",
+    "Peakon (Workday)": "2026-11-08T20:48:55.895Z",
+    "SimCorp": "2026-11-08T20:48:56.015Z",
+    "Netcompany": "2026-11-08T20:48:56.102Z",
+    "Zendesk": "2026-11-08T20:48:56.609Z",
+    "Unity Technologies": "2026-11-08T20:48:56.623Z",
+    "Equinor (IT)": "2026-11-08T20:48:56.718Z",
+    "Kahoot!": "2026-11-08T20:48:56.753Z",
+    "Visma": "2026-11-08T20:48:58.071Z",
+    "Cognite": "2026-11-08T20:48:58.135Z",
+    "Meltwater": "2026-11-08T20:48:58.198Z",
+    "Gelato": "2026-11-08T20:48:58.653Z",
+    "Oda": "2026-11-08T20:48:58.784Z",
+    "Remarkable": "2026-11-08T20:48:58.813Z",
+    "Autostore": "2026-11-08T20:48:59.017Z",
+    "Pipedrive": "2026-11-08T20:48:59.466Z",
+    "Bolt": "2026-11-08T20:48:59.467Z",
+    "Playtech": "2026-11-08T21:04:31.475Z",
+    "Veriff": "2026-11-08T20:48:59.824Z",
+    "Wise": "2026-11-08T21:04:32.255Z",
+    "Vinted": "2026-11-08T20:49:02.110Z",
+    "Nord Security": "2026-11-08T20:49:02.281Z",
+    "Starship Technologies": "2026-11-08T20:49:02.334Z",
+    "Skeleton Technologies": "2026-11-08T20:49:02.515Z",
+    "Printful": "2026-11-08T20:49:03.040Z",
+    "Infobip": "2026-11-08T20:49:03.061Z",
+    "Tesonet": "2026-11-08T20:49:03.071Z",
+    "Mews": "2026-11-08T20:49:03.745Z",
+    "Bitstamp": "2026-11-08T20:49:03.789Z",
+    "Outfit7": "2026-11-08T20:49:03.983Z",
+    "Rimac Automobili": "2026-11-08T20:49:04.718Z",
+    "Rohlik": "2026-11-08T20:49:04.919Z",
+    "JetBrains": "2026-11-08T20:49:04.953Z",
+    "Prezi": "2026-11-08T20:49:05.640Z",
+    "Avast / Gen Digital": "2026-11-08T20:49:06.015Z",
+    "Prusa Research": "2026-11-08T20:49:07.973Z",
+    "LogMeIn / GoTo": "2026-11-08T20:49:08.269Z",
+    "Brainly": "2026-11-08T20:49:08.655Z",
+    "Allegro": "2026-11-08T20:49:09.481Z",
+    "CD Projekt Red": "2026-11-08T21:04:59.517Z",
+    "UiPath": "2026-11-08T20:49:10.349Z",
+    "eMAG": "2026-11-08T20:49:10.469Z",
+    "Bitdefender": "2026-11-08T20:49:11.033Z",
+    "Adyen": "2026-11-08T20:49:11.896Z",
+    "Booking.com": "2026-11-08T20:49:12.651Z",
+    "Just Eat Takeaway": "2026-11-08T20:49:13.176Z",
+    "WeTransfer": "2026-11-08T20:49:13.303Z",
+    "Picnic Technologies": "2026-11-08T20:49:15.500Z",
+    "TomTom": "2026-11-08T20:49:16.349Z",
+    "ASML (Software Engineering)": "2026-11-08T20:49:16.988Z",
+    "Bitrise": "2026-11-08T20:49:20.253Z",
+    "Docplanner": "2026-11-08T20:49:20.351Z",
+    "Mollie": "2026-11-08T20:49:20.932Z",
+    "Bunq": "2026-11-08T21:05:28.241Z",
+    "Fairphone": "2026-11-08T20:49:21.707Z",
+    "Miro": "2026-11-08T20:49:22.402Z",
+    "Elastic": "2026-11-08T20:49:23.297Z",
+    "MessageBird (Bird)": "2026-11-08T20:49:24.090Z",
+    "NXP Semiconductors": "2026-11-08T20:49:24.290Z",
+    "Zalando": "2026-11-08T20:49:24.731Z",
+    "N26": "2026-11-08T20:49:25.111Z",
+    "Personio": "2026-11-08T20:49:25.407Z",
+    "Delivery Hero": "2026-11-08T21:05:35.375Z",
+    "Celonis": "2026-11-08T20:49:25.965Z",
+    "HelloFresh": "2026-11-08T20:49:26.244Z",
+    "Babbel": "2026-11-08T20:49:27.145Z",
+    "Tier Mobility": "2026-11-08T20:49:27.311Z",
+    "Swapfiets": "2026-11-08T20:49:27.802Z",
+    "Contentful": "2026-11-08T20:49:27.995Z",
+    "Blinkist": "2026-11-08T20:49:28.561Z",
+    "SoundCloud": "2026-11-08T20:49:29.489Z",
+    "Wefox": "2026-11-08T20:49:30.333Z",
+    "Trivago": "2026-11-08T20:49:31.111Z",
+    "Flix (FlixBus)": "2026-11-08T20:49:32.065Z",
+    "Volocopter": "2026-11-08T20:49:33.070Z",
+    "Lilium": "2026-11-08T20:49:33.743Z",
+    "TeamViewer": "2026-11-08T20:49:37.549Z",
+    "SAP": "2026-11-08T20:49:38.266Z",
+    "Sennder": "2026-11-08T20:49:38.647Z",
+    "Siemens (Digital Industries)": "2026-11-08T20:49:38.931Z",
+    "Bosch (Software/Tech)": "2026-11-08T20:49:39.550Z",
+    "Criteo": "2026-11-08T20:49:39.725Z",
+    "Trade Republic": "2026-11-08T20:49:40.453Z",
+    "Back Market": "2026-11-08T20:49:40.478Z",
+    "Infarm (Tech)": "2026-11-08T20:49:40.961Z",
+    "Sorare": "2026-11-08T20:49:41.124Z",
+    "Doctolib": "2026-11-08T20:49:41.173Z",
+    "Ledger": "2026-11-08T20:49:41.649Z",
+    "Shift Technology": "2026-11-08T20:49:41.980Z",
+    "Qonto": "2026-11-08T20:49:42.048Z",
+    "Deezer": "2026-11-08T20:49:42.457Z",
+    "Ubisoft (France / Remote EU hubs)": "2026-11-08T20:49:42.616Z",
+    "Typeform": "2026-11-08T20:49:42.813Z",
+    "BlaBlaCar": "2026-11-08T20:49:42.838Z",
+    "Glovo": "2026-11-08T20:49:43.127Z",
+    "Cabify": "2026-11-08T20:49:43.459Z",
+    "Wallapop": "2026-11-08T20:49:43.750Z",
+    "Revolut": "2026-11-08T20:49:44.099Z",
+    "Monzo": "2026-11-08T20:49:44.551Z",
+    "TravelPerk": "2026-11-08T20:49:44.882Z",
+    "Factorial HR": "2026-11-08T20:49:45.116Z",
+    "Snyk": "2026-11-08T20:49:45.876Z",
+    "Starling Bank": "2026-11-08T20:49:46.080Z",
+    "Deliveroo": "2026-11-08T20:49:46.123Z",
+    "OakNorth Bank": "2026-11-08T20:49:46.538Z",
+    "Darktrace": "2026-11-08T20:49:46.560Z",
+    "Hopin": "2026-11-08T20:49:46.756Z",
+    "GoCardless": "2026-11-08T20:49:46.898Z",
+    "Tractable": "2026-11-08T20:49:47.170Z",
+    "Improbable": "2026-11-08T20:49:47.280Z",
+    "BenevolentAI": "2026-11-08T20:49:47.464Z",
+    "BVNK": "2026-11-08T20:49:47.990Z",
+    "Canonical": "2026-11-08T20:49:48.107Z",
+    "Boku": "2026-11-08T20:49:48.198Z",
+    "SumUp": "2026-11-08T20:49:48.970Z",
+    "Dotmatics": "2026-11-08T20:49:49.102Z",
+    "Allica Bank": "2026-11-08T20:49:49.416Z",
+    "Skyscanner": "2026-11-08T20:49:49.634Z",
+    "Freetrade": "2026-11-08T20:49:49.739Z",
+    "Cazoo": "2026-11-08T20:49:50.104Z",
+    "Checkout.com": "2026-11-08T20:49:50.197Z",
+    "Graphcore": "2026-11-08T20:49:50.440Z",
+    "ClearScore": "2026-11-08T20:49:50.751Z",
+    "Thought Machine": "2026-11-08T20:49:51.069Z",
+    "Funding Circle": "2026-11-08T20:49:51.118Z",
+    "Zopa": "2026-11-08T20:49:51.263Z",
+    "Workhuman": "2026-11-08T20:49:51.698Z",
+    "Intercom": "2026-11-08T20:49:51.706Z",
+    "Tines": "2026-11-08T20:49:51.919Z",
+    "Stripe": "2026-11-08T20:49:52.243Z",
+    "Bjak": "2026-11-08T20:49:52.594Z",
+    "Lemon.io": "2026-11-08T20:49:53.021Z",
+    "Grafana Labs": "2026-11-08T20:49:53.202Z",
+    "Mozilla": "2026-11-08T20:49:53.687Z",
+    "AlmavivA de Belgique": "2026-11-08T21:06:38.917Z",
+    "Databricks": "2026-11-08T20:49:54.122Z",
+    "Snowflake": "2026-11-08T20:49:54.492Z",
+    "DoiT International": "2026-11-08T20:49:54.846Z",
+    "Keyfactor": "2026-11-08T20:49:55.127Z",
+    "Neo4j": "2026-11-08T20:49:55.435Z",
+    "Medtronic (Tech/Marketing)": "2026-11-08T20:49:55.513Z",
+    "Datadog": "2026-11-08T20:49:55.909Z",
+    "GitHub": "2026-11-08T20:49:56.141Z",
+    "iMerit Technology": "2026-11-08T20:49:56.254Z",
+    "GitLab": "2026-11-08T20:49:56.321Z",
+    "Automattic": "2026-11-08T20:49:56.597Z",
+    "Doist": "2026-11-08T20:49:56.874Z",
+    "Toggl": "2026-11-08T20:49:57.032Z",
+    "Hotjar": "2026-11-08T20:49:57.246Z",
+    "Shopify": "2026-11-08T20:49:57.253Z",
+    "Kraken": "2026-11-08T20:49:57.655Z",
+    "Coinbase": "2026-11-08T20:49:57.667Z",
+    "Deel": "2026-11-08T20:49:57.879Z",
+    "Remote": "2026-11-08T20:49:58.021Z",
+    "Oyster": "2026-11-08T20:49:58.308Z",
+    "Canva": "2026-11-08T21:07:14.726Z",
+    "Atlassian": "2026-11-08T20:49:58.530Z",
+    "HubSpot": "2026-11-08T20:49:59.980Z"
+  },
+  "others": [
+    {
+      "company": "H&M Group (Business Tech)",
+      "ats": "smartrecruiters",
+      "slug": "hmgroup",
+      "jobs": 2032,
+      "targetJobs": 0,
+      "boardName": "H&M Group",
+      "sampleTitles": [
+        "Wsparcie w sklepie odzieżowym – umowa zlecenie (Wroclavia)",
+        "Wsparcie w sklepie odzieżowym – umowa zlecenie (Galeria Morena)",
+        "Wsparcie w sklepie odzieżowym – umowa zlecenie (Stawowa)"
+      ],
+      "verified": "board-name"
+    },
+    {
+      "company": "Sweco (Digital Services)",
+      "ats": "recruitee",
+      "slug": "sweco",
+      "jobs": 181,
+      "targetJobs": 0,
+      "sampleTitles": [
+        "(Afstudeer)stage elektrotechniek of werktuigbouwkundige installatietechniek",
+        "Teammanager Energieontwerp",
+        "Meewerkstage Ondergrondse Infra"
+      ],
+      "verified": "posting-text"
+    },
+    {
+      "company": "HMS Networks",
+      "ats": "personio",
+      "slug": "hms-networks",
+      "jobs": 1,
+      "targetJobs": 0,
+      "sampleTitles": [
+        "FW Developer"
+      ]
+    },
+    {
+      "company": "Picnic Technologies",
+      "ats": "smartrecruiters",
+      "slug": "picnic",
+      "jobs": 2,
+      "targetJobs": 0,
+      "boardName": "Picnic",
+      "sampleTitles": [
+        "HR adviseur (junior)",
+        "HR People Partner"
+      ],
+      "verified": "board-name"
+    },
+    {
+      "company": "Fairphone",
+      "ats": "personio",
+      "slug": "fairphone",
+      "jobs": 9,
+      "targetJobs": 1,
+      "sampleTitles": [
+        "Business Development Manager",
+        "Business Development Manager (DACH territory)",
+        "Field Quality Manager"
+      ],
+      "verified": "posting-text"
+    },
+    {
+      "company": "Personio",
+      "ats": "recruitee",
+      "slug": "personio",
+      "jobs": 1,
+      "targetJobs": 0,
+      "sampleTitles": [
+        "API Job - Berlin - Musterstr 1, 10111"
+      ]
+    }
+  ],
+  "checkedOthers": {
+    "Ericsson": "2026-11-08T21:00:36.369Z",
+    "Klarna": "2026-11-08T21:00:36.155Z",
+    "King": "2026-11-08T21:00:37.427Z",
+    "Volvo Cars (Tech & Software)": "2026-11-08T21:00:40.389Z",
+    "Tink": "2026-11-08T21:00:39.442Z",
+    "Northvolt": "2026-11-08T21:00:38.222Z",
+    "Sinch": "2026-11-08T21:00:52.068Z",
+    "Zettle (by PayPal)": "2026-11-08T21:00:42.118Z",
+    "Voi Technology": "2026-11-08T21:00:41.816Z",
+    "Mojang Studios": "2026-11-08T21:00:41.959Z",
+    "H&M Group (Business Tech)": "2026-11-08T21:00:43.703Z",
+    "Evolution": "2026-11-08T21:00:43.904Z",
+    "DICE (Electronic Arts)": "2026-11-08T21:00:43.980Z",
+    "Plejd": "2026-11-08T21:00:45.637Z",
+    "Kry (Livi)": "2026-11-08T21:00:47.841Z",
+    "Einride": "2026-11-08T21:00:46.274Z",
+    "Electrolux (IT & Digital)": "2026-11-08T21:00:47.852Z",
+    "Scania (Connected Services & IT)": "2026-11-08T21:00:48.802Z",
+    "Fortnox": "2026-11-08T21:00:49.996Z",
+    "Qlik": "2026-11-08T21:00:50.056Z",
+    "Tele2": "2026-11-08T21:00:52.247Z",
+    "Swedbank (IT & Digital)": "2026-11-08T21:00:54.305Z",
+    "Handelsbanken (IT)": "2026-11-08T21:00:54.542Z",
+    "Telenor Sverige": "2026-11-08T21:00:55.143Z",
+    "Telia Company": "2026-11-08T21:00:56.073Z",
+    "Nordea (Tech branch)": "2026-11-08T21:00:56.487Z",
+    "Vattenfall (IT)": "2026-11-08T21:00:57.206Z",
+    "Acast": "2026-11-08T21:00:58.675Z",
+    "ICA Gruppen (ICA Tech)": "2026-11-08T21:01:00.172Z",
+    "Avanza Bank": "2026-11-08T21:01:01.070Z",
+    "NetEnt": "2026-11-08T21:01:02.284Z",
+    "Viaplay Group": "2026-11-08T21:01:03.520Z",
+    "Zound Industries": "2026-11-08T21:01:04.722Z",
+    "Worldline (formerly Bambora)": "2026-11-08T21:01:05.368Z",
+    "Sandvik (Coromant Tech)": "2026-11-08T21:01:06.742Z",
+    "SKF (Digitalization)": "2026-11-08T21:01:07.524Z",
+    "Assa Abloy (Digital & Cloud)": "2026-11-08T21:01:07.905Z",
+    "Hexagon AB": "2026-11-08T21:01:08.398Z",
+    "IFS": "2026-11-08T21:01:10.087Z",
+    "Cint": "2026-11-08T21:01:10.839Z",
+    "IKEA (Ingka Group Digital)": "2026-11-08T21:01:10.867Z",
+    "Readly": "2026-11-08T21:01:17.229Z",
+    "Karma": "2026-11-08T21:01:18.137Z",
+    "Saab AB (Defense & Tech)": "2026-11-08T21:01:19.813Z",
+    "Lifesum": "2026-11-08T21:01:25.642Z",
+    "Min Doktor": "2026-11-08T21:01:31.344Z",
+    "Sana Labs": "2026-11-08T21:01:32.651Z",
+    "Toca Boca": "2026-11-08T21:01:39.763Z",
+    "Soundtrack Your Brand": "2026-11-08T21:01:40.887Z",
+    "Starbreeze Studios": "2026-11-08T21:01:52.274Z",
+    "Avalanche Studios Group": "2026-11-08T21:01:53.715Z",
+    "Massive Entertainment (Ubisoft)": "2026-11-08T21:02:00.773Z",
+    "G-Loot": "2026-11-08T21:02:00.816Z",
+    "Stunlock Studios": "2026-11-08T21:02:02.069Z",
+    "LeoVegas": "2026-11-08T21:02:07.820Z",
+    "Billerud (IT)": "2026-11-08T21:02:07.934Z",
+    "SSAB (IT & Digital)": "2026-11-08T21:02:09.275Z",
+    "Embracer Group": "2026-11-08T21:02:13.618Z",
+    "Boliden (IT & Automation)": "2026-11-08T21:02:14.912Z",
+    "Sweco (Digital Services)": "2026-11-08T21:02:15.369Z",
+    "Afry (Afry X)": "2026-11-08T21:02:16.363Z",
+    "Tietoevry (Sweden operations)": "2026-11-08T21:02:20.877Z",
+    "Knowit": "2026-11-08T21:02:22.157Z",
+    "Funnel": "2026-11-08T21:02:29.329Z",
+    "CGI Sweden": "2026-11-08T21:02:30.266Z",
+    "PostNord (Digital & IT)": "2026-11-08T21:02:36.303Z",
+    "Capgemini Sweden": "2026-11-08T21:02:36.330Z",
+    "Boozt": "2026-11-08T21:02:37.181Z",
+    "NA-KD": "2026-11-08T21:02:43.380Z",
+    "Zmarta": "2026-11-08T21:02:43.386Z",
+    "Lendo": "2026-11-08T21:02:44.350Z",
+    "Kivra": "2026-11-08T21:02:45.496Z",
+    "Benify": "2026-11-08T21:02:45.578Z",
+    "Exeger": "2026-11-08T21:02:52.567Z",
+    "Candela": "2026-11-08T21:02:52.657Z",
+    "Bonnier News Tech": "2026-11-08T21:02:56.381Z",
+    "BICO": "2026-11-08T21:02:59.474Z",
+    "Sectra": "2026-11-08T21:03:03.355Z",
+    "Nexus Group": "2026-11-08T21:03:05.276Z",
+    "Elekta": "2026-11-08T21:03:06.685Z",
+    "Mycronic": "2026-11-08T21:03:10.360Z",
+    "RaySearch Laboratories": "2026-11-08T21:03:13.759Z",
+    "Enea": "2026-11-08T21:03:17.510Z",
+    "Vitec Software Group": "2026-11-08T21:03:26.439Z",
+    "HMS Networks": "2026-11-08T21:03:27.812Z",
+    "Addnode Group": "2026-11-08T21:03:27.991Z",
+    "Oriflame (IT/Tech)": "2026-11-08T21:03:33.419Z",
+    "Proxify": "2026-11-08T21:03:34.928Z",
+    "Axfood (IT)": "2026-11-08T21:03:35.064Z",
+    "Thule Group (Digital/IT)": "2026-11-08T21:03:38.307Z",
+    "Rovio": "2026-11-08T21:03:40.438Z",
+    "Aiven": "2026-11-08T21:03:41.953Z",
+    "Swappie": "2026-11-08T21:03:42.225Z",
+    "Coloplast (IT)": "2026-11-08T21:03:49.367Z",
+    "Vestas (Digital)": "2026-11-08T21:03:49.425Z",
+    "Sitecore": "2026-11-08T21:03:56.370Z",
+    "Novo Nordisk (IT & Data)": "2026-11-08T21:03:56.606Z",
+    "Lego Group (Tech)": "2026-11-08T21:03:59.510Z",
+    "Tradeshift": "2026-11-08T21:04:03.518Z",
+    "Peakon (Workday)": "2026-11-08T21:04:03.565Z",
+    "Netcompany": "2026-11-08T21:04:06.436Z",
+    "Unity Technologies": "2026-11-08T21:04:10.432Z",
+    "SimCorp": "2026-11-08T21:04:10.549Z",
+    "Zendesk": "2026-11-08T21:04:10.690Z",
+    "Equinor (IT)": "2026-11-08T21:04:13.529Z",
+    "Meltwater": "2026-11-08T21:04:17.690Z",
+    "Kahoot!": "2026-11-08T21:04:17.746Z",
+    "Visma": "2026-11-08T21:04:17.782Z",
+    "Gelato": "2026-11-08T21:04:20.845Z",
+    "Oda": "2026-11-08T21:04:24.615Z",
+    "Pipedrive": "2026-11-08T21:04:24.884Z",
+    "Autostore": "2026-11-08T21:04:24.956Z",
+    "Bolt": "2026-11-08T21:04:27.761Z",
+    "Playtech": "2026-11-08T21:04:31.475Z",
+    "Wise": "2026-11-08T21:04:32.255Z",
+    "Vinted": "2026-11-08T21:04:34.756Z",
+    "Printful": "2026-11-08T21:04:34.775Z",
+    "Infobip": "2026-11-08T21:04:36.839Z",
+    "Tesonet": "2026-11-08T21:04:38.620Z",
+    "Bitstamp": "2026-11-08T21:04:44.337Z",
+    "Mews": "2026-11-08T21:04:45.598Z",
+    "Skeleton Technologies": "2026-11-08T21:04:46.071Z",
+    "Rimac Automobili": "2026-11-08T21:04:50.543Z",
+    "Prezi": "2026-11-08T21:04:52.587Z",
+    "Bitrise": "2026-11-08T21:04:57.745Z",
+    "CD Projekt Red": "2026-11-08T21:04:59.517Z",
+    "LogMeIn / GoTo": "2026-11-08T21:05:00.376Z",
+    "Bitdefender": "2026-11-08T21:05:04.841Z",
+    "Prusa Research": "2026-11-08T21:05:05.584Z",
+    "WeTransfer": "2026-11-08T21:05:12.057Z",
+    "MessageBird (Bird)": "2026-11-08T21:05:13.726Z",
+    "Just Eat Takeaway": "2026-11-08T21:05:14.251Z",
+    "ASML (Software Engineering)": "2026-11-08T21:05:20.903Z",
+    "Booking.com": "2026-11-08T21:05:20.982Z",
+    "Bunq": "2026-11-08T21:05:28.241Z",
+    "Swapfiets": "2026-11-08T21:05:28.413Z",
+    "NXP Semiconductors": "2026-11-08T21:05:28.458Z",
+    "Picnic Technologies": "2026-11-08T21:05:32.982Z",
+    "Delivery Hero": "2026-11-08T21:05:35.375Z",
+    "Fairphone": "2026-11-08T21:05:35.412Z",
+    "Miro": "2026-11-08T21:05:35.585Z",
+    "Zalando": "2026-11-08T21:05:40.099Z",
+    "Personio": "2026-11-08T21:05:42.409Z",
+    "SoundCloud": "2026-11-08T21:05:42.741Z",
+    "Blinkist": "2026-11-08T21:05:47.333Z",
+    "Tier Mobility": "2026-11-08T21:05:49.271Z",
+    "Infarm (Tech)": "2026-11-08T21:05:49.436Z",
+    "Wefox": "2026-11-08T21:05:49.930Z",
+    "Sennder": "2026-11-08T21:05:54.786Z",
+    "Lilium": "2026-11-08T21:05:56.390Z",
+    "Volocopter": "2026-11-08T21:05:56.420Z",
+    "SAP": "2026-11-08T21:05:57.101Z",
+    "Siemens (Digital Industries)": "2026-11-08T21:06:01.738Z",
+    "Criteo": "2026-11-08T21:06:03.592Z",
+    "Bosch (Software/Tech)": "2026-11-08T21:06:03.682Z",
+    "Ubisoft (France / Remote EU hubs)": "2026-11-08T21:06:04.144Z",
+    "Glovo": "2026-11-08T21:06:08.914Z",
+    "TravelPerk": "2026-11-08T21:06:10.631Z",
+    "Revolut": "2026-11-08T21:06:11.257Z",
+    "Darktrace": "2026-11-08T21:06:17.665Z",
+    "Hopin": "2026-11-08T21:06:18.321Z",
+    "Factorial HR": "2026-11-08T21:06:24.626Z",
+    "BenevolentAI": "2026-11-08T21:06:24.917Z",
+    "Starling Bank": "2026-11-08T21:06:25.281Z",
+    "Skyscanner": "2026-11-08T21:06:31.885Z",
+    "ClearScore": "2026-11-08T21:06:31.976Z",
+    "Intercom": "2026-11-08T21:06:32.363Z",
+    "AlmavivA de Belgique": "2026-11-08T21:06:38.917Z",
+    "Bjak": "2026-11-08T21:06:39.152Z",
+    "Checkout.com": "2026-11-08T21:06:39.618Z",
+    "Keyfactor": "2026-11-08T21:06:46.189Z",
+    "DoiT International": "2026-11-08T21:06:46.251Z",
+    "Medtronic (Tech/Marketing)": "2026-11-08T21:06:46.894Z",
+    "Automattic": "2026-11-08T21:06:53.295Z",
+    "GitHub": "2026-11-08T21:06:53.509Z",
+    "Shopify": "2026-11-08T21:06:53.867Z",
+    "iMerit Technology": "2026-11-08T21:06:59.936Z",
+    "Doist": "2026-11-08T21:07:00.242Z",
+    "Toggl": "2026-11-08T21:07:00.452Z",
+    "Hotjar": "2026-11-08T21:07:00.919Z",
+    "Kraken": "2026-11-08T21:07:06.861Z",
+    "Remote": "2026-11-08T21:07:07.253Z",
+    "Deel": "2026-11-08T21:07:07.517Z",
+    "Oyster": "2026-11-08T21:07:08.052Z",
+    "Atlassian": "2026-11-08T21:07:14.248Z",
+    "HubSpot": "2026-11-08T21:07:14.415Z",
+    "Canva": "2026-11-08T21:07:14.726Z"
+  }
+}

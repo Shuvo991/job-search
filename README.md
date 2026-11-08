@@ -26,6 +26,7 @@ npm run dev
 | `npm run db:status` | `prisma migrate status` |
 | `npm run db:seed` | Adds 5 sample jobs (safe to re-run; existing jobs are skipped) |
 | `npm run db:prune-geo` | Lists imported jobs that break the location rule (add `-- --apply` to remove them) |
+| `npm run discover:boards` | Finds the Greenhouse/Lever/Ashby/Teamtailor job boards of the companies in `config/companies.json` and writes `config/company-boards.json` plus `data/company-boards-report.md`; every sync then crawls them (`-- --force` rechecks all, `-- --only "Klarna,King"` checks some, `-- --others` only *detects* Workable and Personio boards (Greenhouse, Lever, Ashby, Teamtailor, Recruitee and SmartRecruiters are crawled) for the companies not found yet; nothing extra is crawled) |
 | `npm run verify` | Everything above, end to end |
 
 ## Layout

@@ -1,0 +1,1228 @@
+{
+ "_readme": "Companies whose career boards scripts/discover-boards.mjs looks for. Add rows freely. Optional per row: 'aliases' (other brand names to try and to match in postings) and 'slugs' (board names to try first, e.g. from the company's careers URL).",
+ "companies": [
+  {
+   "name": "Spotify",
+   "country": "Sweden"
+  },
+  {
+   "name": "Klarna",
+   "country": "Sweden"
+  },
+  {
+   "name": "Ericsson",
+   "country": "Sweden"
+  },
+  {
+   "name": "Volvo Cars (Tech & Software)",
+   "country": "Sweden"
+  },
+  {
+   "name": "King",
+   "country": "Sweden"
+  },
+  {
+   "name": "Mojang Studios",
+   "country": "Sweden"
+  },
+  {
+   "name": "Northvolt",
+   "country": "Sweden"
+  },
+  {
+   "name": "Truecaller",
+   "country": "Sweden"
+  },
+  {
+   "name": "Tink",
+   "country": "Sweden"
+  },
+  {
+   "name": "Trustly",
+   "country": "Sweden"
+  },
+  {
+   "name": "Voi Technology",
+   "country": "Sweden"
+  },
+  {
+   "name": "Sinch",
+   "country": "Sweden"
+  },
+  {
+   "name": "Zettle (by PayPal)",
+   "country": "Sweden"
+  },
+  {
+   "name": "H&M Group (Business Tech)",
+   "country": "Sweden"
+  },
+  {
+   "name": "Polestar",
+   "country": "Sweden"
+  },
+  {
+   "name": "Evolution",
+   "country": "Sweden"
+  },
+  {
+   "name": "DICE (Electronic Arts)",
+   "country": "Sweden"
+  },
+  {
+   "name": "Kry (Livi)",
+   "country": "Sweden",
+   "aliases": [
+    "Livi"
+   ]
+  },
+  {
+   "name": "Anyfin",
+   "country": "Sweden"
+  },
+  {
+   "name": "Storytel",
+   "country": "Sweden"
+  },
+  {
+   "name": "Plejd",
+   "country": "Sweden"
+  },
+  {
+   "name": "Paradox Interactive",
+   "country": "Sweden"
+  },
+  {
+   "name": "Einride",
+   "country": "Sweden"
+  },
+  {
+   "name": "Electrolux (IT & Digital)",
+   "country": "Sweden"
+  },
+  {
+   "name": "Scania (Connected Services & IT)",
+   "country": "Sweden"
+  },
+  {
+   "name": "Fortnox",
+   "country": "Sweden"
+  },
+  {
+   "name": "Mentimeter",
+   "country": "Sweden"
+  },
+  {
+   "name": "Hemnet",
+   "country": "Sweden"
+  },
+  {
+   "name": "Qlik",
+   "country": "Sweden"
+  },
+  {
+   "name": "Telenor Sverige",
+   "country": "Sweden"
+  },
+  {
+   "name": "Tele2",
+   "country": "Sweden"
+  },
+  {
+   "name": "Telia Company",
+   "country": "Sweden"
+  },
+  {
+   "name": "Swedbank (IT & Digital)",
+   "country": "Sweden"
+  },
+  {
+   "name": "SEB (Tech)",
+   "country": "Sweden"
+  },
+  {
+   "name": "Handelsbanken (IT)",
+   "country": "Sweden"
+  },
+  {
+   "name": "Nordea (Tech branch)",
+   "country": "Sweden"
+  },
+  {
+   "name": "Avanza Bank",
+   "country": "Sweden"
+  },
+  {
+   "name": "Vattenfall (IT)",
+   "country": "Sweden"
+  },
+  {
+   "name": "ICA Gruppen (ICA Tech)",
+   "country": "Sweden"
+  },
+  {
+   "name": "Schibsted (Sweden)",
+   "country": "Sweden"
+  },
+  {
+   "name": "Acast",
+   "country": "Sweden"
+  },
+  {
+   "name": "Viaplay Group",
+   "country": "Sweden"
+  },
+  {
+   "name": "Tobii",
+   "country": "Sweden"
+  },
+  {
+   "name": "Yubico",
+   "country": "Sweden"
+  },
+  {
+   "name": "Zound Industries",
+   "country": "Sweden"
+  },
+  {
+   "name": "NetEnt",
+   "country": "Sweden"
+  },
+  {
+   "name": "Worldline (formerly Bambora)",
+   "country": "Sweden",
+   "aliases": [
+    "Bambora"
+   ]
+  },
+  {
+   "name": "Epidemic Sound",
+   "country": "Sweden"
+  },
+  {
+   "name": "Hexagon AB",
+   "country": "Sweden"
+  },
+  {
+   "name": "Assa Abloy (Digital & Cloud)",
+   "country": "Sweden"
+  },
+  {
+   "name": "Sandvik (Coromant Tech)",
+   "country": "Sweden"
+  },
+  {
+   "name": "SKF (Digitalization)",
+   "country": "Sweden"
+  },
+  {
+   "name": "IKEA (Ingka Group Digital)",
+   "country": "Sweden",
+   "slugs": [
+    "ingka"
+   ]
+  },
+  {
+   "name": "Saab AB (Defense & Tech)",
+   "country": "Sweden"
+  },
+  {
+   "name": "IFS",
+   "country": "Sweden"
+  },
+  {
+   "name": "Cint",
+   "country": "Sweden"
+  },
+  {
+   "name": "Readly",
+   "country": "Sweden"
+  },
+  {
+   "name": "Fishbrain",
+   "country": "Sweden"
+  },
+  {
+   "name": "Karma",
+   "country": "Sweden"
+  },
+  {
+   "name": "Kognity",
+   "country": "Sweden"
+  },
+  {
+   "name": "Sana Labs",
+   "country": "Sweden"
+  },
+  {
+   "name": "Doktor.se",
+   "country": "Sweden"
+  },
+  {
+   "name": "Min Doktor",
+   "country": "Sweden"
+  },
+  {
+   "name": "FirstVet",
+   "country": "Sweden"
+  },
+  {
+   "name": "Natural Cycles",
+   "country": "Sweden"
+  },
+  {
+   "name": "Lifesum",
+   "country": "Sweden"
+  },
+  {
+   "name": "Soundtrack Your Brand",
+   "country": "Sweden"
+  },
+  {
+   "name": "Detectify",
+   "country": "Sweden"
+  },
+  {
+   "name": "Recorded Future (Swedish R&D)",
+   "country": "Sweden"
+  },
+  {
+   "name": "Mindler",
+   "country": "Sweden"
+  },
+  {
+   "name": "Toca Boca",
+   "country": "Sweden"
+  },
+  {
+   "name": "Resolution Games",
+   "country": "Sweden"
+  },
+  {
+   "name": "Starbreeze Studios",
+   "country": "Sweden"
+  },
+  {
+   "name": "Avalanche Studios Group",
+   "country": "Sweden"
+  },
+  {
+   "name": "Massive Entertainment (Ubisoft)",
+   "country": "Sweden",
+   "aliases": [
+    "Massive"
+   ]
+  },
+  {
+   "name": "Stunlock Studios",
+   "country": "Sweden"
+  },
+  {
+   "name": "Embracer Group",
+   "country": "Sweden"
+  },
+  {
+   "name": "G-Loot",
+   "country": "Sweden"
+  },
+  {
+   "name": "Kambi",
+   "country": "Sweden"
+  },
+  {
+   "name": "LeoVegas",
+   "country": "Sweden"
+  },
+  {
+   "name": "Betsson Group",
+   "country": "Sweden"
+  },
+  {
+   "name": "Kindred Group",
+   "country": "Sweden"
+  },
+  {
+   "name": "Billerud (IT)",
+   "country": "Sweden"
+  },
+  {
+   "name": "SSAB (IT & Digital)",
+   "country": "Sweden"
+  },
+  {
+   "name": "Boliden (IT & Automation)",
+   "country": "Sweden"
+  },
+  {
+   "name": "Sweco (Digital Services)",
+   "country": "Sweden"
+  },
+  {
+   "name": "Afry (Afry X)",
+   "country": "Sweden"
+  },
+  {
+   "name": "Tietoevry (Sweden operations)",
+   "country": "Sweden"
+  },
+  {
+   "name": "Knowit",
+   "country": "Sweden"
+  },
+  {
+   "name": "HiQ",
+   "country": "Sweden"
+  },
+  {
+   "name": "Netlight Consulting",
+   "country": "Sweden"
+  },
+  {
+   "name": "Capgemini Sweden",
+   "country": "Sweden"
+  },
+  {
+   "name": "CGI Sweden",
+   "country": "Sweden"
+  },
+  {
+   "name": "Bonnier News Tech",
+   "country": "Sweden"
+  },
+  {
+   "name": "Storykit",
+   "country": "Sweden"
+  },
+  {
+   "name": "Funnel",
+   "country": "Sweden"
+  },
+  {
+   "name": "Instabee (Instabox + Budbee)",
+   "country": "Sweden",
+   "aliases": [
+    "Budbee",
+    "Instabox"
+   ]
+  },
+  {
+   "name": "PostNord (Digital & IT)",
+   "country": "Sweden"
+  },
+  {
+   "name": "Svenska Spel (Tech)",
+   "country": "Sweden"
+  },
+  {
+   "name": "Dustin Group (IT)",
+   "country": "Sweden"
+  },
+  {
+   "name": "Qliro",
+   "country": "Sweden"
+  },
+  {
+   "name": "Boozt",
+   "country": "Sweden"
+  },
+  {
+   "name": "NA-KD",
+   "country": "Sweden"
+  },
+  {
+   "name": "Tradera",
+   "country": "Sweden"
+  },
+  {
+   "name": "Zmarta",
+   "country": "Sweden"
+  },
+  {
+   "name": "Lendo",
+   "country": "Sweden"
+  },
+  {
+   "name": "Kivra",
+   "country": "Sweden"
+  },
+  {
+   "name": "Benify",
+   "country": "Sweden"
+  },
+  {
+   "name": "Nexus Group",
+   "country": "Sweden"
+  },
+  {
+   "name": "Candela",
+   "country": "Sweden"
+  },
+  {
+   "name": "X Shore",
+   "country": "Sweden"
+  },
+  {
+   "name": "Heart Aerospace",
+   "country": "Sweden"
+  },
+  {
+   "name": "Exeger",
+   "country": "Sweden"
+  },
+  {
+   "name": "BICO",
+   "country": "Sweden"
+  },
+  {
+   "name": "RaySearch Laboratories",
+   "country": "Sweden"
+  },
+  {
+   "name": "Sectra",
+   "country": "Sweden"
+  },
+  {
+   "name": "Elekta",
+   "country": "Sweden"
+  },
+  {
+   "name": "Mycronic",
+   "country": "Sweden"
+  },
+  {
+   "name": "Vitec Software Group",
+   "country": "Sweden"
+  },
+  {
+   "name": "Addnode Group",
+   "country": "Sweden"
+  },
+  {
+   "name": "Enea",
+   "country": "Sweden"
+  },
+  {
+   "name": "HMS Networks",
+   "country": "Sweden"
+  },
+  {
+   "name": "Thule Group (Digital/IT)",
+   "country": "Sweden"
+  },
+  {
+   "name": "Oriflame (IT/Tech)",
+   "country": "Sweden"
+  },
+  {
+   "name": "Axfood (IT)",
+   "country": "Sweden"
+  },
+  {
+   "name": "Proxify",
+   "country": "Sweden (Remote EU)"
+  },
+  {
+   "name": "Oura",
+   "country": "Finland (Remote EU)"
+  },
+  {
+   "name": "Supercell",
+   "country": "Finland"
+  },
+  {
+   "name": "Rovio",
+   "country": "Finland"
+  },
+  {
+   "name": "Wolt",
+   "country": "Finland"
+  },
+  {
+   "name": "Aiven",
+   "country": "Finland"
+  },
+  {
+   "name": "Swappie",
+   "country": "Finland"
+  },
+  {
+   "name": "Smartly.io",
+   "country": "Finland"
+  },
+  {
+   "name": "RELEX Solutions",
+   "country": "Finland"
+  },
+  {
+   "name": "Iceye",
+   "country": "Finland"
+  },
+  {
+   "name": "Pleo",
+   "country": "Denmark"
+  },
+  {
+   "name": "Maersk Digital",
+   "country": "Denmark"
+  },
+  {
+   "name": "Lego Group (Tech)",
+   "country": "Denmark"
+  },
+  {
+   "name": "Novo Nordisk (IT & Data)",
+   "country": "Denmark"
+  },
+  {
+   "name": "Coloplast (IT)",
+   "country": "Denmark"
+  },
+  {
+   "name": "Vestas (Digital)",
+   "country": "Denmark"
+  },
+  {
+   "name": "Trustpilot",
+   "country": "Denmark"
+  },
+  {
+   "name": "Sitecore",
+   "country": "Denmark"
+  },
+  {
+   "name": "Unity Technologies",
+   "country": "Denmark (Remote EU)"
+  },
+  {
+   "name": "Tradeshift",
+   "country": "Denmark (Remote EU)"
+  },
+  {
+   "name": "Peakon (Workday)",
+   "country": "Denmark"
+  },
+  {
+   "name": "Netcompany",
+   "country": "Denmark"
+  },
+  {
+   "name": "SimCorp",
+   "country": "Denmark"
+  },
+  {
+   "name": "Zendesk",
+   "country": "Denmark / US (Remote EU)"
+  },
+  {
+   "name": "Equinor (IT)",
+   "country": "Norway"
+  },
+  {
+   "name": "Kahoot!",
+   "country": "Norway"
+  },
+  {
+   "name": "Cognite",
+   "country": "Norway"
+  },
+  {
+   "name": "Meltwater",
+   "country": "Norway"
+  },
+  {
+   "name": "Visma",
+   "country": "Norway"
+  },
+  {
+   "name": "Gelato",
+   "country": "Norway"
+  },
+  {
+   "name": "Oda",
+   "country": "Norway"
+  },
+  {
+   "name": "Remarkable",
+   "country": "Norway"
+  },
+  {
+   "name": "Autostore",
+   "country": "Norway"
+  },
+  {
+   "name": "Pipedrive",
+   "country": "Estonia"
+  },
+  {
+   "name": "Bolt",
+   "country": "Estonia"
+  },
+  {
+   "name": "Playtech",
+   "country": "Estonia / UK"
+  },
+  {
+   "name": "Veriff",
+   "country": "Estonia"
+  },
+  {
+   "name": "Skeleton Technologies",
+   "country": "Estonia"
+  },
+  {
+   "name": "Starship Technologies",
+   "country": "Estonia"
+  },
+  {
+   "name": "Wise",
+   "country": "Estonia / UK"
+  },
+  {
+   "name": "Nord Security",
+   "country": "Lithuania"
+  },
+  {
+   "name": "Vinted",
+   "country": "Lithuania"
+  },
+  {
+   "name": "Tesonet",
+   "country": "Lithuania"
+  },
+  {
+   "name": "Printful",
+   "country": "Latvia"
+  },
+  {
+   "name": "Infobip",
+   "country": "Croatia"
+  },
+  {
+   "name": "Rimac Automobili",
+   "country": "Croatia"
+  },
+  {
+   "name": "Bitstamp",
+   "country": "Slovenia / UK"
+  },
+  {
+   "name": "Outfit7",
+   "country": "Slovenia"
+  },
+  {
+   "name": "Mews",
+   "country": "Czechia"
+  },
+  {
+   "name": "Rohlik",
+   "country": "Czechia"
+  },
+  {
+   "name": "Avast / Gen Digital",
+   "country": "Czechia"
+  },
+  {
+   "name": "JetBrains",
+   "country": "Czechia (Remote EU)"
+  },
+  {
+   "name": "Prusa Research",
+   "country": "Czechia"
+  },
+  {
+   "name": "Prezi",
+   "country": "Hungary"
+  },
+  {
+   "name": "LogMeIn / GoTo",
+   "country": "Hungary (Remote EU)"
+  },
+  {
+   "name": "Bitrise",
+   "country": "Hungary"
+  },
+  {
+   "name": "Docplanner",
+   "country": "Poland"
+  },
+  {
+   "name": "Brainly",
+   "country": "Poland"
+  },
+  {
+   "name": "CD Projekt Red",
+   "country": "Poland"
+  },
+  {
+   "name": "Allegro",
+   "country": "Poland"
+  },
+  {
+   "name": "UiPath",
+   "country": "Romania"
+  },
+  {
+   "name": "eMAG",
+   "country": "Romania"
+  },
+  {
+   "name": "Bitdefender",
+   "country": "Romania"
+  },
+  {
+   "name": "Booking.com",
+   "country": "Netherlands",
+   "slugs": [
+    "booking"
+   ]
+  },
+  {
+   "name": "Adyen",
+   "country": "Netherlands"
+  },
+  {
+   "name": "Just Eat Takeaway",
+   "country": "Netherlands"
+  },
+  {
+   "name": "WeTransfer",
+   "country": "Netherlands"
+  },
+  {
+   "name": "MessageBird (Bird)",
+   "country": "Netherlands"
+  },
+  {
+   "name": "Picnic Technologies",
+   "country": "Netherlands"
+  },
+  {
+   "name": "TomTom",
+   "country": "Netherlands"
+  },
+  {
+   "name": "ASML (Software Engineering)",
+   "country": "Netherlands"
+  },
+  {
+   "name": "NXP Semiconductors",
+   "country": "Netherlands"
+  },
+  {
+   "name": "Mollie",
+   "country": "Netherlands"
+  },
+  {
+   "name": "Bunq",
+   "country": "Netherlands"
+  },
+  {
+   "name": "Swapfiets",
+   "country": "Netherlands"
+  },
+  {
+   "name": "Fairphone",
+   "country": "Netherlands"
+  },
+  {
+   "name": "Miro",
+   "country": "Netherlands / US (Remote EU)"
+  },
+  {
+   "name": "Elastic",
+   "country": "Netherlands / US (Remote EU)"
+  },
+  {
+   "name": "Delivery Hero",
+   "country": "Germany"
+  },
+  {
+   "name": "Zalando",
+   "country": "Germany"
+  },
+  {
+   "name": "N26",
+   "country": "Germany"
+  },
+  {
+   "name": "Personio",
+   "country": "Germany"
+  },
+  {
+   "name": "Celonis",
+   "country": "Germany"
+  },
+  {
+   "name": "HelloFresh",
+   "country": "Germany"
+  },
+  {
+   "name": "Trivago",
+   "country": "Germany"
+  },
+  {
+   "name": "Tier Mobility",
+   "country": "Germany"
+  },
+  {
+   "name": "Babbel",
+   "country": "Germany"
+  },
+  {
+   "name": "Contentful",
+   "country": "Germany"
+  },
+  {
+   "name": "SoundCloud",
+   "country": "Germany"
+  },
+  {
+   "name": "Blinkist",
+   "country": "Germany"
+  },
+  {
+   "name": "Infarm (Tech)",
+   "country": "Germany"
+  },
+  {
+   "name": "Trade Republic",
+   "country": "Germany"
+  },
+  {
+   "name": "Wefox",
+   "country": "Germany"
+  },
+  {
+   "name": "Sennder",
+   "country": "Germany"
+  },
+  {
+   "name": "Flix (FlixBus)",
+   "country": "Germany"
+  },
+  {
+   "name": "Volocopter",
+   "country": "Germany"
+  },
+  {
+   "name": "Lilium",
+   "country": "Germany"
+  },
+  {
+   "name": "TeamViewer",
+   "country": "Germany"
+  },
+  {
+   "name": "SAP",
+   "country": "Germany"
+  },
+  {
+   "name": "Siemens (Digital Industries)",
+   "country": "Germany"
+  },
+  {
+   "name": "Bosch (Software/Tech)",
+   "country": "Germany"
+  },
+  {
+   "name": "Criteo",
+   "country": "France"
+  },
+  {
+   "name": "BlaBlaCar",
+   "country": "France"
+  },
+  {
+   "name": "Back Market",
+   "country": "France"
+  },
+  {
+   "name": "Doctolib",
+   "country": "France"
+  },
+  {
+   "name": "Sorare",
+   "country": "France"
+  },
+  {
+   "name": "Ledger",
+   "country": "France"
+  },
+  {
+   "name": "Qonto",
+   "country": "France"
+  },
+  {
+   "name": "Shift Technology",
+   "country": "France"
+  },
+  {
+   "name": "Deezer",
+   "country": "France"
+  },
+  {
+   "name": "Ubisoft (France / Remote EU hubs)",
+   "country": "France"
+  },
+  {
+   "name": "Typeform",
+   "country": "Spain"
+  },
+  {
+   "name": "Glovo",
+   "country": "Spain"
+  },
+  {
+   "name": "Cabify",
+   "country": "Spain"
+  },
+  {
+   "name": "TravelPerk",
+   "country": "Spain"
+  },
+  {
+   "name": "Wallapop",
+   "country": "Spain"
+  },
+  {
+   "name": "Factorial HR",
+   "country": "Spain"
+  },
+  {
+   "name": "Revolut",
+   "country": "UK"
+  },
+  {
+   "name": "Monzo",
+   "country": "UK"
+  },
+  {
+   "name": "Starling Bank",
+   "country": "UK"
+  },
+  {
+   "name": "OakNorth Bank",
+   "country": "UK"
+  },
+  {
+   "name": "Deliveroo",
+   "country": "UK"
+  },
+  {
+   "name": "Snyk",
+   "country": "UK"
+  },
+  {
+   "name": "Darktrace",
+   "country": "UK"
+  },
+  {
+   "name": "Hopin",
+   "country": "UK"
+  },
+  {
+   "name": "GoCardless",
+   "country": "UK"
+  },
+  {
+   "name": "Tractable",
+   "country": "UK"
+  },
+  {
+   "name": "Improbable",
+   "country": "UK"
+  },
+  {
+   "name": "BenevolentAI",
+   "country": "UK"
+  },
+  {
+   "name": "Boku",
+   "country": "UK"
+  },
+  {
+   "name": "BVNK",
+   "country": "UK"
+  },
+  {
+   "name": "Canonical",
+   "country": "UK (Remote EU)"
+  },
+  {
+   "name": "Allica Bank",
+   "country": "UK"
+  },
+  {
+   "name": "Dotmatics",
+   "country": "UK"
+  },
+  {
+   "name": "SumUp",
+   "country": "UK"
+  },
+  {
+   "name": "Checkout.com",
+   "country": "UK"
+  },
+  {
+   "name": "Skyscanner",
+   "country": "UK"
+  },
+  {
+   "name": "Freetrade",
+   "country": "UK"
+  },
+  {
+   "name": "Cazoo",
+   "country": "UK"
+  },
+  {
+   "name": "Graphcore",
+   "country": "UK"
+  },
+  {
+   "name": "Thought Machine",
+   "country": "UK"
+  },
+  {
+   "name": "ClearScore",
+   "country": "UK"
+  },
+  {
+   "name": "Zopa",
+   "country": "UK"
+  },
+  {
+   "name": "Funding Circle",
+   "country": "UK"
+  },
+  {
+   "name": "Intercom",
+   "country": "Ireland"
+  },
+  {
+   "name": "Workhuman",
+   "country": "Ireland"
+  },
+  {
+   "name": "Tines",
+   "country": "Ireland"
+  },
+  {
+   "name": "Stripe",
+   "country": "Ireland / US (Remote EU)"
+  },
+  {
+   "name": "Lemon.io",
+   "country": "Ukraine (Remote EU)"
+  },
+  {
+   "name": "AlmavivA de Belgique",
+   "country": "Belgium"
+  },
+  {
+   "name": "Bjak",
+   "country": "Malaysia (Remote EU)"
+  },
+  {
+   "name": "Grafana Labs",
+   "country": "US (Remote EU)"
+  },
+  {
+   "name": "Mozilla",
+   "country": "US (Remote EU)"
+  },
+  {
+   "name": "Databricks",
+   "country": "US (Remote EU)"
+  },
+  {
+   "name": "DoiT International",
+   "country": "US (Remote EU)"
+  },
+  {
+   "name": "Snowflake",
+   "country": "US (Remote EU)"
+  },
+  {
+   "name": "iMerit Technology",
+   "country": "US (Remote EU)"
+  },
+  {
+   "name": "Keyfactor",
+   "country": "US (Remote EU)"
+  },
+  {
+   "name": "Neo4j",
+   "country": "US / Sweden"
+  },
+  {
+   "name": "Medtronic (Tech/Marketing)",
+   "country": "US (Remote EU)"
+  },
+  {
+   "name": "Datadog",
+   "country": "US (Remote EU)"
+  },
+  {
+   "name": "GitLab",
+   "country": "US (Remote EU)"
+  },
+  {
+   "name": "GitHub",
+   "country": "US (Remote EU)"
+  },
+  {
+   "name": "Automattic",
+   "country": "US (Remote EU)"
+  },
+  {
+   "name": "Shopify",
+   "country": "Canada (Remote EU)"
+  },
+  {
+   "name": "Doist",
+   "country": "Global (Remote)"
+  },
+  {
+   "name": "Toggl",
+   "country": "Global (Remote)"
+  },
+  {
+   "name": "Hotjar",
+   "country": "Global (Remote)"
+  },
+  {
+   "name": "Coinbase",
+   "country": "US (Remote EU)"
+  },
+  {
+   "name": "Kraken",
+   "country": "US (Remote EU)"
+  },
+  {
+   "name": "Remote",
+   "country": "Global (Remote)"
+  },
+  {
+   "name": "Deel",
+   "country": "Global (Remote)"
+  },
+  {
+   "name": "Oyster",
+   "country": "Global (Remote)"
+  },
+  {
+   "name": "Canva",
+   "country": "Australia (Remote EU hubs)"
+  },
+  {
+   "name": "Atlassian",
+   "country": "Australia (Remote EU hubs)"
+  },
+  {
+   "name": "HubSpot",
+   "country": "US (Remote EU hubs)"
+  }
+ ]
+}

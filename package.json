@@ -22,6 +22,7 @@
     "db:status": "prisma migrate status",
     "db:seed": "tsx prisma/seed.ts",
     "db:prune-geo": "tsx prisma/prune-geo.ts",
+    "discover:boards": "node scripts/discover-boards.mjs",
     "verify": "npm run db:validate && npm run db:status && npm run typecheck && npm run test && npm run build"
   },
   "dependencies": {
@@ -29,7 +30,9 @@
     "@prisma/client": "^7.10.1",
     "dotenv": "^18.0.9",
     "franc-min": "^6.2.0",
+    "mammoth": "^1.13.0",
     "next": "^16.4.5",
+    "pdf-parse": "^2.4.5",
     "react": "^19.3.1",
     "react-dom": "^19.3.1",
     "sanitize-html": "^2.18.1",

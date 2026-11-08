@@ -9,10 +9,12 @@
 import { ConflictError, ValidationError } from "@/lib/errors";
 import { parseFeedBody, FeedParseError, type RawFeedItem } from "@/lib/feeds/adapters";
 import { getFeedConfig, type LoadedFeedConfig, type ResolvedFeed } from "@/lib/feeds/config";
-import { fetchFeedText, FeedFetchError, type FetchLike } from "@/lib/feeds/fetcher";
+import { fetchFeedText, FeedFetchError, type FetchLike, type FetchOptions } from "@/lib/feeds/fetcher";
+import { loadSmartRecruitersItems } from "@/lib/feeds/smartrecruiters";
 import { buildFeedJob, prepareItem, roleOf, workModeFor } from "@/lib/feeds/normalize";
 import { latestRunsByFeed, nextAllowedAt, recordSyncRun, type SyncLogRow } from "@/lib/feeds/sync-log";
 import { getGeoFilter, type GeoFilter } from "@/lib/geo-filter";
+import { inferRoleCategory } from "@/lib/job-inference";
 import { getGatekeeper, type Gatekeeper } from "@/lib/language-filter";
 import type { FeedStatus, FeedSyncResult, FilteredCounts, SyncSummary, SyncTotals } from "@/lib/feeds/types";
 import { computeFeedDedupeHash } from "@/lib/jobs/dedupe";
@@ -165,6 +167,67 @@ async function processItems(
   return { imported, duplicates, invalid, filtered };
 }
 
+/**
+ * SmartRecruiters boards: the list has no job text, so jobs that cannot be wanted (judged from the
+ * list entry alone) or are already stored are dropped before their text is fetched; see
+ * src/lib/feeds/smartrecruiters.ts. What is dropped here is counted like the normal filters count it.
+ */
+async function processSmartRecruiters(
+  feed: ResolvedFeed,
+  fetchOptions: Omit<FetchOptions, "accept">,
+  context: FeedContext,
+): Promise<Pick<FeedSyncResult, "fetched" | "imported" | "duplicates" | "invalid" | "filtered">> {
+  const now = context.now();
+  const loaded = await loadSmartRecruitersItems(buildRequestUrl(feed), feed.company, {
+    fetchText: (url) => fetchFeedText(url, { ...fetchOptions, accept: "application/json" }),
+    maxItems: context.config.settings.maxItemsPerFeed,
+    skip: (posting) => {
+      if (inferRoleCategory(posting.title) === undefined) return "role";
+      if (posting.languageCode !== undefined && posting.languageCode.toLowerCase() !== "en") return "language";
+      if (!posting.remote) {
+        // Remote jobs need their text (a description can limit them to one country); the rest are decided by place.
+        const verdict = context.geoFilter.evaluate({
+          workMode: posting.hybrid ? "HYBRID" : "ONSITE",
+          location: posting.city,
+          country: posting.countryName,
+          defaultCountry: feed.defaults.country,
+          worldwideWhenNoLocation: feed.worldwideWhenNoLocation,
+        });
+        if (!verdict.accepted) return "region";
+      }
+      return undefined;
+    },
+    isKnown: async (items) => {
+      const hashes = items.map((item) => {
+        const prepared = prepareItem({ ...item, description: item.title }, now);
+        return prepared.ok
+          ? computeFeedDedupeHash({
+              company: prepared.item.company,
+              title: prepared.item.title,
+              externalUrl: prepared.item.externalUrl,
+            })
+          : undefined;
+      });
+      const known = await findExistingDedupeHashes(hashes.filter((hash): hash is string => hash !== undefined));
+      return hashes.map((hash) => hash !== undefined && known.has(hash));
+    },
+  });
+
+  const processed = await processItems(feed, loaded.items, context);
+  return {
+    fetched: loaded.listed,
+    imported: processed.imported,
+    duplicates: processed.duplicates + loaded.skipped.known,
+    invalid: processed.invalid + loaded.skipped.failed,
+    filtered: {
+      ...processed.filtered,
+      language: processed.filtered.language + loaded.skipped.language,
+      role: processed.filtered.role + loaded.skipped.role,
+      region: processed.filtered.region + loaded.skipped.region,
+    },
+  };
+}
+
 async function syncOneFeed(feed: ResolvedFeed, context: FeedContext): Promise<FeedSyncResult> {
   const { settings } = context.config;
   const started = context.now();
@@ -182,23 +245,30 @@ async function syncOneFeed(feed: ResolvedFeed, context: FeedContext): Promise<Fe
 
   let result: FeedSyncResult;
   try {
-    const body = await fetchFeedText(buildRequestUrl(feed), {
+    const fetchOptions: Omit<FetchOptions, "accept"> = {
       userAgent: feed.userAgent ?? settings.userAgent,
       timeoutMs: settings.requestTimeoutMs,
       maxBytes: settings.maxResponseBytes,
       maxRedirects: settings.maxRedirects,
       allowedHosts: feed.allowedHosts,
-      accept: feed.type === "rss" ? "application/rss+xml, application/atom+xml, application/xml;q=0.9, text/xml;q=0.8" : "application/json",
       ...(context.fetchImpl ? { fetchImpl: context.fetchImpl } : {}),
-    });
-    const parsed = parseFeedBody(feed, body, settings.maxItemsPerFeed);
-    const outcome = await processItems(feed, parsed.items, context);
-    result = {
-      ...base,
-      fetched: parsed.items.length + parsed.malformed,
-      ...outcome,
-      invalid: outcome.invalid + parsed.malformed,
     };
+    if (feed.adapter === "smartrecruiters") {
+      result = { ...base, ...(await processSmartRecruiters(feed, fetchOptions, context)) };
+    } else {
+      const body = await fetchFeedText(buildRequestUrl(feed), {
+        ...fetchOptions,
+        accept: feed.type === "rss" ? "application/rss+xml, application/atom+xml, application/xml;q=0.9, text/xml;q=0.8" : "application/json",
+      });
+      const parsed = parseFeedBody(feed, body, settings.maxItemsPerFeed);
+      const outcome = await processItems(feed, parsed.items, context);
+      result = {
+        ...base,
+        fetched: parsed.items.length + parsed.malformed,
+        ...outcome,
+        invalid: outcome.invalid + parsed.malformed,
+      };
+    }
   } catch (error) {
     if (!(error instanceof FeedFetchError || error instanceof FeedParseError)) {
       console.error(`[feed-sync] ${feed.id} failed`, error);

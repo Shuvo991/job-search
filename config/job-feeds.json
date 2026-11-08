@@ -5,10 +5,10 @@
     "autoSync": { "enabled": true, "startupDelaySeconds": 30, "intervalMinutes": 180 },
     "userAgent": "job-search-local/1.0 (+https://github.com/Shuvo991/job-search)",
     "requestTimeoutMs": 15000,
-    "maxResponseBytes": 5000000,
+    "maxResponseBytes": 12000000,
     "maxRedirects": 3,
     "concurrency": 3,
-    "maxItemsPerFeed": 200,
+    "maxItemsPerFeed": 500,
     "failureBackoffMinutes": 5
   },
   "feeds": [
@@ -38,6 +38,68 @@
         "country": "workplace_address.country",
         "postedAt": "publication_date",
         "employmentType": "working_hours_type.label"
+      }
+    },
+    {
+      "id": "jobtech-roles",
+      "name": "Arbetsförmedlingen (JobTech)",
+      "type": "rest-json",
+      "enabled": true,
+      "url": "https://jobsearch.api.jobtechdev.se/search",
+      "query": { "limit": 100, "sort": "pubdate-desc" },
+      "minIntervalMinutes": 120,
+      "attribution": "Source: Arbetsförmedlingen / JobTech Dev (Platsbanken)",
+      "terms": "Same free public API as the 'jobtech' feed, but one search per target role across ALL occupation fields (the 'jobtech' feed only reads the Data/IT field, so it misses product, project and analyst roles filed under other fields). Swedish-language ads are still removed by the language filter.",
+      "instances": [
+        { "id": "product-manager", "name": "Arbetsförmedlingen (product manager)", "query": { "q": "product manager" } },
+        { "id": "product-owner", "name": "Arbetsförmedlingen (product owner)", "query": { "q": "product owner" } },
+        { "id": "product-analyst", "name": "Arbetsförmedlingen (product analyst)", "query": { "q": "product analyst" } },
+        { "id": "project-manager", "name": "Arbetsförmedlingen (project manager)", "query": { "q": "project manager" } },
+        { "id": "software-developer", "name": "Arbetsförmedlingen (software developer)", "query": { "q": "software developer" } },
+        { "id": "web-developer", "name": "Arbetsförmedlingen (web developer)", "query": { "q": "web developer" } },
+        { "id": "software-engineer", "name": "Arbetsförmedlingen (software engineer)", "query": { "q": "software engineer" } },
+        { "id": "ai-engineer", "name": "Arbetsförmedlingen (AI engineer)", "query": { "q": "AI engineer" } },
+        { "id": "ml-engineer", "name": "Arbetsförmedlingen (machine learning engineer)", "query": { "q": "machine learning engineer" } }
+      ],
+      "itemsPath": "hits",
+      "fields": {
+        "id": "id",
+        "title": "headline",
+        "company": ["employer.name", "employer.workplace"],
+        "url": "webpage_url",
+        "applyUrl": ["application_details.url", "webpage_url"],
+        "description": ["description.text_formatted", "description.text"],
+        "location": ["workplace_address.municipality", "workplace_address.city", "workplace_address.region"],
+        "country": "workplace_address.country",
+        "postedAt": "publication_date",
+        "employmentType": "working_hours_type.label"
+      }
+    },
+    {
+      "id": "arbeitnow-more",
+      "name": "Arbeitnow",
+      "type": "rest-json",
+      "enabled": true,
+      "url": "https://www.arbeitnow.com/api/job-board-api",
+      "minIntervalMinutes": 180,
+      "attribution": "Jobs via Arbeitnow (https://www.arbeitnow.com)",
+      "terms": "Older pages (2 and 3) of the same Arbeitnow API as the 'arbeitnow' feed, which only reads page 1. No key needed.",
+      "instances": [
+        { "id": "page-2", "name": "Arbeitnow (page 2)", "query": { "page": 2 } },
+        { "id": "page-3", "name": "Arbeitnow (page 3)", "query": { "page": 3 } }
+      ],
+      "itemsPath": "data",
+      "fields": {
+        "id": "slug",
+        "title": "title",
+        "company": "company_name",
+        "url": "url",
+        "applyUrl": "url",
+        "description": "description",
+        "location": "location",
+        "postedAt": "created_at",
+        "employmentType": "job_types",
+        "workMode": "remote"
       }
     },
     {
@@ -276,15 +338,54 @@
       }
     },
     {
+      "id": "recruitee",
+      "name": "Recruitee",
+      "type": "rest-json",
+      "enabled": true,
+      "url": "https://{company}.recruitee.com/api/offers/",
+      "minIntervalMinutes": 180,
+      "attribution": "Posted on the company's Recruitee job board",
+      "terms": "Recruitee's public offers API (<company>.recruitee.com/api/offers/). Add a company by adding an instance with its Recruitee subdomain, or let 'npm run discover:boards' add them. The field names for location and work mode are from memory: if a sync shows jobs found but all filtered by region, compare with the response at that URL.",
+      "instances": [{ "id": "bunq", "company": "Bunq", "vars": { "company": "bunq" } }],
+      "itemsPath": "offers",
+      "fields": {
+        "id": "id",
+        "title": "title",
+        "company": "company_name",
+        "url": ["careers_url", "url"],
+        "applyUrl": ["careers_apply_url", "careers_url"],
+        "description": ["description", "requirements"],
+        "location": ["location", "city"],
+        "country": "country",
+        "postedAt": ["published_at", "created_at"],
+        "employmentType": "employment_type_code",
+        "workMode": "remote"
+      }
+    },
+    {
+      "id": "smartrecruiters",
+      "name": "SmartRecruiters",
+      "type": "rest-json",
+      "adapter": "smartrecruiters",
+      "enabled": true,
+      "url": "https://api.smartrecruiters.com/v1/companies/{company}/postings",
+      "minIntervalMinutes": 180,
+      "attribution": "Posted on the company's SmartRecruiters job board",
+      "terms": "SmartRecruiters' public postings API. Its list has no job text, so a built-in reader (src/lib/feeds/smartrecruiters.ts) first drops what the list entry already rules out and then fetches the text of at most 40 new jobs per company and sync. Add a company by adding an instance with its SmartRecruiters company id (capitals matter in some ids), or let 'npm run discover:boards' add them. The 'fields' below are not used by this reader.",
+      "instances": [{ "id": "wise", "company": "Wise", "vars": { "company": "wise" } }],
+      "itemsPath": "content",
+      "fields": { "id": "id", "title": "name" }
+    },
+    {
       "id": "greenhouse",
       "name": "Greenhouse",
       "type": "rest-json",
-      "enabled": false,
+      "enabled": true,
       "url": "https://boards-api.greenhouse.io/v1/boards/{board}/jobs",
       "query": { "content": "true" },
       "minIntervalMinutes": 120,
       "attribution": "Posted on the company's Greenhouse job board",
-      "terms": "Greenhouse's public Job Board API. Disabled until you add companies: put each company's board token (the last part of boards.greenhouse.io/<token>) in an instance, set the company name, and enable the feed.",
+      "terms": "Greenhouse's public Job Board API. Enabled with GitLab; add more companies by putting each company's board token (the last part of boards.greenhouse.io/<token>) in an instance, set the company name, and enable the feed.",
       "instances": [{ "id": "gitlab", "company": "GitLab", "vars": { "board": "gitlab" } }],
       "itemsPath": "jobs",
       "fields": {
