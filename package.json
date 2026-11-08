@@ -22,6 +22,7 @@
     "db:status": "prisma migrate status",
     "db:seed": "tsx prisma/seed.ts",
     "db:prune-geo": "tsx prisma/prune-geo.ts",
+    "discover:boards": "node scripts/discover-boards.mjs",
     "verify": "npm run db:validate && npm run db:status && npm run typecheck && npm run test && npm run build"
   },
   "dependencies": {

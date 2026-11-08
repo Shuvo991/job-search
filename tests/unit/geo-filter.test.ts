@@ -9,19 +9,19 @@ const keep = (workMode: string, location: string | undefined, extra: Record<stri
 
 describe("on-site, hybrid and unknown work modes need a European place", () => {
   it.each([
-    ["ONSITE", "Stockholm"],
+    ["ONSITE", "Stockholm", undefined],
     ["HYBRID", "Göteborg", "Sverige"],
-    ["UNKNOWN", "London"],
-    ["UNKNOWN", "United Kingdom, London"],
-    ["UNKNOWN", "Zilch UK"],
-    ["HYBRID", "Berlin; Chemnitz, Sachsen; Dresden, Sachsen"],
-    ["UNKNOWN", "Paris, France"],
+    ["UNKNOWN", "London", undefined],
+    ["UNKNOWN", "United Kingdom, London", undefined],
+    ["UNKNOWN", "Zilch UK", undefined],
+    ["HYBRID", "Berlin; Chemnitz, Sachsen; Dresden, Sachsen", undefined],
+    ["UNKNOWN", "Paris, France", undefined],
     ["UNKNOWN", undefined, "Danmark"],
     ["UNKNOWN", undefined, "Schweiz"],
-    ["UNKNOWN", "Europe"],
-    ["HYBRID", "Frankfurt am Main"],
-    ["ONSITE", "Wien"],
-    ["UNKNOWN", "Kraków"],
+    ["UNKNOWN", "Europe", undefined],
+    ["HYBRID", "Frankfurt am Main", undefined],
+    ["ONSITE", "Wien", undefined],
+    ["UNKNOWN", "Kraków", undefined],
   ])("keeps %s in %s %s", (workMode, location, country) => {
     expect(evaluateGeo({ workMode: workMode as string, location, country })).toMatchObject({ accepted: true, basis: "europe" });
   });

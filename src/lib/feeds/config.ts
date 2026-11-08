@@ -2,6 +2,7 @@
  * Loads config/job-feeds.json, validates it and expands feeds that have `instances` (one feed per
  * company / query variant) into a flat list of ready-to-run feeds.
  */
+import boardsJson from "../../../config/company-boards.json";
 import feedsJson from "../../../config/job-feeds.json";
 import {
   feedConfigSchema,
@@ -10,6 +11,7 @@ import {
   type FeedFields,
   type FeedSettings,
 } from "@/schemas/feed";
+import { mergeCompanyBoards } from "@/lib/feeds/company-boards";
 import { stripCommentKeys } from "@/lib/strip-comments";
 import { parseWith } from "@/lib/validation";
 
@@ -40,6 +42,8 @@ export interface ResolvedFeed {
   fields: FeedFields;
   /** rest-json only */
   itemsPath: string;
+  /** rest-json only: a source read by its own multi-request reader instead of one download. */
+  adapter?: "smartrecruiters" | undefined;
   /** rss only */
   titleCompanySeparator: string | undefined;
 }
@@ -102,6 +106,7 @@ function resolveFeed(feed: FeedDefinition): ResolvedFeed[] {
     company: company ?? feed.defaults.company,
     fields: feed.fields,
     itemsPath: feed.type === "rest-json" ? feed.itemsPath : "",
+    adapter: feed.type === "rest-json" ? feed.adapter : undefined,
     titleCompanySeparator: feed.type === "rss" ? feed.titleCompanySeparator : undefined,
   });
 
@@ -142,8 +147,8 @@ export function parseFeedConfig(raw: unknown): LoadedFeedConfig {
 
 let cached: LoadedFeedConfig | undefined;
 
-/** The bundled config/job-feeds.json, validated once per process. */
+/** config/job-feeds.json plus the company boards in config/company-boards.json, validated once per process. */
 export function getFeedConfig(): LoadedFeedConfig {
-  cached ??= parseFeedConfig(feedsJson);
+  cached ??= parseFeedConfig(mergeCompanyBoards(feedsJson, boardsJson));
   return cached;
 }
