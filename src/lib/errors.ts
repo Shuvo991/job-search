@@ -60,6 +60,13 @@ export class UnsupportedMediaTypeError extends AppError {
   }
 }
 
+/** The request was well-formed but its content cannot be processed (unreadable or empty document). */
+export class UnprocessableEntityError extends AppError {
+  constructor(message = "Unprocessable entity", details?: unknown, cause?: unknown) {
+    super(422, "UNPROCESSABLE_ENTITY", message, { details, cause });
+  }
+}
+
 export class ServiceUnavailableError extends AppError {
   constructor(message = "Service unavailable", cause?: unknown) {
     super(503, "SERVICE_UNAVAILABLE", message, { cause });
