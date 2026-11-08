@@ -33,6 +33,7 @@ export interface JobView {
   sourceName: string;
   sourceUrl: string | null;
   applyUrl: string | null;
+  attribution: string | null;
   postedAt: Date | null;
   createdAt: Date;
   isActive: boolean;
@@ -89,6 +90,7 @@ export function toJobView(row: JobRow): JobView {
     sourceName: row.sourceName,
     sourceUrl: row.sourceUrl,
     applyUrl: row.applyUrl,
+    attribution: row.attribution,
     postedAt: row.postedAt,
     createdAt: row.createdAt,
     isActive: row.isActive,
@@ -101,7 +103,10 @@ function toListItem(row: JobRow): JobListItem {
 }
 
 /** Prisma `create` data for a validated job. Exported so the seed script uses the same mapping. */
-export function toCreateData(input: CreateJobInput): Prisma.JobCreateInput {
+export function toCreateData(
+  input: CreateJobInput,
+  dedupeHash: string = computeDedupeHash(input),
+): Prisma.JobCreateInput {
   return {
     title: input.title,
     company: input.company,
@@ -121,9 +126,10 @@ export function toCreateData(input: CreateJobInput): Prisma.JobCreateInput {
     sourceName: input.sourceName,
     sourceUrl: input.sourceUrl ?? null,
     applyUrl: input.applyUrl ?? null,
+    attribution: input.attribution ?? null,
     externalId: input.externalId ?? null,
     postedAt: input.postedAt ?? null,
-    dedupeHash: computeDedupeHash(input),
+    dedupeHash,
   };
 }
 
@@ -251,4 +257,42 @@ export async function upsertJobByFingerprint(input: CreateJobInput): Promise<{ j
   const existing = await prisma.job.findUnique({ where: { dedupeHash: data.dedupeHash } });
   if (existing) return { job: toJobView(existing), created: false };
   return { job: toJobView(await prisma.job.create({ data })), created: true };
+}
+
+// ---------------------------------------------------------------------------
+// Feed ingestion
+// ---------------------------------------------------------------------------
+
+const SQLITE_IN_CHUNK = 400;
+
+/** Which of these fingerprints are already stored (one parameterized query per chunk). */
+export async function findExistingDedupeHashes(hashes: string[]): Promise<Set<string>> {
+  const found = new Set<string>();
+  for (let start = 0; start < hashes.length; start += SQLITE_IN_CHUNK) {
+    const chunk = hashes.slice(start, start + SQLITE_IN_CHUNK);
+    const rows = await prisma.job.findMany({ where: { dedupeHash: { in: chunk } }, select: { dedupeHash: true } });
+    for (const row of rows) found.add(row.dedupeHash);
+  }
+  return found;
+}
+
+function isUniqueViolation(error: unknown): boolean {
+  return typeof error === "object" && error !== null && (error as { code?: unknown }).code === "P2002";
+}
+
+/**
+ * Store an imported job under its feed fingerprint. A fingerprint (or source + external id) that
+ * already exists is not an error: another sync, or a concurrent request, got there first.
+ */
+export async function insertImportedJob(
+  input: CreateJobInput,
+  dedupeHash: string,
+): Promise<"created" | "duplicate"> {
+  try {
+    await prisma.job.create({ data: toCreateData(input, dedupeHash) });
+    return "created";
+  } catch (error) {
+    if (isUniqueViolation(error)) return "duplicate";
+    throw error;
+  }
 }

@@ -69,6 +69,7 @@ export default async function JobPage({ params }: Props) {
           ) : (
             job.sourceName
           )}
+          {job.attribution ? <span> · {job.attribution}</span> : null}
         </p>
         {applyHref ? (
           <p>

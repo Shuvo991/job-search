@@ -118,6 +118,8 @@ model Job {
   sourceName     String
   sourceUrl      String?
   applyUrl       String?
+  // Credit line a feed requires us to show (e.g. "Jobs via Jobicy"). Null for manual jobs.
+  attribution    String?
   externalId     String?
   dedupeHash     String         @unique
   postedAt       DateTime?
@@ -236,4 +238,27 @@ model GeneratedDocument {
   @@unique([applicationId, type, version])
   @@index([jobId, type])
   @@map("generated_documents")
+}
+
+// One row per feed per sync attempt: powers per-feed rate limiting, the "last sync" display and
+// the error log. Rows are append-only; old ones can be deleted freely.
+model FeedSyncLog {
+  id         String   @id @default(cuid())
+  feedId     String
+  feedName   String
+  // "SUCCESS" or "ERROR" (kept as text so adding a state never needs an enum migration)
+  status     String
+  startedAt  DateTime
+  finishedAt DateTime
+  durationMs Int
+  fetched    Int      @default(0)
+  imported   Int      @default(0)
+  duplicates Int      @default(0)
+  filtered   Int      @default(0)
+  invalid    Int      @default(0)
+  error      String?
+  createdAt  DateTime @default(now())
+
+  @@index([feedId, finishedAt])
+  @@map("feed_sync_logs")
 }

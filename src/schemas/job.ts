@@ -28,6 +28,8 @@ export const createJobSchema = z
     sourceName: shortText(100),
     sourceUrl: httpUrlSchema.optional(),
     applyUrl: httpUrlSchema.optional(),
+    /** Credit line the job's source requires us to show (set for imported jobs only). */
+    attribution: shortText(300).optional(),
     externalId: shortText(200).optional(),
     postedAt: z.coerce.date().optional(),
   })
