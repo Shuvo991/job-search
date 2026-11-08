@@ -1,0 +1,1330 @@
+{
+  "version": "2026.11.8",
+  "_readme": "Rules for the location gate (src/lib/geo-filter.ts). The board keeps (1) jobs located in Europe and (2) remote jobs that candidates from anywhere can apply for. Everything is matched ignoring case and accents, on whole words ('Göteborg' = 'goteborg'). 'policy' switches behaviour; the lists are free to edit. Turkey, Russia and Belarus are deliberately not in the Europe lists (add them if you want them).",
+  "policy": {
+    "_remoteTiedToEurope": "keep = a remote job restricted to Europe (or to a European country, or a region list that includes Europe, like 'EMEA, USA, Canada') counts as a European job. reject = remote jobs are only kept when open worldwide.",
+    "remoteTiedToEurope": "keep",
+    "_unspecifiedRemote": "What to do with a remote job that names no place at all. reject = drop it, unless its feed says blank means worldwide (worldwideWhenNoLocation) or the description clearly says worldwide.",
+    "unspecifiedRemote": "reject",
+    "_checkDescription": "Look for 'must be based in the United States' style limits in the description of remote jobs that would otherwise be kept as worldwide.",
+    "checkDescription": true
+  },
+  "europe": {
+    "countries": [
+      "sweden",
+      "sverige",
+      "denmark",
+      "danmark",
+      "norway",
+      "norge",
+      "noreg",
+      "finland",
+      "suomi",
+      "iceland",
+      "island",
+      "germany",
+      "deutschland",
+      "france",
+      "ireland",
+      "eire",
+      "united kingdom",
+      "uk",
+      "u k",
+      "great britain",
+      "britain",
+      "england",
+      "scotland",
+      "wales",
+      "northern ireland",
+      "netherlands",
+      "nederland",
+      "holland",
+      "the netherlands",
+      "belgium",
+      "belgie",
+      "belgique",
+      "luxembourg",
+      "switzerland",
+      "schweiz",
+      "suisse",
+      "svizzera",
+      "austria",
+      "osterreich",
+      "spain",
+      "espana",
+      "italy",
+      "italia",
+      "portugal",
+      "poland",
+      "polska",
+      "czechia",
+      "czech republic",
+      "ceska republika",
+      "slovakia",
+      "slovensko",
+      "hungary",
+      "magyarorszag",
+      "romania",
+      "bulgaria",
+      "greece",
+      "ellada",
+      "croatia",
+      "hrvatska",
+      "slovenia",
+      "slovenija",
+      "estonia",
+      "eesti",
+      "latvia",
+      "latvija",
+      "lithuania",
+      "lietuva",
+      "malta",
+      "cyprus",
+      "serbia",
+      "albania",
+      "montenegro",
+      "kosovo",
+      "north macedonia",
+      "bosnia and herzegovina",
+      "bosnia",
+      "moldova",
+      "ukraine",
+      "liechtenstein",
+      "monaco",
+      "andorra",
+      "san marino"
+    ],
+    "regions": [
+      "europe",
+      "european union",
+      "eu",
+      "e u",
+      "eea",
+      "emea",
+      "nordics",
+      "nordic",
+      "scandinavia",
+      "dach",
+      "benelux",
+      "baltics",
+      "baltic states",
+      "cet",
+      "cest"
+    ],
+    "cities": [
+      "aalborg",
+      "aarhus",
+      "amsterdam",
+      "antwerp",
+      "athens",
+      "barcelona",
+      "basel",
+      "belfast",
+      "belgrade",
+      "bergen",
+      "berlin",
+      "bern",
+      "bilbao",
+      "birmingham",
+      "bologna",
+      "bonn",
+      "boras",
+      "bordeaux",
+      "braga",
+      "bratislava",
+      "bremen",
+      "brighton",
+      "bristol",
+      "brno",
+      "brussels",
+      "bruxelles",
+      "bucharest",
+      "budapest",
+      "cambridge",
+      "cardiff",
+      "chemnitz",
+      "chisinau",
+      "cluj",
+      "cluj napoca",
+      "cologne",
+      "copenhagen",
+      "cork",
+      "delft",
+      "den haag",
+      "dortmund",
+      "dresden",
+      "dublin",
+      "dusseldorf",
+      "edinburgh",
+      "eindhoven",
+      "eskilstuna",
+      "espoo",
+      "exeter",
+      "firenze",
+      "florence",
+      "frankfurt",
+      "frankfurt am main",
+      "freiburg",
+      "galway",
+      "gavle",
+      "gdansk",
+      "geneva",
+      "geneve",
+      "ghent",
+      "glasgow",
+      "goteborg",
+      "gothenburg",
+      "graz",
+      "grenoble",
+      "groningen",
+      "halmstad",
+      "hamburg",
+      "hannover",
+      "heidelberg",
+      "helsingborg",
+      "helsinki",
+      "iasi",
+      "innsbruck",
+      "jonkoping",
+      "kalmar",
+      "karlskrona",
+      "karlsruhe",
+      "karlstad",
+      "katowice",
+      "kaunas",
+      "kiev",
+      "kista",
+      "kobenhavn",
+      "koln",
+      "kosice",
+      "krakow",
+      "kyiv",
+      "lausanne",
+      "leeds",
+      "leicester",
+      "leiden",
+      "leipzig",
+      "leuven",
+      "lidingo",
+      "lille",
+      "limassol",
+      "limerick",
+      "linkoping",
+      "linz",
+      "lisboa",
+      "lisbon",
+      "liverpool",
+      "ljubljana",
+      "lodz",
+      "london",
+      "lugano",
+      "lulea",
+      "lund",
+      "lviv",
+      "lyon",
+      "madrid",
+      "malaga",
+      "malmo",
+      "manchester",
+      "mannheim",
+      "marseille",
+      "milan",
+      "milano",
+      "montpellier",
+      "munchen",
+      "munich",
+      "nacka",
+      "nantes",
+      "naples",
+      "napoli",
+      "newcastle",
+      "nicosia",
+      "norrkoping",
+      "nottingham",
+      "nuremberg",
+      "nurnberg",
+      "odense",
+      "orebro",
+      "oslo",
+      "ostersund",
+      "oulu",
+      "oxford",
+      "paris",
+      "plovdiv",
+      "podgorica",
+      "porto",
+      "potsdam",
+      "poznan",
+      "prague",
+      "praha",
+      "pristina",
+      "reading",
+      "rennes",
+      "reykjavik",
+      "riga",
+      "roma",
+      "rome",
+      "rotterdam",
+      "salzburg",
+      "sarajevo",
+      "sevilla",
+      "seville",
+      "sheffield",
+      "skopje",
+      "sodertalje",
+      "sofia",
+      "solna",
+      "sophia antipolis",
+      "southampton",
+      "stavanger",
+      "stockholm",
+      "strasbourg",
+      "stuttgart",
+      "sundbyberg",
+      "sundsvall",
+      "taby",
+      "tallinn",
+      "tampere",
+      "tartu",
+      "the hague",
+      "thessaloniki",
+      "timisoara",
+      "tirana",
+      "torino",
+      "toulouse",
+      "trondheim",
+      "turin",
+      "turku",
+      "umea",
+      "uppsala",
+      "utrecht",
+      "valencia",
+      "valletta",
+      "varna",
+      "vasteras",
+      "vaxjo",
+      "vienna",
+      "vilnius",
+      "visby",
+      "warsaw",
+      "warszawa",
+      "wien",
+      "wroclaw",
+      "zagreb",
+      "zaragoza",
+      "zug",
+      "zurich"
+    ],
+    "countryGroups": [
+      {
+        "name": "Sweden",
+        "aliases": [
+          "Sverige"
+        ],
+        "cities": [
+          "Stockholm",
+          "Göteborg",
+          "Gothenburg",
+          "Malmö",
+          "Uppsala",
+          "Västerås",
+          "Örebro",
+          "Linköping",
+          "Helsingborg",
+          "Jönköping",
+          "Norrköping",
+          "Lund",
+          "Umeå",
+          "Gävle",
+          "Borås",
+          "Södertälje",
+          "Eskilstuna",
+          "Karlstad",
+          "Solna",
+          "Sundbyberg",
+          "Kista",
+          "Lidingö",
+          "Täby",
+          "Nacka",
+          "Halmstad",
+          "Växjö",
+          "Kalmar",
+          "Karlskrona",
+          "Sundsvall",
+          "Luleå",
+          "Östersund",
+          "Visby"
+        ],
+        "cityVariants": [
+          [
+            "Göteborg",
+            "Gothenburg"
+          ]
+        ]
+      },
+      {
+        "name": "Denmark",
+        "aliases": [
+          "Danmark"
+        ],
+        "cities": [
+          "Copenhagen",
+          "København",
+          "Aarhus",
+          "Odense",
+          "Aalborg"
+        ],
+        "cityVariants": [
+          [
+            "Copenhagen",
+            "København"
+          ]
+        ]
+      },
+      {
+        "name": "Norway",
+        "aliases": [
+          "Norge",
+          "Noreg"
+        ],
+        "cities": [
+          "Oslo",
+          "Bergen",
+          "Trondheim",
+          "Stavanger"
+        ]
+      },
+      {
+        "name": "Finland",
+        "aliases": [
+          "Suomi"
+        ],
+        "cities": [
+          "Helsinki",
+          "Espoo",
+          "Tampere",
+          "Turku",
+          "Oulu"
+        ]
+      },
+      {
+        "name": "Iceland",
+        "aliases": [
+          "Island"
+        ],
+        "cities": [
+          "Reykjavik"
+        ]
+      },
+      {
+        "name": "United Kingdom",
+        "aliases": [
+          "UK",
+          "England",
+          "Scotland",
+          "Wales",
+          "Northern Ireland",
+          "Great Britain",
+          "Britain"
+        ],
+        "cities": [
+          "London",
+          "Manchester",
+          "Birmingham",
+          "Leeds",
+          "Bristol",
+          "Edinburgh",
+          "Glasgow",
+          "Cambridge",
+          "Oxford",
+          "Liverpool",
+          "Sheffield",
+          "Newcastle",
+          "Nottingham",
+          "Cardiff",
+          "Belfast",
+          "Reading",
+          "Brighton",
+          "Southampton",
+          "Leicester",
+          "Exeter"
+        ]
+      },
+      {
+        "name": "Ireland",
+        "aliases": [
+          "Eire"
+        ],
+        "cities": [
+          "Dublin",
+          "Cork",
+          "Galway",
+          "Limerick"
+        ]
+      },
+      {
+        "name": "Netherlands",
+        "aliases": [
+          "Nederland",
+          "Holland"
+        ],
+        "cities": [
+          "Amsterdam",
+          "Rotterdam",
+          "Utrecht",
+          "Eindhoven",
+          "The Hague",
+          "Den Haag",
+          "Delft",
+          "Groningen",
+          "Leiden"
+        ],
+        "cityVariants": [
+          [
+            "The Hague",
+            "Den Haag"
+          ]
+        ]
+      },
+      {
+        "name": "Belgium",
+        "aliases": [
+          "België",
+          "Belgique"
+        ],
+        "cities": [
+          "Brussels",
+          "Bruxelles",
+          "Antwerp",
+          "Ghent",
+          "Leuven"
+        ],
+        "cityVariants": [
+          [
+            "Brussels",
+            "Bruxelles"
+          ]
+        ]
+      },
+      {
+        "name": "Luxembourg",
+        "aliases": [],
+        "cities": []
+      },
+      {
+        "name": "France",
+        "aliases": [],
+        "cities": [
+          "Paris",
+          "Lyon",
+          "Marseille",
+          "Toulouse",
+          "Nantes",
+          "Bordeaux",
+          "Lille",
+          "Strasbourg",
+          "Montpellier",
+          "Rennes",
+          "Grenoble",
+          "Sophia Antipolis"
+        ]
+      },
+      {
+        "name": "Germany",
+        "aliases": [
+          "Deutschland"
+        ],
+        "cities": [
+          "Berlin",
+          "Munich",
+          "München",
+          "Hamburg",
+          "Frankfurt",
+          "Frankfurt am Main",
+          "Cologne",
+          "Köln",
+          "Düsseldorf",
+          "Stuttgart",
+          "Leipzig",
+          "Dresden",
+          "Hannover",
+          "Nuremberg",
+          "Nürnberg",
+          "Bremen",
+          "Dortmund",
+          "Bonn",
+          "Karlsruhe",
+          "Mannheim",
+          "Chemnitz",
+          "Heidelberg",
+          "Potsdam",
+          "Freiburg"
+        ],
+        "cityVariants": [
+          [
+            "Munich",
+            "München"
+          ],
+          [
+            "Cologne",
+            "Köln"
+          ],
+          [
+            "Frankfurt",
+            "Frankfurt am Main"
+          ],
+          [
+            "Nuremberg",
+            "Nürnberg"
+          ]
+        ]
+      },
+      {
+        "name": "Switzerland",
+        "aliases": [
+          "Schweiz",
+          "Suisse",
+          "Svizzera"
+        ],
+        "cities": [
+          "Zurich",
+          "Zürich",
+          "Geneva",
+          "Genève",
+          "Basel",
+          "Bern",
+          "Lausanne",
+          "Lugano",
+          "Zug"
+        ],
+        "cityVariants": [
+          [
+            "Zurich",
+            "Zürich"
+          ],
+          [
+            "Geneva",
+            "Genève"
+          ]
+        ]
+      },
+      {
+        "name": "Austria",
+        "aliases": [
+          "Österreich"
+        ],
+        "cities": [
+          "Vienna",
+          "Wien",
+          "Graz",
+          "Linz",
+          "Salzburg",
+          "Innsbruck"
+        ],
+        "cityVariants": [
+          [
+            "Vienna",
+            "Wien"
+          ]
+        ]
+      },
+      {
+        "name": "Spain",
+        "aliases": [
+          "España"
+        ],
+        "cities": [
+          "Madrid",
+          "Barcelona",
+          "Valencia",
+          "Seville",
+          "Sevilla",
+          "Malaga",
+          "Málaga",
+          "Bilbao",
+          "Zaragoza"
+        ],
+        "cityVariants": [
+          [
+            "Seville",
+            "Sevilla"
+          ],
+          [
+            "Malaga",
+            "Málaga"
+          ]
+        ]
+      },
+      {
+        "name": "Portugal",
+        "aliases": [],
+        "cities": [
+          "Lisbon",
+          "Lisboa",
+          "Porto",
+          "Braga"
+        ],
+        "cityVariants": [
+          [
+            "Lisbon",
+            "Lisboa"
+          ]
+        ]
+      },
+      {
+        "name": "Italy",
+        "aliases": [
+          "Italia"
+        ],
+        "cities": [
+          "Rome",
+          "Roma",
+          "Milan",
+          "Milano",
+          "Turin",
+          "Torino",
+          "Bologna",
+          "Florence",
+          "Firenze",
+          "Naples",
+          "Napoli"
+        ],
+        "cityVariants": [
+          [
+            "Rome",
+            "Roma"
+          ],
+          [
+            "Milan",
+            "Milano"
+          ],
+          [
+            "Turin",
+            "Torino"
+          ],
+          [
+            "Florence",
+            "Firenze"
+          ],
+          [
+            "Naples",
+            "Napoli"
+          ]
+        ]
+      },
+      {
+        "name": "Greece",
+        "aliases": [
+          "Ellada"
+        ],
+        "cities": [
+          "Athens",
+          "Thessaloniki"
+        ]
+      },
+      {
+        "name": "Poland",
+        "aliases": [
+          "Polska"
+        ],
+        "cities": [
+          "Warsaw",
+          "Warszawa",
+          "Kraków",
+          "Krakow",
+          "Wrocław",
+          "Wroclaw",
+          "Gdańsk",
+          "Gdansk",
+          "Poznań",
+          "Poznan",
+          "Łódź",
+          "Katowice"
+        ],
+        "cityVariants": [
+          [
+            "Warsaw",
+            "Warszawa"
+          ],
+          [
+            "Krakow",
+            "Kraków"
+          ],
+          [
+            "Wroclaw",
+            "Wrocław"
+          ],
+          [
+            "Gdansk",
+            "Gdańsk"
+          ],
+          [
+            "Poznan",
+            "Poznań"
+          ]
+        ]
+      },
+      {
+        "name": "Czechia",
+        "aliases": [
+          "Czech Republic"
+        ],
+        "cities": [
+          "Prague",
+          "Praha",
+          "Brno"
+        ],
+        "cityVariants": [
+          [
+            "Prague",
+            "Praha"
+          ]
+        ]
+      },
+      {
+        "name": "Slovakia",
+        "aliases": [],
+        "cities": [
+          "Bratislava",
+          "Košice"
+        ],
+        "cityVariants": [
+          [
+            "Kosice",
+            "Košice"
+          ]
+        ]
+      },
+      {
+        "name": "Hungary",
+        "aliases": [],
+        "cities": [
+          "Budapest"
+        ]
+      },
+      {
+        "name": "Romania",
+        "aliases": [],
+        "cities": [
+          "Bucharest",
+          "Cluj",
+          "Cluj-Napoca",
+          "Timisoara",
+          "Iași",
+          "Iasi"
+        ],
+        "cityVariants": [
+          [
+            "Cluj-Napoca",
+            "Cluj"
+          ],
+          [
+            "Iasi",
+            "Iași"
+          ]
+        ]
+      },
+      {
+        "name": "Bulgaria",
+        "aliases": [],
+        "cities": [
+          "Sofia",
+          "Plovdiv",
+          "Varna"
+        ]
+      },
+      {
+        "name": "Croatia",
+        "aliases": [
+          "Hrvatska"
+        ],
+        "cities": [
+          "Zagreb"
+        ]
+      },
+      {
+        "name": "Slovenia",
+        "aliases": [],
+        "cities": [
+          "Ljubljana"
+        ]
+      },
+      {
+        "name": "Serbia",
+        "aliases": [],
+        "cities": [
+          "Belgrade"
+        ]
+      },
+      {
+        "name": "Estonia",
+        "aliases": [
+          "Eesti"
+        ],
+        "cities": [
+          "Tallinn",
+          "Tartu"
+        ]
+      },
+      {
+        "name": "Latvia",
+        "aliases": [],
+        "cities": [
+          "Riga"
+        ]
+      },
+      {
+        "name": "Lithuania",
+        "aliases": [],
+        "cities": [
+          "Vilnius",
+          "Kaunas"
+        ]
+      },
+      {
+        "name": "Malta",
+        "aliases": [],
+        "cities": [
+          "Valletta"
+        ]
+      },
+      {
+        "name": "Cyprus",
+        "aliases": [],
+        "cities": [
+          "Nicosia",
+          "Limassol"
+        ]
+      },
+      {
+        "name": "Ukraine",
+        "aliases": [],
+        "cities": [
+          "Kyiv",
+          "Kiev",
+          "Lviv"
+        ],
+        "cityVariants": [
+          [
+            "Kyiv",
+            "Kiev"
+          ]
+        ]
+      },
+      {
+        "name": "Albania",
+        "aliases": [],
+        "cities": [
+          "Tirana"
+        ]
+      }
+    ],
+    "_countryGroups": "Used by the board's Location filter: typing or picking a country finds jobs whose country field or city belongs to it (Sweden also finds 'Sverige' and Stockholm). Cities here must also be in europe.cities (a test checks this; accents don't matter).",
+    "regionSearchTerms": {
+      "Europe": [
+        "Europe",
+        "European",
+        "EMEA",
+        "Nordics",
+        "Scandinavia",
+        "Benelux",
+        "DACH",
+        "Baltics"
+      ],
+      "Worldwide": [
+        "Worldwide",
+        "Anywhere",
+        "Global"
+      ]
+    },
+    "_cityVariants": "Different spellings of one city; the first spelling is the name shown in the City filter."
+  },
+  "outsideEurope": {
+    "countries": [
+      "united states",
+      "united states of america",
+      "usa",
+      "us",
+      "u s",
+      "u s a",
+      "america",
+      "americas",
+      "north america",
+      "south america",
+      "latin america",
+      "latam",
+      "canada",
+      "mexico",
+      "brazil",
+      "brasil",
+      "argentina",
+      "chile",
+      "colombia",
+      "peru",
+      "costa rica",
+      "india",
+      "pakistan",
+      "bangladesh",
+      "sri lanka",
+      "philippines",
+      "indonesia",
+      "malaysia",
+      "singapore",
+      "vietnam",
+      "thailand",
+      "china",
+      "japan",
+      "korea",
+      "south korea",
+      "taiwan",
+      "hong kong",
+      "australia",
+      "new zealand",
+      "apac",
+      "asia",
+      "oceania",
+      "africa",
+      "nigeria",
+      "kenya",
+      "south africa",
+      "egypt",
+      "ghana",
+      "israel",
+      "uae",
+      "united arab emirates",
+      "saudi arabia",
+      "qatar",
+      "middle east",
+      "mena",
+      "turkey",
+      "turkiye",
+      "russia",
+      "belarus"
+    ],
+    "regionsAndStates": [
+      "alabama",
+      "alaska",
+      "arizona",
+      "arkansas",
+      "california",
+      "colorado",
+      "connecticut",
+      "delaware",
+      "florida",
+      "hawaii",
+      "idaho",
+      "illinois",
+      "indiana",
+      "iowa",
+      "kansas",
+      "kentucky",
+      "louisiana",
+      "maine",
+      "maryland",
+      "massachusetts",
+      "michigan",
+      "minnesota",
+      "mississippi",
+      "missouri",
+      "montana",
+      "nebraska",
+      "nevada",
+      "new hampshire",
+      "new jersey",
+      "new mexico",
+      "north carolina",
+      "north dakota",
+      "ohio",
+      "oklahoma",
+      "oregon",
+      "pennsylvania",
+      "rhode island",
+      "south carolina",
+      "south dakota",
+      "tennessee",
+      "texas",
+      "utah",
+      "vermont",
+      "virginia",
+      "west virginia",
+      "wisconsin",
+      "wyoming",
+      "ontario",
+      "british columbia",
+      "quebec",
+      "alberta",
+      "manitoba",
+      "saskatchewan",
+      "nova scotia",
+      "new brunswick",
+      "new south wales",
+      "queensland"
+    ],
+    "cities": [
+      "new york",
+      "new york city",
+      "nyc",
+      "san francisco",
+      "los angeles",
+      "boston",
+      "seattle",
+      "austin",
+      "chicago",
+      "denver",
+      "palo alto",
+      "mountain view",
+      "san jose",
+      "san diego",
+      "atlanta",
+      "miami",
+      "dallas",
+      "houston",
+      "washington",
+      "washington dc",
+      "portland",
+      "toronto",
+      "vancouver",
+      "montreal",
+      "ottawa",
+      "calgary",
+      "sydney",
+      "melbourne",
+      "brisbane",
+      "auckland",
+      "seoul",
+      "tokyo",
+      "bangalore",
+      "bengaluru",
+      "mumbai",
+      "delhi",
+      "hyderabad",
+      "pune",
+      "chennai",
+      "tel aviv",
+      "sao paulo",
+      "buenos aires",
+      "mexico city",
+      "bogota",
+      "lagos",
+      "nairobi",
+      "cape town",
+      "dubai",
+      "manila",
+      "jakarta",
+      "kuala lumpur",
+      "bangkok",
+      "ho chi minh city",
+      "hanoi",
+      "shanghai",
+      "beijing",
+      "shenzhen"
+    ],
+    "stateCodes": [
+      "AL",
+      "AK",
+      "AZ",
+      "AR",
+      "CA",
+      "CO",
+      "CT",
+      "DC",
+      "FL",
+      "GA",
+      "HI",
+      "ID",
+      "IL",
+      "IA",
+      "KS",
+      "KY",
+      "LA",
+      "MA",
+      "MI",
+      "MN",
+      "MS",
+      "MO",
+      "NE",
+      "NV",
+      "NH",
+      "NJ",
+      "NM",
+      "NY",
+      "NC",
+      "ND",
+      "OH",
+      "OK",
+      "OR",
+      "PA",
+      "RI",
+      "SC",
+      "SD",
+      "TN",
+      "TX",
+      "UT",
+      "VT",
+      "WA",
+      "WV",
+      "WI",
+      "WY",
+      "AB",
+      "BC",
+      "MB",
+      "NB",
+      "NL",
+      "NS",
+      "NT",
+      "NU",
+      "ON",
+      "PE",
+      "QC",
+      "YT"
+    ]
+  },
+  "worldwide": {
+    "locationPhrases": [
+      "worldwide",
+      "world wide",
+      "anywhere",
+      "anywhere in the world",
+      "work from anywhere",
+      "global",
+      "globally",
+      "any location",
+      "all countries",
+      "everywhere"
+    ],
+    "descriptionPhrases": [
+      "work from anywhere",
+      "anywhere in the world",
+      "from anywhere in the world",
+      "candidates from anywhere",
+      "applicants from anywhere",
+      "open to candidates worldwide",
+      "open to applicants worldwide",
+      "hire worldwide",
+      "hiring worldwide",
+      "remote worldwide",
+      "worldwide remote",
+      "fully remote worldwide",
+      "remote anywhere",
+      "work remotely from anywhere",
+      "location independent",
+      "no location restrictions",
+      "no location restriction"
+    ]
+  },
+  "genericWords": [
+    "remote",
+    "remotely",
+    "hybrid",
+    "on site",
+    "onsite",
+    "office",
+    "based",
+    "work from home",
+    "wfh",
+    "hq",
+    "headquarters",
+    "flexible",
+    "fully",
+    "full",
+    "only",
+    "time zone",
+    "time zones",
+    "timezone",
+    "timezones",
+    "the",
+    "in",
+    "or",
+    "and",
+    "of",
+    "from",
+    "within",
+    "job",
+    "position",
+    "telecommute",
+    "home"
+  ],
+  "restrictions": {
+    "_readme": "Remote jobs that would be kept as 'worldwide' are dropped if the description says candidates must live in or be authorised for one non-European place. A lead-in followed by a target matches ('must be located in' + 'the united states'); standalone phrases match as they are. A match is ignored when a European place follows within 60 characters ('United States or Europe').",
+    "leadIns": [
+      "must be located in",
+      "must be based in",
+      "must reside in",
+      "must live in",
+      "must be living in",
+      "must be a resident of",
+      "must be resident in",
+      "must be a citizen of",
+      "must be authorized to work in",
+      "must be authorised to work in",
+      "must be eligible to work in",
+      "must have the right to work in",
+      "authorized to work in",
+      "authorised to work in",
+      "legally authorized to work in",
+      "eligible to work in",
+      "right to work in",
+      "work authorization in",
+      "only open to candidates in",
+      "only considering candidates in",
+      "open only to candidates in",
+      "open only to residents of",
+      "candidates located in",
+      "applicants located in",
+      "candidates based in",
+      "applicants based in",
+      "residents of",
+      "this role is open to candidates in",
+      "this position is open to candidates in",
+      "this role is limited to",
+      "this position is limited to",
+      "hiring in",
+      "remote within",
+      "remote in"
+    ],
+    "targets": [
+      "united states",
+      "united states of america",
+      "usa",
+      "us",
+      "u s",
+      "u s a",
+      "canada",
+      "north america",
+      "latam",
+      "latin america",
+      "apac",
+      "asia",
+      "india",
+      "australia",
+      "new zealand",
+      "brazil",
+      "mexico",
+      "philippines",
+      "africa",
+      "middle east"
+    ],
+    "phrases": [
+      "us citizens only",
+      "us citizen only",
+      "u s citizens only",
+      "us based only",
+      "us based",
+      "u s based",
+      "usa based",
+      "us residents only",
+      "us only",
+      "u s only",
+      "usa only",
+      "canada only",
+      "north america only",
+      "americas only",
+      "apac only",
+      "latam only",
+      "must be a us citizen",
+      "must be a u s citizen",
+      "must be us based",
+      "must be u s based"
+    ]
+  }
+}

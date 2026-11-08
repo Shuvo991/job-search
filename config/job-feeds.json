@@ -1,0 +1,351 @@
+{
+  "version": "2026.11.8",
+  "_readme": "Edit this file to add, remove or tune job sources; no code changes needed. Every URL must be https. 'rest-json' reads a JSON API, 'rss' reads RSS 2.0 or Atom. A feed with 'instances' is expanded once per instance ({company} in the url is replaced by the instance's vars.company). Field paths use dots (employer.name); a list means 'first one that has a value'. Check each source's terms before enabling it; 'terms' records what I found. 'autoSync' syncs in the background while the app is running (set enabled to false to sync only with the button, or set the environment variable AUTO_SYNC=off).",
+  "settings": {
+    "autoSync": { "enabled": true, "startupDelaySeconds": 30, "intervalMinutes": 180 },
+    "userAgent": "job-search-local/1.0 (+https://github.com/Shuvo991/job-search)",
+    "requestTimeoutMs": 15000,
+    "maxResponseBytes": 5000000,
+    "maxRedirects": 3,
+    "concurrency": 3,
+    "maxItemsPerFeed": 200,
+    "failureBackoffMinutes": 5
+  },
+  "feeds": [
+    {
+      "id": "jobtech",
+      "name": "Arbetsförmedlingen (JobTech)",
+      "type": "rest-json",
+      "enabled": true,
+      "url": "https://jobsearch.api.jobtechdev.se/search",
+      "query": { "occupation-field": "apaJ_2ja_LuF", "limit": 100, "sort": "pubdate-desc" },
+      "minIntervalMinutes": 60,
+      "attribution": "Source: Arbetsförmedlingen / JobTech Dev (Platsbanken)",
+      "terms": "Free public API, no key. occupation-field apaJ_2ja_LuF is 'Data/IT'. Most ads are in Swedish and are removed by the language filter; the 'english' instance asks for ads that mention English.",
+      "instances": [
+        { "id": "it", "name": "Arbetsförmedlingen (IT)" },
+        { "id": "english", "name": "Arbetsförmedlingen (IT, English)", "query": { "q": "english" } }
+      ],
+      "itemsPath": "hits",
+      "fields": {
+        "id": "id",
+        "title": "headline",
+        "company": ["employer.name", "employer.workplace"],
+        "url": "webpage_url",
+        "applyUrl": ["application_details.url", "webpage_url"],
+        "description": ["description.text_formatted", "description.text"],
+        "location": ["workplace_address.municipality", "workplace_address.city", "workplace_address.region"],
+        "country": "workplace_address.country",
+        "postedAt": "publication_date",
+        "employmentType": "working_hours_type.label"
+      }
+    },
+    {
+      "id": "jobicy",
+      "name": "Jobicy",
+      "type": "rest-json",
+      "enabled": true,
+      "url": "https://jobicy.com/api/v2/remote-jobs",
+      "query": { "count": 100, "geo": "europe" },
+      "minIntervalMinutes": 240,
+      "attribution": "Jobs via Jobicy (https://jobicy.com)",
+      "terms": "Jobicy asks you to keep the Jobicy job URL as the source and apply link, and to query only a few times a day. Both are done here.",
+      "defaults": { "workMode": "REMOTE" },
+      "itemsPath": "jobs",
+      "fields": {
+        "id": "id",
+        "title": "jobTitle",
+        "company": "companyName",
+        "url": "url",
+        "applyUrl": "url",
+        "description": ["jobDescription", "jobExcerpt"],
+        "location": "jobGeo",
+        "postedAt": "pubDate",
+        "employmentType": "jobType",
+        "salaryMin": ["salaryMin", "annualSalaryMin"],
+        "salaryMax": ["salaryMax", "annualSalaryMax"],
+        "salaryCurrency": "salaryCurrency",
+        "salaryPeriod": "salaryPeriod"
+      }
+    },
+    {
+      "id": "devglobaljobs",
+      "name": "Dev Global Jobs",
+      "type": "rest-json",
+      "enabled": false,
+      "url": "https://devglobaljobs.com/api/v1/jobs",
+      "minIntervalMinutes": 240,
+      "attribution": "Powered by Dev Global Jobs",
+      "terms": "DISABLED: when I checked (2026-11-08) this URL was blocked by the site's robots.txt and I could not see the response format, so the field mapping below is a guess. Get permission or API documentation from the site, fix the mapping, then set enabled to true.",
+      "itemsPath": "jobs",
+      "fields": {
+        "id": ["id", "slug"],
+        "title": ["title", "job_title"],
+        "company": ["company", "company_name", "company.name"],
+        "url": ["url", "link", "apply_url"],
+        "applyUrl": ["apply_url", "url"],
+        "description": ["description", "content"],
+        "location": ["location", "city"],
+        "country": "country",
+        "postedAt": ["posted_at", "published_at", "created_at"]
+      }
+    },
+    {
+      "id": "startup-jobs",
+      "name": "Startup Jobs",
+      "type": "rss",
+      "enabled": true,
+      "url": "https://startup.jobs/feeds/jobs",
+      "minIntervalMinutes": 60,
+      "attribution": "Jobs via Startup Jobs (https://startup.jobs)",
+      "terms": "Public RSS 2.0 feed (ttl 15 minutes). Item titles look like 'Role at Company'; the company is split off the title.",
+      "titleCompanySeparator": " at ",
+      "fields": {
+        "id": ["guid", "link"],
+        "title": "title",
+        "url": ["guid", "link"],
+        "description": ["content:encoded", "description"],
+        "postedAt": "pubDate"
+      }
+    },
+    {
+      "id": "himalayas",
+      "name": "Himalayas",
+      "type": "rss",
+      "enabled": true,
+      "url": "https://himalayas.app/jobs/rss",
+      "minIntervalMinutes": 1440,
+      "attribution": "Jobs via Himalayas (https://himalayas.app)",
+      "terms": "Feed ttl is 24 hours, so it is fetched at most daily. Himalayas' terms say to identify Himalayas as the source with a link, and not to pass jobs on to other job boards or aggregators: fine for your private local board; remove this feed if you ever make the board public.",
+      "defaults": { "workMode": "REMOTE" },
+      "fields": {
+        "id": ["guid", "link"],
+        "title": "title",
+        "company": "himalayasJobs:companyName",
+        "url": ["guid", "link"],
+        "description": ["content:encoded", "description"],
+        "location": "himalayasJobs:locationRestriction",
+        "postedAt": "pubDate"
+      }
+    },
+    {
+      "id": "teamtailor",
+      "name": "Teamtailor",
+      "type": "rss",
+      "enabled": true,
+      "url": "https://{company}.teamtailor.com/jobs.rss",
+      "minIntervalMinutes": 120,
+      "terms": "Teamtailor documents <career site>/jobs.rss for syndication. Add a Swedish company by adding an instance whose vars.company is its Teamtailor subdomain (the part before .teamtailor.com). Companies with their own domain can still be reached through the subdomain; redirects to *.teamtailor.com are followed. Slugs below are from public career sites; a wrong slug just logs an error for that feed.",
+      "allowedHosts": ["*.teamtailor.com"],
+      "instances": [
+        { "id": "tibber", "company": "Tibber", "vars": { "company": "tibber" } },
+        { "id": "hemnet", "company": "Hemnet", "vars": { "company": "hemnet" } },
+        { "id": "storytel", "company": "Storytel", "vars": { "company": "storytel" } },
+        { "id": "hedvig", "company": "Hedvig", "vars": { "company": "hedvig" } }
+      ],
+      "fields": {
+        "id": ["guid", "link"],
+        "title": "title",
+        "url": ["link", "guid"],
+        "description": ["description", "content:encoded"],
+        "location": ["tt:locations.tt:location.tt:city", "tt:locations.tt:location.tt:name"],
+        "country": "tt:locations.tt:location.tt:country",
+        "workMode": "remoteStatus",
+        "postedAt": "pubDate"
+      }
+    },
+    {
+      "id": "arbeitnow",
+      "name": "Arbeitnow",
+      "type": "rest-json",
+      "enabled": true,
+      "url": "https://www.arbeitnow.com/api/job-board-api",
+      "minIntervalMinutes": 180,
+      "attribution": "Jobs via Arbeitnow (https://www.arbeitnow.com)",
+      "terms": "Free public API, no key. Mostly German jobs, many in English. Only the first page (newest jobs) is fetched. Fields follow Arbeitnow's published API; if a sync shows 0 found, compare with https://www.arbeitnow.com/api/job-board-api.",
+      "itemsPath": "data",
+      "fields": {
+        "id": "slug",
+        "title": "title",
+        "company": "company_name",
+        "url": "url",
+        "applyUrl": "url",
+        "description": "description",
+        "location": "location",
+        "postedAt": "created_at",
+        "employmentType": "job_types",
+        "workMode": "remote"
+      }
+    },
+    {
+      "id": "arbeitnow-uk",
+      "name": "Arbeitnow UK",
+      "type": "rest-json",
+      "enabled": true,
+      "url": "https://www.arbeitnow.co.uk/api/job-board-api",
+      "minIntervalMinutes": 180,
+      "attribution": "Jobs via Arbeitnow (https://www.arbeitnow.co.uk)",
+      "terms": "The UK edition of the Arbeitnow API (same format, no key).",
+      "itemsPath": "data",
+      "fields": {
+        "id": "slug",
+        "title": "title",
+        "company": "company_name",
+        "url": "url",
+        "applyUrl": "url",
+        "description": "description",
+        "location": "location",
+        "country": "country",
+        "postedAt": "created_at",
+        "employmentType": "job_types",
+        "workMode": "remote"
+      }
+    },
+    {
+      "id": "remotive",
+      "name": "Remotive",
+      "type": "rest-json",
+      "enabled": true,
+      "url": "https://remotive.com/api/remote-jobs",
+      "query": { "limit": 150 },
+      "minIntervalMinutes": 720,
+      "attribution": "Jobs via Remotive (https://remotive.com)",
+      "terms": "Remotive asks for at most 4 fetches a day, a link back to Remotive on every job, and that jobs are not passed on to other job boards (LinkedIn, Google Jobs, Jooble). Its jobs are delayed by 24 hours. Two categories x 2 fetches a day = 4 a day. Fine for a private board; do not make the board public with this feed enabled.",
+      "defaults": { "workMode": "REMOTE" },
+      "instances": [
+        { "id": "software-dev", "name": "Remotive (software dev)", "query": { "category": "software-dev" } },
+        { "id": "product", "name": "Remotive (product)", "query": { "category": "product" } }
+      ],
+      "itemsPath": "jobs",
+      "fields": {
+        "id": "id",
+        "title": "title",
+        "company": "company_name",
+        "url": "url",
+        "applyUrl": "url",
+        "description": "description",
+        "location": "candidate_required_location",
+        "postedAt": "publication_date",
+        "employmentType": "job_type"
+      }
+    },
+    {
+      "id": "remoteok",
+      "name": "Remote OK",
+      "type": "rest-json",
+      "enabled": true,
+      "url": "https://remoteok.com/api",
+      "userAgent": "Mozilla/5.0 (compatible; job-search-local/1.0; +https://github.com/Shuvo991/job-search)",
+      "worldwideWhenNoLocation": true,
+      "minIntervalMinutes": 360,
+      "attribution": "Jobs via Remote OK (https://remoteok.com)",
+      "terms": "Remote OK's API terms: link each job back to its Remote OK page (done: the job link is the Remote OK page), name Remote OK as the source, and do not use its logo. The first item in the response is a legal notice, not a job; it is skipped (counted as unusable). Remote OK rejects some automatic clients with HTTP 403; if that happens the feed shows an error and the others are unaffected.",
+      "defaults": { "workMode": "REMOTE" },
+      "itemsPath": "",
+      "fields": {
+        "id": "id",
+        "title": "position",
+        "company": "company",
+        "url": "url",
+        "applyUrl": ["apply_url", "url"],
+        "description": "description",
+        "location": "location",
+        "postedAt": "date"
+      }
+    },
+    {
+      "id": "workingnomads",
+      "name": "Working Nomads",
+      "type": "rest-json",
+      "enabled": true,
+      "url": "https://www.workingnomads.com/api/exposed_jobs/",
+      "minIntervalMinutes": 360,
+      "attribution": "Jobs via Working Nomads (https://www.workingnomads.com)",
+      "terms": "Working Nomads' public 'exposed jobs' JSON feed. I found no published terms, so check https://www.workingnomads.com before relying on it. Credit and the Working Nomads job link are kept on every job.",
+      "defaults": { "workMode": "REMOTE" },
+      "itemsPath": "",
+      "fields": {
+        "id": ["id", "url"],
+        "title": "title",
+        "company": ["company_name", "company"],
+        "url": "url",
+        "applyUrl": "url",
+        "description": "description",
+        "location": "location",
+        "postedAt": ["pub_date", "published_at", "pubDate"]
+      }
+    },
+    {
+      "id": "greenhouse",
+      "name": "Greenhouse",
+      "type": "rest-json",
+      "enabled": false,
+      "url": "https://boards-api.greenhouse.io/v1/boards/{board}/jobs",
+      "query": { "content": "true" },
+      "minIntervalMinutes": 120,
+      "attribution": "Posted on the company's Greenhouse job board",
+      "terms": "Greenhouse's public Job Board API. Disabled until you add companies: put each company's board token (the last part of boards.greenhouse.io/<token>) in an instance, set the company name, and enable the feed.",
+      "instances": [{ "id": "gitlab", "company": "GitLab", "vars": { "board": "gitlab" } }],
+      "itemsPath": "jobs",
+      "fields": {
+        "id": "id",
+        "title": "title",
+        "url": "absolute_url",
+        "applyUrl": "absolute_url",
+        "description": "content",
+        "location": "location.name",
+        "postedAt": ["first_published", "updated_at"]
+      }
+    },
+    {
+      "id": "lever",
+      "name": "Lever",
+      "type": "rest-json",
+      "enabled": true,
+      "url": "https://api.lever.co/v0/postings/{company}",
+      "query": { "mode": "json" },
+      "minIntervalMinutes": 120,
+      "attribution": "Posted on the company's Lever job board",
+      "terms": "Lever's public Postings API. Add a company by adding an instance with its Lever site name (jobs.lever.co/<name>). Spotify's board is confirmed working. Einride was tried and removed: both api.lever.co and api.eu.lever.co answered 404 for 'einride'. A wrong name just shows an error for that company. Companies hosted on Lever's EU servers use api.eu.lever.co instead.",
+      "instances": [
+        { "id": "spotify", "company": "Spotify", "vars": { "company": "spotify" } }
+      ],
+      "itemsPath": "",
+      "fields": {
+        "id": "id",
+        "title": "text",
+        "url": "hostedUrl",
+        "applyUrl": "applyUrl",
+        "description": ["descriptionPlain", "description"],
+        "location": "categories.location",
+        "employmentType": "categories.commitment",
+        "workMode": "workplaceType",
+        "postedAt": "createdAt"
+      }
+    },
+    {
+      "id": "ashby",
+      "name": "Ashby",
+      "type": "rest-json",
+      "enabled": true,
+      "url": "https://api.ashbyhq.com/posting-api/job-board/{board}",
+      "query": { "includeCompensation": "true" },
+      "minIntervalMinutes": 120,
+      "attribution": "Posted on the company's Ashby job board",
+      "terms": "Ashby's public job posting API. Add a company by adding an instance with its board name (jobs.ashbyhq.com/<name>). Lovable posts on Ashby according to its job ads; the board name is my best match and is unconfirmed.",
+      "instances": [{ "id": "lovable", "company": "Lovable", "vars": { "board": "lovable" } }],
+      "itemsPath": "jobs",
+      "fields": {
+        "id": "id",
+        "title": "title",
+        "url": "jobUrl",
+        "applyUrl": ["applyUrl", "jobUrl"],
+        "description": ["descriptionHtml", "descriptionPlain"],
+        "location": "location",
+        "employmentType": "employmentType",
+        "workMode": ["workplaceType", "isRemote"],
+        "postedAt": "publishedAt"
+      }
+    }
+  ]
+}

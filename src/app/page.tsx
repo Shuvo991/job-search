@@ -4,6 +4,7 @@ import { AddJobDialog } from "@/components/jobs/add-job-dialog";
 import { JobCard } from "@/components/jobs/job-card";
 import { JobFilters } from "@/components/jobs/job-filters";
 import { Pagination } from "@/components/jobs/pagination";
+import { SyncFeedsPanel } from "@/components/jobs/sync-feeds-panel";
 import { linkClass } from "@/components/ui/styles";
 import { getJobFacets, listJobs } from "@/lib/jobs/repository";
 import { parseJobsSearchParamsLeniently, type RawSearchParams } from "@/lib/jobs/search-params";
@@ -19,7 +20,7 @@ export default async function JobBoardPage({ searchParams }: { searchParams: Pro
   const now = new Date();
 
   const hasFilters =
-    Boolean(query.q || query.roleCategory || query.location || query.workMode || query.seniority) ||
+    Boolean(query.q || query.roleCategory || query.location || query.country || query.city || query.workMode || query.seniority) ||
     query.skills.length > 0;
   const firstShown = result.total === 0 ? 0 : (result.page - 1) * result.pageSize + 1;
   const lastShown = Math.min(result.total, result.page * result.pageSize);
@@ -36,6 +37,8 @@ export default async function JobBoardPage({ searchParams }: { searchParams: Pro
         </div>
         <AddJobDialog />
       </div>
+
+      <SyncFeedsPanel />
 
       <JobFilters query={query} facets={facets} />
       <ActiveFilters query={query} />

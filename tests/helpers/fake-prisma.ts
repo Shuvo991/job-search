@@ -8,6 +8,7 @@ type Row = Record<string, unknown>;
 type Where = Record<string, unknown> | undefined;
 
 let rows: Row[] = [];
+let logRows: Row[] = [];
 let sequence = 0;
 
 function matches(row: Row, where: Where): boolean {
@@ -66,7 +67,13 @@ export const fakePrisma = {
       return found ? pick(found, args.select) : null;
     },
     async create(args: { data: Row }) {
-      if (rows.some((row) => row["dedupeHash"] === args.data["dedupeHash"])) {
+      const sameSourceId =
+        args.data["externalId"] !== null &&
+        args.data["externalId"] !== undefined &&
+        rows.some(
+          (row) => row["sourceName"] === args.data["sourceName"] && row["externalId"] === args.data["externalId"],
+        );
+      if (sameSourceId || rows.some((row) => row["dedupeHash"] === args.data["dedupeHash"])) {
         throw Object.assign(new Error("Unique constraint failed"), { name: "PrismaClientKnownRequestError", code: "P2002" });
       }
       sequence += 1;
@@ -85,9 +92,36 @@ export const fakePrisma = {
   },
 };
 
+/** `prisma.feedSyncLog`: just create and findFirst, the two calls src/lib/feeds/sync-log.ts makes. */
+export const fakeFeedSyncLog = {
+  async create(args: { data: Row }) {
+    sequence += 1;
+    const row: Row = { id: `log_${sequence}`, createdAt: new Date(), ...args.data };
+    logRows.push(row);
+    return { ...row };
+  },
+  async findFirst(args: { where?: Where; orderBy?: Record<string, "asc" | "desc"> } = {}) {
+    let result = logRows.filter((row) => matches(row, args.where));
+    const order = args.orderBy ? (Object.entries(args.orderBy)[0] as [string, "asc" | "desc"]) : undefined;
+    if (order) {
+      const [field, direction] = order;
+      result = [...result].sort((a, b) => (direction === "desc" ? -1 : 1) * compare(a[field], b[field]));
+    }
+    const first = result[0];
+    return first ? { ...first } : null;
+  },
+};
+
+(fakePrisma as Record<string, unknown>)["feedSyncLog"] = fakeFeedSyncLog;
+
 export function resetFakePrisma(): void {
   rows = [];
+  logRows = [];
   sequence = 0;
+}
+
+export function fakeSyncLogRows(): Row[] {
+  return logRows.map((row) => ({ ...row }));
 }
 
 export function fakePrismaRows(): Row[] {

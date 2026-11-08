@@ -1,0 +1,59 @@
+{
+  "version": "2026.11.8",
+  "_readme": "Rules for the English-only gatekeeper (src/lib/language-filter.ts). Step A runs language detection (franc-min) on the title plus description. Step B rejects any ad containing one of the phrases below, even if the rest is English. Phrases are matched ignoring case, accents and punctuation, as whole words ('fließend Deutsch' also matches 'fliessend deutsch'). The employer's own name is removed from the text before matching, so 'Svenska Spel' alone does not trigger 'svenska'. Add or remove phrases freely.",
+  "detection": {
+    "minTextLength": 40,
+    "maxDetectChars": 4000,
+    "englishLookalikes": ["sco"],
+    "lookalikeMinEnglishScore": 0.85
+  },
+  "disqualifyingPhrases": {
+    "swedish": [
+      "svenska",
+      "flytande svenska",
+      "svenska i tal och skrift",
+      "krav på svenska",
+      "goda kunskaper i svenska",
+      "mycket goda kunskaper i svenska",
+      "goda kunskaper i det svenska språket",
+      "svenska som modersmål",
+      "behärskar svenska",
+      "fluent in swedish",
+      "fluent swedish",
+      "fluency in swedish",
+      "native swedish",
+      "swedish speaking",
+      "must speak swedish",
+      "proficiency in swedish",
+      "written and spoken swedish",
+      "spoken and written swedish",
+      "swedish language skills are required",
+      "swedish is required",
+      "swedish is a must",
+      "swedish is mandatory"
+    ],
+    "german": [
+      "fließend Deutsch",
+      "fließende Deutschkenntnisse",
+      "verhandlungssicheres Deutsch",
+      "verhandlungssicher Deutsch",
+      "Deutsch als Muttersprache",
+      "sehr gute Deutschkenntnisse",
+      "gute Deutschkenntnisse",
+      "fluent in german",
+      "fluent german",
+      "native german"
+    ],
+    "other": [
+      "flytende norsk",
+      "flydende dansk",
+      "vloeiend nederlands",
+      "français courant",
+      "maîtrise du français",
+      "fluent in french",
+      "fluent french",
+      "fluent in dutch",
+      "fluent dutch"
+    ]
+  }
+}

@@ -21,3 +21,14 @@ export function computeDedupeHash(job: {
   const key = [normalize(job.company), normalize(job.title), normalize(job.location)].join("|");
   return createHash("sha256").update(key).digest("hex");
 }
+
+/**
+ * Fingerprint of an imported posting: company + title + the posting's canonical URL. The same ad
+ * seen again on a later sync (even with tracking parameters or different capitalisation) hashes
+ * identically, so re-syncing never creates a duplicate. The "feed|" prefix keeps these hashes
+ * apart from manually added jobs, which are fingerprinted by company + title + location.
+ */
+export function computeFeedDedupeHash(job: { company: string; title: string; externalUrl: string }): string {
+  const key = ["feed", normalize(job.company), normalize(job.title), job.externalUrl.trim().toLowerCase().replace(/\/+$/, "")].join("|");
+  return createHash("sha256").update(key).digest("hex");
+}
