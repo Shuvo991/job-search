@@ -43,7 +43,7 @@ function headline(summary: SyncSummary): string {
   const parts = [`Imported ${plural(totals.imported, "new job")}`];
   if (totals.filteredOut > 0) {
     parts.push(
-      `filtered out ${totals.filteredOut} (${totals.filtered.language} not English, ${totals.filtered.requiredLanguage} requiring another language, ${totals.filtered.role} other roles)`,
+      `filtered out ${totals.filteredOut} (${totals.filtered.language} not English, ${totals.filtered.requiredLanguage} requiring another language, ${totals.filtered.role} other roles, ${totals.filtered.region} outside Europe or not open worldwide)`,
     );
   }
   if (totals.duplicates > 0) parts.push(`${totals.duplicates} already on the board`);
@@ -180,6 +180,7 @@ export function SyncFeedsPanel() {
                     <th scope="col" className="p-2 text-right font-semibold">Not English</th>
                     <th scope="col" className="p-2 text-right font-semibold">Needs another language</th>
                     <th scope="col" className="p-2 text-right font-semibold">Other roles</th>
+                    <th scope="col" className="p-2 text-right font-semibold">Outside Europe / not worldwide</th>
                     <th scope="col" className="p-2 text-right font-semibold">Unusable</th>
                   </tr>
                 </thead>
@@ -199,6 +200,7 @@ export function SyncFeedsPanel() {
                       <td className="p-2 text-right tabular-nums">{feed.filtered.language}</td>
                       <td className="p-2 text-right tabular-nums">{feed.filtered.requiredLanguage}</td>
                       <td className="p-2 text-right tabular-nums">{feed.filtered.role}</td>
+                      <td className="p-2 text-right tabular-nums">{feed.filtered.region}</td>
                       <td className="p-2 text-right tabular-nums">{feed.invalid}</td>
                     </tr>
                   ))}

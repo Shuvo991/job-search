@@ -24,7 +24,7 @@ export function toURLSearchParams(source: URLSearchParams | RawSearchParams): UR
  */
 function toRawQuery(params: URLSearchParams, defaultPageSize: number): Record<string, unknown> {
   const raw: Record<string, unknown> = {};
-  for (const key of ["q", "roleCategory", "sector", "workMode", "seniority", "location", "isActive", "page", "pageSize"]) {
+  for (const key of ["q", "roleCategory", "sector", "workMode", "seniority", "location", "country", "city", "isActive", "page", "pageSize"]) {
     const value = params.get(key)?.trim();
     if (value) raw[key] = value;
   }
@@ -72,7 +72,7 @@ export function parseJobsSearchParamsLeniently(
 export function buildQueryString(query: Partial<ListJobsQuery>, overrides: Partial<ListJobsQuery> = {}): string {
   const merged = { ...query, ...overrides };
   const params = new URLSearchParams();
-  const simple = ["q", "roleCategory", "sector", "workMode", "seniority", "location"] as const;
+  const simple = ["q", "roleCategory", "sector", "workMode", "seniority", "location", "country", "city"] as const;
   for (const key of simple) {
     const value = merged[key];
     if (value) params.set(key, value);

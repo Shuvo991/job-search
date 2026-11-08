@@ -10,8 +10,9 @@ import { ConflictError, ValidationError } from "@/lib/errors";
 import { parseFeedBody, FeedParseError, type RawFeedItem } from "@/lib/feeds/adapters";
 import { getFeedConfig, type LoadedFeedConfig, type ResolvedFeed } from "@/lib/feeds/config";
 import { fetchFeedText, FeedFetchError, type FetchLike } from "@/lib/feeds/fetcher";
-import { buildFeedJob, prepareItem, roleOf } from "@/lib/feeds/normalize";
+import { buildFeedJob, prepareItem, roleOf, workModeFor } from "@/lib/feeds/normalize";
 import { latestRunsByFeed, nextAllowedAt, recordSyncRun, type SyncLogRow } from "@/lib/feeds/sync-log";
+import { getGeoFilter, type GeoFilter } from "@/lib/geo-filter";
 import { getGatekeeper, type Gatekeeper } from "@/lib/language-filter";
 import type { FeedStatus, FeedSyncResult, FilteredCounts, SyncSummary, SyncTotals } from "@/lib/feeds/types";
 import { computeFeedDedupeHash } from "@/lib/jobs/dedupe";
@@ -26,6 +27,7 @@ export interface SyncOptions {
   config?: LoadedFeedConfig;
   fetchImpl?: FetchLike;
   gatekeeper?: Gatekeeper;
+  geoFilter?: GeoFilter;
 }
 
 const lockHolder = globalThis as unknown as { __feedSyncRunning?: boolean };
@@ -34,7 +36,7 @@ export function isSyncRunning(): boolean {
   return lockHolder.__feedSyncRunning === true;
 }
 
-const emptyFiltered = (): FilteredCounts => ({ language: 0, requiredLanguage: 0, role: 0 });
+const emptyFiltered = (): FilteredCounts => ({ language: 0, requiredLanguage: 0, role: 0, region: 0 });
 
 /** Run `task` over `values` with at most `limit` in flight, keeping results in input order. */
 async function mapWithConcurrency<T, R>(values: T[], limit: number, task: (value: T) => Promise<R>): Promise<R[]> {
@@ -67,6 +69,7 @@ interface FeedContext {
   config: LoadedFeedConfig;
   fetchImpl: FetchLike | undefined;
   gatekeeper: Gatekeeper;
+  geoFilter: GeoFilter;
   now: () => Date;
 }
 
@@ -126,6 +129,20 @@ async function processItems(
     const role = roleOf(item);
     if (role === undefined) {
       filtered.role += 1;
+      continue;
+    }
+
+    // Location gate: European jobs, plus remote jobs that anyone in the world may apply for.
+    const geo = context.geoFilter.evaluate({
+      workMode: workModeFor(item, feed),
+      location: item.location,
+      country: item.country,
+      defaultCountry: feed.defaults.country,
+      description: item.description,
+      worldwideWhenNoLocation: feed.worldwideWhenNoLocation,
+    });
+    if (!geo.accepted) {
+      filtered.region += 1;
       continue;
     }
 
@@ -203,7 +220,7 @@ async function syncOneFeed(feed: ResolvedFeed, context: FeedContext): Promise<Fe
       fetched: result.fetched,
       imported: result.imported,
       duplicates: result.duplicates,
-      filtered: result.filtered.language + result.filtered.requiredLanguage + result.filtered.role,
+      filtered: result.filtered.language + result.filtered.requiredLanguage + result.filtered.role + result.filtered.region,
       invalid: result.invalid,
       error: result.error ?? null,
     });
@@ -237,8 +254,10 @@ function summarise(feeds: FeedSyncResult[], startedAt: Date, finishedAt: Date): 
     totals.filtered.language += feed.filtered.language;
     totals.filtered.requiredLanguage += feed.filtered.requiredLanguage;
     totals.filtered.role += feed.filtered.role;
+    totals.filtered.region += feed.filtered.region;
   }
-  totals.filteredOut = totals.filtered.language + totals.filtered.requiredLanguage + totals.filtered.role;
+  totals.filteredOut =
+    totals.filtered.language + totals.filtered.requiredLanguage + totals.filtered.role + totals.filtered.region;
   return { startedAt: startedAt.toISOString(), finishedAt: finishedAt.toISOString(), feeds, totals };
 }
 
@@ -260,6 +279,7 @@ export async function syncFeeds(options: SyncOptions = {}): Promise<SyncSummary>
       config,
       fetchImpl: options.fetchImpl,
       gatekeeper: options.gatekeeper ?? getGatekeeper(),
+      geoFilter: options.geoFilter ?? getGeoFilter(),
       now,
     };
     const startedAt = now();

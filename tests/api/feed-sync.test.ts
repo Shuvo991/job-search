@@ -53,6 +53,7 @@ const config = parseFeedConfig({
       minIntervalMinutes: 30,
       attribution: "Powered by Example RSS",
       titleCompanySeparator: " at ",
+      defaults: { country: "Sweden" },
     },
     {
       id: "off-feed",
@@ -73,7 +74,8 @@ const restJobs = [
   { id: "r4", title: "Backend Developer", company: "Nordic AB", url: "https://nordic.example/jobs/4", description: `<p>${ENGLISH_AD} Fluent in Swedish and English is required.</p>` },
   { id: "r5", title: "Regional Sales Manager", company: "Acme", url: "https://acme.example/jobs/5", description: `<p>${ENGLISH_AD}</p>` },
   { id: "r6", title: "Platform Engineer", url: "https://acme.example/jobs/6", description: `<p>${ENGLISH_AD}</p>` },
-  { id: "r7", title: "Technical Product Manager", company: "Globex", url: "https://globex.example/jobs/7", description: `<p>${ENGLISH_AD} <script>alert(1)</script><img src="https://t.example/p.gif"></p>` },
+  { id: "r7", title: "Technical Product Manager", company: "Globex", location: "Berlin", url: "https://globex.example/jobs/7", description: `<p>${ENGLISH_AD} <script>alert(1)</script><img src="https://t.example/p.gif"></p>` },
+  { id: "r8", title: "Staff Software Engineer", company: "Pied Piper", location: "San Francisco, CA", url: "https://piedpiper.example/jobs/8", description: `<p>${ENGLISH_AD}</p>` },
 ];
 
 const rssXml = `<?xml version="1.0"?><rss version="2.0"><channel><title>Example</title>
@@ -133,19 +135,19 @@ describe("syncFeeds", () => {
 
     expect(resultOf(summary, "rest-feed")).toMatchObject({
       status: "success",
-      fetched: 7,
+      fetched: 8,
       imported: 2,
       duplicates: 0,
       invalid: 1,
-      filtered: { language: 2, requiredLanguage: 1, role: 1 },
+      filtered: { language: 2, requiredLanguage: 1, role: 1, region: 1 },
     });
     expect(resultOf(summary, "rss-feed")).toMatchObject({ status: "success", fetched: 1, imported: 1 });
     expect(summary.feeds.map((feed) => feed.feedId)).toEqual(["rest-feed", "rss-feed"]); // disabled feed not run
     expect(summary.totals).toMatchObject({
       imported: 3,
       invalid: 1,
-      filteredOut: 4,
-      filtered: { language: 2, requiredLanguage: 1, role: 1 },
+      filteredOut: 5,
+      filtered: { language: 2, requiredLanguage: 1, role: 1, region: 1 },
       feedsSynced: 2,
       feedsFailed: 0,
     });
@@ -197,6 +199,7 @@ describe("syncFeeds", () => {
     expect(titles).not.toContain("Backend Developer"); // required fluent Swedish
     expect(titles).not.toContain("Regional Sales Manager");
     expect(titles).not.toContain("Platform Engineer"); // no company
+    expect(titles).not.toContain("Staff Software Engineer"); // San Francisco, not remote-worldwide
   });
 
   it("re-syncing never creates duplicates", async () => {
@@ -334,7 +337,7 @@ describe("syncFeeds", () => {
     expect(rest).toMatchObject({
       name: "Example API",
       attribution: "Jobs via Example API",
-      lastRun: { status: "SUCCESS", imported: 2, filtered: 4, duplicates: 0, invalid: 1 },
+      lastRun: { status: "SUCCESS", imported: 2, filtered: 5, duplicates: 0, invalid: 1 },
     });
     expect(rest?.nextAllowedAt).toBe(minutesLater(60).toISOString());
     expect(statuses.find((feed) => feed.id === "off-feed")).toMatchObject({ enabled: false, lastRun: null, nextAllowedAt: null });

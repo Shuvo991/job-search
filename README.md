@@ -25,6 +25,7 @@ npm run dev
 | `npm run db:migrate` | `prisma migrate dev` |
 | `npm run db:status` | `prisma migrate status` |
 | `npm run db:seed` | Adds 5 sample jobs (safe to re-run; existing jobs are skipped) |
+| `npm run db:prune-geo` | Lists imported jobs that break the location rule (add `-- --apply` to remove them) |
 | `npm run verify` | Everything above, end to end |
 
 ## Layout
@@ -65,7 +66,7 @@ applies and restarting the app does not cause extra requests. Change the timing 
 
 ```
 fetch -> parse (JSON / RSS 2.0 / Atom) -> sanitise HTML -> language check (franc-min)
-      -> required-language phrases -> role check -> de-duplicate -> extract skills -> store
+      -> required-language phrases -> role check -> location check -> de-duplicate -> extract skills -> store
 ```
 
 - **Sources** (`config/job-feeds.json`): Arbetsförmedlingen JobTech, Jobicy, Startup Jobs, Himalayas and
@@ -75,6 +76,22 @@ fetch -> parse (JSON / RSS 2.0 / Atom) -> sanitise HTML -> language check (franc
 - **English only** (`config/language-rules.json`): step A detects the language of title + description; step B
   rejects ads containing phrases such as `flytande svenska`, `krav på svenska` or `fließend Deutsch` even when the
   rest is English. Add phrases freely; matching ignores case, accents and punctuation.
+- **Europe, or remote and open worldwide** (`config/geo-rules.json`): on-site, hybrid and unknown-mode jobs
+  must be in a European place (country, city, or "Europe" / "EMEA" / "Nordics"). Remote jobs are kept when the
+  location says worldwide or anywhere, or when they are tied to Europe (including lists such as
+  "EMEA, USA, Canada"). Remote jobs limited to the USA, India, APAC and so on are dropped, as are remote jobs
+  whose description says candidates must live in or be authorised for one non-European country. A remote job
+  with no location is dropped unless its feed says an empty location means worldwide (`worldwideWhenNoLocation`,
+  set for Remote OK) or the description says "work from anywhere". Switches under `policy` in the file:
+  `remoteTiedToEurope` (`keep` / `reject`), `unspecifiedRemote` (`keep` / `reject`), `checkDescription`.
+  Turkey, Russia and Belarus are not in the Europe lists; add them if you want them. Jobs already on the board
+  from before this rule can be cleared with `npm run db:prune-geo` (a dry run), then `npm run db:prune-geo -- --apply`;
+  jobs you added yourself, the sample jobs and anything you applied for are never removed.
+- **Country and City filters on the board**: pick a country (Sweden also finds Stockholm, Göteborg and jobs stored
+  as "Sverige"), then a city; the City list only holds cities of the chosen country, and cities are merged across
+  spellings (Gothenburg / Göteborg). `Europe-wide remote` and `Worldwide remote` are listed under Regions. The
+  country, city and region lists are `europe.countryGroups` and `europe.regionSearchTerms` in
+  `config/geo-rules.json`; `?country=Sweden&city=Stockholm` works in the address bar too.
 - **Safety**: feed HTML goes through `sanitize-html` (only paragraph, list and heading tags survive, no
   attributes, no images or links) and then the plain-text sanitiser. Feeds are fetched over https only, from the
   hosts listed for that feed, with a timeout and a size cap; redirects are checked the same way. The XML reader

@@ -20,7 +20,7 @@ export default async function JobBoardPage({ searchParams }: { searchParams: Pro
   const now = new Date();
 
   const hasFilters =
-    Boolean(query.q || query.roleCategory || query.location || query.workMode || query.seniority) ||
+    Boolean(query.q || query.roleCategory || query.location || query.country || query.city || query.workMode || query.seniority) ||
     query.skills.length > 0;
   const firstShown = result.total === 0 ? 0 : (result.page - 1) * result.pageSize + 1;
   const lastShown = Math.min(result.total, result.page * result.pageSize);

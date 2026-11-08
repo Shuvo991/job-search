@@ -21,6 +21,7 @@
     "db:migrate": "prisma migrate dev",
     "db:status": "prisma migrate status",
     "db:seed": "tsx prisma/seed.ts",
+    "db:prune-geo": "tsx prisma/prune-geo.ts",
     "verify": "npm run db:validate && npm run db:status && npm run typecheck && npm run test && npm run build"
   },
   "dependencies": {

@@ -23,7 +23,7 @@ function summary(overrides: Partial<SyncSummary["totals"]> = {}): SyncSummary {
       duplicates: 2,
       invalid: 0,
       filteredOut: 5,
-      filtered: { language: 3, requiredLanguage: 1, role: 1 },
+      filtered: { language: 3, requiredLanguage: 1, role: 1, region: 0 },
       feedsSynced: 2,
       feedsFailed: 0,
       feedsSkipped: 0,

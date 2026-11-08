@@ -62,6 +62,8 @@ const commonFeedShape = {
   url: httpsUrl,
   /** Replaces settings.userAgent for this feed only (a few sources reject unusual client names). */
   userAgent: z.string().min(5).max(200).optional(),
+  /** True when this source leaves the location empty on jobs that anyone in the world may apply for (Remote OK). */
+  worldwideWhenNoLocation: z.boolean().default(false),
   query: queryRecord.default({}),
   minIntervalMinutes: z.number().int().min(1).max(10_080).default(60),
   /** Credit line stored with every job from this feed and shown on its page. */
@@ -140,6 +142,60 @@ export const languageRulesSchema = z.strictObject({
   disqualifyingPhrases: z.record(z.string().regex(/^[a-z-]{1,30}$/), z.array(z.string().min(2).max(100)).max(200)),
 });
 
+const phraseList = (max: number) => z.array(z.string().min(1).max(100)).max(max);
+
+/** Validation for config/geo-rules.json (see src/lib/geo-filter.ts). */
+export const geoRulesSchema = z.strictObject({
+  version: z.string().min(1).max(40),
+  policy: z
+    .strictObject({
+      /** keep: remote jobs restricted to Europe count as European jobs. reject: remote jobs must be worldwide. */
+      remoteTiedToEurope: z.enum(["keep", "reject"]).default("keep"),
+      /** What to do with a remote job that names no place (unless its feed or description says worldwide). */
+      unspecifiedRemote: z.enum(["keep", "reject"]).default("reject"),
+      checkDescription: z.boolean().default(true),
+    })
+    .prefault({}),
+  europe: z.strictObject({
+    countries: phraseList(400),
+    regions: phraseList(100),
+    cities: phraseList(1000),
+    /** For the board's Location filter: a country with its other names and cities. */
+    countryGroups: z
+      .array(
+        z.strictObject({
+          name: z.string().min(2).max(60),
+          aliases: phraseList(20).default([]),
+          cities: phraseList(100).default([]),
+          /** Spellings of the same city. The first one is the name shown in the City filter. */
+          cityVariants: z.array(phraseList(6)).max(100).default([]),
+        }),
+      )
+      .max(100)
+      .default([]),
+    /** Filter entries that stand for a region ("Europe", "Worldwide") and the location words they match. */
+    regionSearchTerms: z.record(z.string().min(2).max(40), phraseList(20)).default({}),
+  }),
+  outsideEurope: z.strictObject({
+    countries: phraseList(400),
+    regionsAndStates: phraseList(400),
+    cities: phraseList(1000),
+    /** Upper-case state / province codes written after a comma ("Austin, TX"). Matched case-sensitively. */
+    stateCodes: z.array(z.string().regex(/^[A-Z]{2}$/)).max(100).default([]),
+  }),
+  worldwide: z.strictObject({
+    locationPhrases: phraseList(100),
+    descriptionPhrases: phraseList(100),
+  }),
+  genericWords: phraseList(200),
+  restrictions: z.strictObject({
+    leadIns: phraseList(200),
+    targets: phraseList(200),
+    phrases: phraseList(200),
+  }),
+});
+
+export type GeoRules = z.output<typeof geoRulesSchema>;
 export type FeedDefinition = z.output<typeof feedDefinitionSchema>;
 export type AutoSyncSettings = z.output<typeof autoSyncSchema>;
 export type FeedSettings = z.output<typeof feedSettingsSchema>;

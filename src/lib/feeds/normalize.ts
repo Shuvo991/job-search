@@ -179,6 +179,15 @@ export function roleOf(item: PreparedItem): RoleCategoryValue | undefined {
   return inferRoleCategory(item.title);
 }
 
+/** Work mode for an item: the feed's own hint, then the feed default, then a guess from the text. */
+export function workModeFor(item: PreparedItem, feed: ResolvedFeed): WorkModeValue {
+  return (
+    workModeFromHint(item.raw.workModeText) ??
+    feed.defaults.workMode ??
+    inferWorkMode(item.title, item.location, item.description)
+  );
+}
+
 export function buildFeedJob(
   item: PreparedItem,
   role: RoleCategoryValue,
@@ -186,10 +195,7 @@ export function buildFeedJob(
 ): CreateJobInput {
   const { title, company, description, location, raw } = item;
 
-  const workMode =
-    workModeFromHint(raw.workModeText) ??
-    feed.defaults.workMode ??
-    inferWorkMode(title, location, description);
+  const workMode = workModeFor(item, feed);
   const employmentInferred = employmentFromHint(raw.employmentTypeText) ?? inferEmploymentType(title, description);
   const employmentType =
     employmentInferred === "UNKNOWN" ? (feed.defaults.employmentType ?? "UNKNOWN") : employmentInferred;

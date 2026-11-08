@@ -10,6 +10,7 @@
 import type { Job as JobRow, Prisma } from "@/generated/prisma/client";
 import { prisma } from "@/lib/db";
 import { ConflictError } from "@/lib/errors";
+import { EUROPE_OPTION, WORLDWIDE_OPTION, getPlaceIndex, type PlaceSearch } from "@/lib/geo-places";
 import { computeDedupeHash } from "@/lib/jobs/dedupe";
 import type { CreateJobInput, ListJobsQuery } from "@/schemas/job";
 
@@ -49,9 +50,21 @@ export interface JobPage {
   totalPages: number;
 }
 
+export interface PlaceOption {
+  name: string;
+  count: number;
+}
+
+export interface CountryOption extends PlaceOption {
+  /** Cities of this country that have open jobs, alphabetical. */
+  cities: PlaceOption[];
+}
+
 export interface JobFacets {
-  /** Distinct locations of active jobs, alphabetical. */
-  locations: string[];
+  /** Countries with open jobs (most jobs first), each with its cities. */
+  countries: CountryOption[];
+  /** "Europe" and "Worldwide", when any job says so. */
+  regions: PlaceOption[];
   /** Most common skills across active jobs. */
   skills: Array<{ name: string; count: number }>;
   totalActive: number;
@@ -139,6 +152,15 @@ export function toCreateData(
 
 const MAX_SEARCH_TERMS = 6;
 
+/** Jobs whose location or country contains one of the words (or equals one of the short ones). */
+function placeClause(place: PlaceSearch): Prisma.JobWhereInput {
+  const any: Prisma.JobWhereInput[] = [];
+  for (const term of place.contains) any.push({ location: { contains: term } }, { country: { contains: term } });
+  for (const term of place.equals) any.push({ location: term }, { country: term });
+  if (place.remoteWithoutLocation) any.push({ AND: [{ workMode: "REMOTE" }, { location: null }] });
+  return { OR: any };
+}
+
 function buildWhere(query: ListJobsQuery): Prisma.JobWhereInput {
   const and: Prisma.JobWhereInput[] = [{ isActive: query.isActive ?? true }];
 
@@ -159,9 +181,12 @@ function buildWhere(query: ListJobsQuery): Prisma.JobWhereInput {
   if (query.sector) and.push({ sector: query.sector });
   if (query.workMode) and.push({ workMode: query.workMode });
   if (query.seniority) and.push({ seniority: query.seniority });
-  if (query.location) {
-    and.push({ OR: [{ location: { contains: query.location } }, { country: { contains: query.location } }] });
-  }
+  // A country or region name ("Sweden", "Europe", "Worldwide") also finds its cities and other spellings.
+  const places = getPlaceIndex();
+  const plainText = (text: string): PlaceSearch => ({ contains: [text], equals: [], remoteWithoutLocation: false });
+  if (query.location) and.push(placeClause(places.searchCountry(query.location) ?? plainText(query.location)));
+  if (query.country) and.push(placeClause(places.searchCountry(query.country) ?? plainText(query.country)));
+  if (query.city) and.push(placeClause(places.searchCity(query.city, query.country)));
   return { AND: and };
 }
 
@@ -208,16 +233,27 @@ export async function getJobById(id: string): Promise<JobView | null> {
   return row ? toJobView(row) : null;
 }
 
-export async function getJobFacets(limits: { skills?: number; locations?: number } = {}): Promise<JobFacets> {
+export async function getJobFacets(limits: { skills?: number } = {}): Promise<JobFacets> {
   const rows = await prisma.job.findMany({
     where: { isActive: true },
-    select: { location: true, skills: true },
+    select: { location: true, country: true, workMode: true, skills: true },
   });
 
-  const locations = new Set<string>();
+  const index = getPlaceIndex();
+  const countryCounts = new Map<string, { count: number; cities: Map<string, number> }>();
+  let europe = 0;
+  let worldwide = 0;
   const counts = new Map<string, { name: string; count: number }>();
   for (const row of rows) {
-    if (row.location) locations.add(row.location);
+    const place = index.resolve(row.location, row.country);
+    if (place.country !== undefined) {
+      const entry = countryCounts.get(place.country) ?? { count: 0, cities: new Map<string, number>() };
+      entry.count += 1;
+      if (place.city !== undefined) entry.cities.set(place.city, (entry.cities.get(place.city) ?? 0) + 1);
+      countryCounts.set(place.country, entry);
+    }
+    if (index.inRegion(EUROPE_OPTION, row.location, false)) europe += 1;
+    if (index.inRegion(WORLDWIDE_OPTION, row.location, row.workMode === "REMOTE")) worldwide += 1;
     for (const skill of toStringArray(row.skills)) {
       const key = skill.toLowerCase();
       const entry = counts.get(key);
@@ -226,8 +262,22 @@ export async function getJobFacets(limits: { skills?: number; locations?: number
     }
   }
 
+  const countries: CountryOption[] = [...countryCounts]
+    .map(([name, entry]) => ({
+      name,
+      count: entry.count,
+      cities: [...entry.cities]
+        .map(([city, count]) => ({ name: city, count }))
+        .sort((a, b) => a.name.localeCompare(b.name)),
+    }))
+    .sort((a, b) => b.count - a.count || a.name.localeCompare(b.name));
+  const regions: PlaceOption[] = [];
+  if (europe > 0) regions.push({ name: EUROPE_OPTION, count: europe });
+  if (worldwide > 0) regions.push({ name: WORLDWIDE_OPTION, count: worldwide });
+
   return {
-    locations: [...locations].sort((a, b) => a.localeCompare(b)).slice(0, limits.locations ?? 100),
+    countries,
+    regions,
     skills: [...counts.values()]
       .sort((a, b) => b.count - a.count || a.name.localeCompare(b.name))
       .slice(0, limits.skills ?? 24),

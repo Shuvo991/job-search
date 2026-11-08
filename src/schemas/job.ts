@@ -46,6 +46,10 @@ export const listJobsQuerySchema = paginationSchema.extend({
   seniority: z.enum(SENIORITIES).optional(),
   /** Substring match on the job's location or country. */
   location: z.string().trim().max(100).optional(),
+  /** A country (or "Europe" / "Worldwide"), as listed in the board's Country filter. */
+  country: z.string().trim().max(60).optional(),
+  /** A city of that country, as listed in the board's City filter. */
+  city: z.string().trim().max(60).optional(),
   /** A job must contain ALL of these skills (case-insensitive). */
   skills: z.array(shortText(60)).max(10).default([]),
   isActive: queryBooleanSchema.optional(),

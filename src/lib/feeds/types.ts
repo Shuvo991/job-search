@@ -7,6 +7,8 @@ export interface FilteredCounts {
   requiredLanguage: number;
   /** Not one of the roles this board lists (e.g. sales, design). */
   role: number;
+  /** Outside Europe, or remote but not open to candidates from anywhere. */
+  region: number;
 }
 
 export type FeedRunStatus = "success" | "error" | "rate_limited" | "disabled";

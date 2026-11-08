@@ -28,6 +28,8 @@ export interface ResolvedFeed {
   minIntervalMinutes: number;
   /** Per-feed override of settings.userAgent. */
   userAgent: string | undefined;
+  /** The source leaves the location empty on jobs open to candidates from anywhere. */
+  worldwideWhenNoLocation: boolean;
   attribution: string | undefined;
   terms: string | undefined;
   /** Hosts this feed may contact (its own host plus allowed redirect targets). */
@@ -92,6 +94,7 @@ function resolveFeed(feed: FeedDefinition): ResolvedFeed[] {
     query,
     minIntervalMinutes: feed.minIntervalMinutes,
     userAgent: feed.userAgent,
+    worldwideWhenNoLocation: feed.worldwideWhenNoLocation,
     attribution: feed.attribution,
     terms: feed.terms,
     allowedHosts: [...new Set([hostOf(url, id), ...(feed.allowedHosts ?? []), ...extraHosts].map((h) => h.toLowerCase()))],

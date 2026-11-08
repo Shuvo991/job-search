@@ -36,13 +36,18 @@ export type LanguageDetector = (text: string, minLength: number) => LanguageGues
 
 const defaultDetector: LanguageDetector = (text, minLength) => francAll(text, { minLength });
 
-/** Lower-case, strip accents, treat ß as ss, and turn every run of non-letters into one space. */
+/** Lower-case, strip accents (also ø, ł, đ, æ, œ), treat ß as ss, and turn every run of non-letters into one space. */
 export function normalizeForMatching(text: string): string {
   return text
     .normalize("NFKD")
     .replace(/\p{M}+/gu, "")
     .replace(/ß/g, "ss")
     .toLowerCase()
+    .replace(/ø/g, "o") // letters that do not decompose into base letter + accent
+    .replace(/ł/g, "l")
+    .replace(/đ/g, "d")
+    .replace(/æ/g, "ae")
+    .replace(/œ/g, "oe")
     .replace(/[^\p{L}\p{N}]+/gu, " ")
     .trim();
 }

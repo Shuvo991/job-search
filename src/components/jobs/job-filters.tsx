@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { LocationFilter } from "@/components/jobs/location-filter";
 import { controlClass, hintClass, labelClass, primaryButtonClass, secondaryButtonClass } from "@/components/ui/styles";
 import { ROLE_LABELS, SENIORITY_LABELS, WORK_MODE_LABELS } from "@/lib/jobs/labels";
 import type { JobFacets } from "@/lib/jobs/repository";
@@ -90,26 +91,12 @@ export function JobFilters({ query, facets }: { query: ListJobsQuery; facets: Jo
           </select>
         </div>
 
-        <div>
-          <label htmlFor="filter-location" className={labelClass}>
-            Location
-          </label>
-          <input
-            id="filter-location"
-            name="location"
-            type="text"
-            list="filter-location-options"
-            defaultValue={query.location ?? ""}
-            autoComplete="off"
-            placeholder="City or country"
-            className={`${controlClass} mt-1`}
-          />
-          <datalist id="filter-location-options">
-            {facets.locations.map((location) => (
-              <option key={location} value={location} />
-            ))}
-          </datalist>
-        </div>
+        <LocationFilter
+          countries={facets.countries}
+          regions={facets.regions}
+          initialCountry={query.country}
+          initialCity={query.city}
+        />
 
         <div>
           <label htmlFor="filter-workmode" className={labelClass}>

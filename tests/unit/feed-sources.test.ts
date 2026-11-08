@@ -45,7 +45,6 @@ describe("the extra sources are configured", () => {
         "remoteok",
         "workingnomads",
         "lever:spotify",
-        "lever:einride",
         "ashby:lovable",
       ]),
     );

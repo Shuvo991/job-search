@@ -17,6 +17,10 @@ function chipsFor(query: ListJobsQuery): Chip[] {
     chips.push({ key: "role", label: `Role: ${ROLE_LABELS[query.roleCategory]}`, href: without({ roleCategory: undefined }) });
   }
   if (query.location) chips.push({ key: "loc", label: `Location: ${query.location}`, href: without({ location: undefined }) });
+  if (query.country) {
+    chips.push({ key: "country", label: `Country: ${query.country}`, href: without({ country: undefined, city: undefined }) });
+  }
+  if (query.city) chips.push({ key: "city", label: `City: ${query.city}`, href: without({ city: undefined }) });
   if (query.workMode) {
     chips.push({ key: "mode", label: `Work mode: ${WORK_MODE_LABELS[query.workMode]}`, href: without({ workMode: undefined }) });
   }

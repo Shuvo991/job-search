@@ -236,6 +236,7 @@
       "enabled": true,
       "url": "https://remoteok.com/api",
       "userAgent": "Mozilla/5.0 (compatible; job-search-local/1.0; +https://github.com/Shuvo991/job-search)",
+      "worldwideWhenNoLocation": true,
       "minIntervalMinutes": 360,
       "attribution": "Jobs via Remote OK (https://remoteok.com)",
       "terms": "Remote OK's API terms: link each job back to its Remote OK page (done: the job link is the Remote OK page), name Remote OK as the source, and do not use its logo. The first item in the response is a legal notice, not a job; it is skipped (counted as unusable). Remote OK rejects some automatic clients with HTTP 403; if that happens the feed shows an error and the others are unaffected.",
@@ -305,10 +306,9 @@
       "query": { "mode": "json" },
       "minIntervalMinutes": 120,
       "attribution": "Posted on the company's Lever job board",
-      "terms": "Lever's public Postings API. Add a company by adding an instance with its Lever site name (jobs.lever.co/<name>). Spotify and Einride are on Lever according to their job ads; the site names are my best match and are unconfirmed: a wrong name just shows an error for that company. Companies hosted on Lever's EU servers use api.eu.lever.co instead.",
+      "terms": "Lever's public Postings API. Add a company by adding an instance with its Lever site name (jobs.lever.co/<name>). Spotify's board is confirmed working. Einride was tried and removed: both api.lever.co and api.eu.lever.co answered 404 for 'einride'. A wrong name just shows an error for that company. Companies hosted on Lever's EU servers use api.eu.lever.co instead.",
       "instances": [
-        { "id": "spotify", "company": "Spotify", "vars": { "company": "spotify" } },
-        { "id": "einride", "company": "Einride", "vars": { "company": "einride" } }
+        { "id": "spotify", "company": "Spotify", "vars": { "company": "spotify" } }
       ],
       "itemsPath": "",
       "fields": {
