@@ -114,3 +114,31 @@ npm install -D @types/sanitize-html
 npx prisma migrate dev --name add_feed_ingestion   # adds Job.attribution and the feed_sync_logs table
 npm run verify
 ```
+
+## Local AI CV & cover letter creator (Phase 4)
+
+Open a job, click **Tailor my CV and cover letter (local AI)**. Everything runs on your machine: the text goes
+only to your local Ollama (`OLLAMA_BASE_URL`, localhost only), never to a cloud AI API.
+
+Setup (PowerShell, in this folder):
+
+```powershell
+npm install @react-pdf/renderer
+ollama pull llama3.2        # or a stronger model: ollama pull qwen2.5:7b
+npm run typecheck
+npm test
+npm run dev
+```
+
+Optional `.env` settings: `OLLAMA_MODEL` (default `llama3.2`), `OLLAMA_TIMEOUT_MS`, `OLLAMA_NUM_CTX`,
+`OLLAMA_NUM_PREDICT`. The coach prompts live in `config/prompts/cv-coach.md` and `config/prompts/cover-letter.md`
+and can be edited without touching code.
+
+- **Review & Edit**: original vs AI-tailored bullets side by side with word-level highlights; every field is editable.
+- **Export**: single-column A4 PDF built with `@react-pdf/renderer` (selectable text, standard headings, no tables or
+  images), with a live ATS score before/after.
+- **No Ollama?** The page shows setup steps and a manual mode so you can still edit and export your CV.
+- **Anti-fabrication guardrails** (enforced in code, not just in the prompt): the model's "original" quote is matched
+  to a real line of your CV; rewrites may not add numbers, new tools/technologies or names that are not in that
+  bullet/CV; employers, titles, schools, skills and dates must appear in your CV; contact details come from regex.
+  A rewrite that fails a check keeps your original wording and is flagged, with the AI version one click away.
