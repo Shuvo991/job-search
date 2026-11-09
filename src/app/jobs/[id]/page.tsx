@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Badge } from "@/components/jobs/job-card";
-import { chipClass, linkClass, primaryButtonClass } from "@/components/ui/styles";
+import { chipClass, linkClass, primaryButtonClass, secondaryButtonClass } from "@/components/ui/styles";
 import { descriptionToBlocks, formatPlace, formatPosted, formatSalary, safeHref } from "@/lib/jobs/format";
 import {
   EMPLOYMENT_TYPE_LABELS,
@@ -80,6 +80,11 @@ export default async function JobPage({ params }: Props) {
             </a>
           </p>
         ) : null}
+        <p>
+          <Link href={`/jobs/${job.id}/tailor`} className={secondaryButtonClass}>
+            Tailor my CV and cover letter (local AI)
+          </Link>
+        </p>
       </header>
 
       {job.skills.length > 0 ? (

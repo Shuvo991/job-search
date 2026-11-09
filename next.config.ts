@@ -41,7 +41,7 @@ const nextConfig: NextConfig = {
   poweredByHeader: false,
   // Resume parsing: these load Node-only code and PDF.js worker files at runtime, so they must not
   // be bundled by the Next.js compiler.
-  serverExternalPackages: ["pdf-parse", "mammoth"],
+  serverExternalPackages: ["pdf-parse", "mammoth", "@react-pdf/renderer"],
   async headers() {
     return [{ source: "/:path*", headers: securityHeaders }];
   },
